@@ -205,6 +205,19 @@ function fibonacciEuler(numCount) {
   }
 
 
+// Needle in the Haystack
+// 1. Use the indexOf method to find the index of the 'needle' in the array
+// 2. Return a string that includes the index of the needle
+// 3. Commit your work with the message 'a needle in the haystack completed'
+
+function needleHaystack(array) {
+    if (array.includes("needle")) {
+      const needleLocation = array.indexOf("needle").toString()
+      return needleLocation
+    }
+    return null
+  }
+
 
 // End of Function List. Begin console logs below.
 console.log("palindrome: " + palindrome("racecar")) // expect result true
@@ -219,3 +232,4 @@ console.log("maxThree: " + maxThree(152, 25, 5)) // expect the result to be 152
 console.log("printLongestWord: " + printLongestWord(["chicken", "cow", "pepsi", "granulation"])) // expect the result to be 'granulation'
 console.log("transmogrifyNumbers: " + transmogrifyNumbers(3, 2, 3)) // expect the result to be 216
 console.log("fibonacciEuler: " + fibonacciEuler(158)) // expect the result to be 188
+console.log("needleHaystack: " + needleHaystack(["porcupine", "cactus", "box cutters", "needle", "daggar"])) // expect result "3"
