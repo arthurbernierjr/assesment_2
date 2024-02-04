@@ -179,6 +179,33 @@ function transmogrifyNumbers(num1, num2, num3) {
   }
 
 
+// Project Euler Problem 2
+// 1. Initialize two variables to store the first two numbers of the fibonacci sequence.
+// 2. Use a while loop to generate Fibonacci numbers up to the specified limit
+// 3. Within the loop, check if the current number is even. If so, add it to the sum.
+// 4. Update the fibonacci sequence variables for the next iteration.
+// 5. Return the sum of even fibonacci numbers
+// 6. Commit your work with the message 'Project Euler Problem 2 Completed'
+
+
+function fibonacciEuler(numCount) {
+    let a = 1
+    let b = 2
+    let sum = 0
+
+    while (b <= numCount) {
+      if (b % 2 === 0) {
+        sum += b
+      }
+      const c = a + b
+      a = b
+      b = c
+    }
+    return sum
+  }
+
+
+
 // End of Function List. Begin console logs below.
 console.log("palindrome: " + palindrome("racecar")) // expect result true
 console.log("sumArray: " + sumArray([1, 2, 3, 4])) // expect result 10
@@ -191,3 +218,4 @@ console.log("getMultipleLengths: " + getMultipleLengths(["spaghetti", "kentucky"
 console.log("maxThree: " + maxThree(152, 25, 5)) // expect the result to be 152
 console.log("printLongestWord: " + printLongestWord(["chicken", "cow", "pepsi", "granulation"])) // expect the result to be 'granulation'
 console.log("transmogrifyNumbers: " + transmogrifyNumbers(3, 2, 3)) // expect the result to be 216
+console.log("fibonacciEuler: " + fibonacciEuler(158)) // expect the result to be 188
