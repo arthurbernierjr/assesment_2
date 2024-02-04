@@ -79,8 +79,23 @@ function checkPrime(num) {
   }
 
 
+// Calculate the Cube
+// 1. Calculate the cube of the number by multiplying the number by itself twice
+// 2. Return the result
+// 3. Commit your work under message 'calculate the cube completed'
+
+function calculateCube(num) {
+    let result = 1
+    for (let i = 1; i < 3; i++) {
+      result = result * num
+    }
+    return result
+  }
+
+
 // End of Function List. Begin console logs below.
 console.log("palindrome: " + palindrome("racecar")) // expect result true
 console.log("sumArray: " + sumArray([1, 2, 3, 4])) // expect result 10
 console.log("checkPrime: " + checkPrime(199)) // expect result true
 console.log("Print Primes: " + printPrimes(45)) // expect result 2,3,5,7,11,13,17,19,23, 29, 31, 37, 41, 43
+console.log("calculateCube: " + calculateCube(3)) // expect result 9
