@@ -28,5 +28,24 @@ if (arg !== argArray ){
     return true
 }
 
+
+// Sum Array
+
+// 1. Initialize a variable to store the sum of the array elements
+// 2. Use a for loop to iterate through the array
+// 3. In each iteration, add the current element to the sum variable.
+// 4. After the loop, return the sum variable.
+// 5. Commit work with message 'sum array completed'
+
+function sumArray(num) {
+    let sumVariable = 0
+    for (let i = 0; i < num.length; i++) {
+      sumVariable = sumVariable + num[i]
+    }
+    return sumVariable
+  }
+
+
 // End of Function List. Begin console logs below.
 console.log("palindrome: " + palindrome("racecar")) // expect result true
+console.log("sumArray: " + sumArray([1, 2, 3, 4])) // expect result 10
