@@ -163,6 +163,22 @@ function printLongestWord(array) {
   }
 
 
+// Transmogrify the Numbers
+// 1. Calculate the product of the first two numbers
+// 2. raise the product to the power of the third number
+// 3. return the result
+// 4. Commit your work with the message 'transmogrify the numbers completed'
+
+function transmogrifyNumbers(num1, num2, num3) {
+    const product = num1 * num2
+    let result = 1
+    for (let i = 1; i <= num3; i++) {
+      result *= product
+    }
+    return result
+  }
+
+
 // End of Function List. Begin console logs below.
 console.log("palindrome: " + palindrome("racecar")) // expect result true
 console.log("sumArray: " + sumArray([1, 2, 3, 4])) // expect result 10
@@ -174,3 +190,4 @@ console.log("getTwoLengths: " + getTwoLengths("chair", "couches")) // expect res
 console.log("getMultipleLengths: " + getMultipleLengths(["spaghetti", "kentucky"])) // expect result [9, 8]
 console.log("maxThree: " + maxThree(152, 25, 5)) // expect the result to be 152
 console.log("printLongestWord: " + printLongestWord(["chicken", "cow", "pepsi", "granulation"])) // expect the result to be 'granulation'
+console.log("transmogrifyNumbers: " + transmogrifyNumbers(3, 2, 3)) // expect the result to be 216
