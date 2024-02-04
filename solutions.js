@@ -93,9 +93,25 @@ function calculateCube(num) {
   }
 
 
+// is a Vowel?
+// 1. Check if the input character is included in a string of vowels, lowercase AND uppercase.
+// 2. Return result
+// 3. Commit your work with the message "is vowel completed"
+
+function isVowel(char) {
+    const letter = char.toLowerCase()
+    const vowels = ["a", "e", "i", "o", "u"]
+    if (vowels.includes(letter)) {
+      return true
+    }
+    return false
+  }
+
+
 // End of Function List. Begin console logs below.
 console.log("palindrome: " + palindrome("racecar")) // expect result true
 console.log("sumArray: " + sumArray([1, 2, 3, 4])) // expect result 10
 console.log("checkPrime: " + checkPrime(199)) // expect result true
 console.log("Print Primes: " + printPrimes(45)) // expect result 2,3,5,7,11,13,17,19,23, 29, 31, 37, 41, 43
 console.log("calculateCube: " + calculateCube(3)) // expect result 9
+console.log("isVowel: " + isVowel("O")) // expect result true
