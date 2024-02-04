@@ -143,6 +143,25 @@ function maxThree(num1, num2, num3) {
     return maxNum
   }
 
+  // Print Longest Word
+// 1. Use the Reduce method to find the longest string in the array
+// 2. In case of a tie, the first word in the array order is returned
+// 3. Commit work with the message 'print longest word completed'
+
+function printLongestWord(array) {
+    let champ = ""
+    const longestWord = array.reduce((champ, currentWord) => {
+      if (currentWord.length === champ.length) {
+        champ = champ
+      } else {
+        champ = currentWord
+      }
+      return champ
+    }, "")
+
+    return longestWord
+  }
+
 
 // End of Function List. Begin console logs below.
 console.log("palindrome: " + palindrome("racecar")) // expect result true
@@ -154,3 +173,4 @@ console.log("isVowel: " + isVowel("O")) // expect result true
 console.log("getTwoLengths: " + getTwoLengths("chair", "couches")) // expect result [5, 7]
 console.log("getMultipleLengths: " + getMultipleLengths(["spaghetti", "kentucky"])) // expect result [9, 8]
 console.log("maxThree: " + maxThree(152, 25, 5)) // expect the result to be 152
+console.log("printLongestWord: " + printLongestWord(["chicken", "cow", "pepsi", "granulation"])) // expect the result to be 'granulation'
