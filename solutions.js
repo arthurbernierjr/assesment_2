@@ -316,7 +316,35 @@ console.log("same frequency: " + sameFrequency(3589578, 5879385)) // expect true
 
 /*
 Question 3: Are there Duplicates
+1. Use a frequency counter object to count the occurrences of each argument
+2. Populate the frequency counter by iterating over the arguments
+3. Iterate through the values of the frequency counter. If any value is greater than one, that means a duplicate exists.
+3. Return true if duplicates are found, elsewise return false.
+*/
 
+// My clarification request to Arthur. Independently I could not solve this one without looking it up. WHY does the function work when we use 'arguments' as a name for the accepted arguments, without naming them at all within the parameters block? Should this not create an 'undefined' scenario?
+function areThereDuplicates() {
+  const fq = {}
+  for (let arg of arguments) {
+    fq[arg] = (fq[arg] || 0 ) + 1
+    if (fq[arg] > 1) {
+      return true
+    }
+  }
+  return false
+}
+/*
+Are there Duplicates PseudoCode Redux
+1. Declare a function with empty parameters, which may then accept an unspecified quantity of arguments.
+2. Declare an empty object for the frequency counter.
+3. Create a for loop or a for of loop to iterate over the provided arguments and populate the frequency counter object
+4. Within that same loop, create a conditional that will return true if the argument occurance frequency is greater than 1
+5. Return false if loop completes without conditional truthiness.
+*/
+console.log("areThereDuplicates: " + areThereDuplicates(1, 2, 3)) // expect false
+// console.log("areThereDuplicates: " + areThereDuplicates(1, 2, 2)) // expect true
+// console.log("areThereDuplicates: " + areThereDuplicates('a', 'b', 'c', 'a')) // expect true
+/*
 SLIDING WINDOWS.
 Question 1: MinSubArrayLen
 
