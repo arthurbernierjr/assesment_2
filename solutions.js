@@ -108,6 +108,19 @@ function isVowel(char) {
   }
 
 
+// Get Two Lengths
+// 1. Return an array containing the lengths of the two input strings
+// 2. Commit your work with the message 'get two lengths completed"
+
+function getTwoLengths(str1, str2) {
+    const lengthsArray = []
+    lengthsArray.push(str1.length)
+    lengthsArray.push(str2.length)
+    return lengthsArray
+  }
+
+
+
 // End of Function List. Begin console logs below.
 console.log("palindrome: " + palindrome("racecar")) // expect result true
 console.log("sumArray: " + sumArray([1, 2, 3, 4])) // expect result 10
@@ -115,3 +128,4 @@ console.log("checkPrime: " + checkPrime(199)) // expect result true
 console.log("Print Primes: " + printPrimes(45)) // expect result 2,3,5,7,11,13,17,19,23, 29, 31, 37, 41, 43
 console.log("calculateCube: " + calculateCube(3)) // expect result 9
 console.log("isVowel: " + isVowel("O")) // expect result true
+console.log("getTwoLengths: " + getTwoLengths("chair", "couches")) // expect result [5, 7]
