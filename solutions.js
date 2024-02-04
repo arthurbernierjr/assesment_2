@@ -120,6 +120,17 @@ function getTwoLengths(str1, str2) {
   }
 
 
+// Get Multiple Lengths
+// 1. Use the map function to transform each string in the input array into its length
+// 2. Return the resulting array of lengths
+// 3. Commit your work with the message 'get multiple lengths completed'
+
+function getMultipleLengths(array) {
+    const lengthsArray = array.map(str => str.length)
+
+    return lengthsArray
+  }
+
 
 // End of Function List. Begin console logs below.
 console.log("palindrome: " + palindrome("racecar")) // expect result true
@@ -129,3 +140,4 @@ console.log("Print Primes: " + printPrimes(45)) // expect result 2,3,5,7,11,13,1
 console.log("calculateCube: " + calculateCube(3)) // expect result 9
 console.log("isVowel: " + isVowel("O")) // expect result true
 console.log("getTwoLengths: " + getTwoLengths("chair", "couches")) // expect result [5, 7]
+console.log("getMultipleLengths: " + getMultipleLengths(["spaghetti", "kentucky"])) // expect result [9, 8]
