@@ -246,3 +246,95 @@ console.log("transmogrifyNumbers: " + transmogrifyNumbers(3, 2, 3)) // expect th
 console.log("fibonacciEuler: " + fibonacciEuler(158)) // expect the result to be 188
 console.log("needleHaystack: " + needleHaystack(["porcupine", "cactus", "box cutters", "needle", "daggar"])) // expect result "3"
 console.log("sumPositive: " + sumPositive([-3, -5, 3, 6, 4, -7, 2])) // expect result 15
+
+
+// BELOW: Begin Identifying Problem Solving Patterns section of examination
+
+// Ulterior Process
+// 1. Read/understand the pattern and the given example's code
+// 2. DO THE ABOVE.
+// 3. Re-Write the example in pseudo-code like the problems given above
+// 4. Use SOP below to try and solve the given problems
+// 5. After thirty minutes each question, look up the answer online
+// 6. Analyze the solution and compare it with your own data
+// 7. Write out the found solution in pseudocode form and add it as comments in solutions.js. Attempt to solve it again using this pseudocode.
+// 8. Have 'fun'
+// 9. DO NOT DEVIATE FROM PROCESS
+
+// THE PROCESS OF UNDERSTANDING
+// 1. Read problem.
+// 2. Understand problem.
+// 3. Explore concrete examples.
+// 4. Break it down.
+// 5. Simplify/Solve loop
+// 6. Look back and refactor
+
+/*
+
+
+FREQUENCY COUNTER.
+Question 2: Same Frequency.
+
+// Problem: Given two positive integers, find out if the two numbers have the same frequency of digits.
+*/
+
+function sameFrequency(num1, num2) {
+  const one = num1.toString()
+  const two = num2.toString()
+  if(one.length !== two.length) {
+    return false
+  }
+
+  const fq1 = {}
+  const fq2 = {}
+  for (let digit of one) {
+    fq1[digit] = (fq1[digit] || 0) + 1
+  }
+  for (let digit of two) {
+    fq2[digit] = (fq2[digit] || 0) + 1
+  }
+  for (let key in fq1) {
+  if (fq1[key] !== fq2[key]) {
+    return false
+  }
+}
+  return true
+}
+/*
+Same Frequency PseudoCode Redux.
+1. declare stringified variables out of your accepted integer arguments.
+2. compare whether the lengths of these are the same; elsewise, return false.
+3. create two frequency counter objects for each integer.
+4. populate these objects one at a time with the frequency of digit occurance. Using for loop or for of loop.
+5. Compare the values for each key in the fq objects using either a forEach method or a for in loop.
+6. Return true or false based on truthiness of answer.
+*/
+console.log("same frequency: " + sameFrequency(3589578, 5879385)) // expect true
+// console.log("same frequency: " + sameFrequency(22, 222)) // expect false
+// console.log("same frequency: " + sameFrequency(182, 281)) // expect true
+// console.log("same frequency: " + sameFrequency(34, 14)) // expect false
+
+/*
+Question 3: Are there Duplicates
+
+SLIDING WINDOWS.
+Question 1: MinSubArrayLen
+
+Question 2: FindLongestSubstring
+
+MULTIPLE POINTERS
+Question 1: Count Unique Values
+
+Question 2: Average Pair
+
+DIVIDE AND CONQUOR
+Question 1: Find First and Last Position of Element in Sorted Array
+
+Question 2: Pow(x, n) - BONUS QUESTION ONLY; SAVE FOR FINAL.
+
+Question 3: Merge Sort
+
+Question 4: Quick Sort
+
+
+*/
