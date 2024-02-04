@@ -46,6 +46,41 @@ function sumArray(num) {
   }
 
 
+// Prime Numbers - Check Prime
+// 1. Check if the number is less than or equal to 1. If so, return false because it's not prime.
+// 2. Use a for loop to iterate from 2 up to the square root of the number
+// 3. If the number is divisible by any number in this range, return false
+// 4. If no divisors are found, return true.
+
+function checkPrime(num) {
+    if (num <= 1) {
+      return false
+    }
+    for (let i = 2; i < Math.sqrt(num); i++) {
+      if (num % i === 0) {
+        return false
+      }
+    }
+    return true
+  }
+
+  // Prime Numbers - Print Primes
+  // 1. Use a for loop to iterate through numbers from 2 up to the specified limit.
+  // 2. For each number, use the checkPrime function to check if it's prime.
+  // 3. If checkPrime returns true, console.log the number
+  // 4. Commit your work with the message 'prime numbers completed'
+
+  function printPrimes(num) {
+    for (let i = 2; i < num; i++) {
+      if (checkPrime(i)) {
+        console.log(i)
+      }
+    }
+  }
+
+
 // End of Function List. Begin console logs below.
 console.log("palindrome: " + palindrome("racecar")) // expect result true
 console.log("sumArray: " + sumArray([1, 2, 3, 4])) // expect result 10
+console.log("checkPrime: " + checkPrime(199)) // expect result true
+console.log("Print Primes: " + printPrimes(45)) // expect result 2,3,5,7,11,13,17,19,23, 29, 31, 37, 41, 43
