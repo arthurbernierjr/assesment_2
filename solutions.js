@@ -219,6 +219,18 @@ function needleHaystack(array) {
   }
 
 
+
+// Sum the Positive
+// 1. Use the filter method to create a new array containing only positive numbers
+// 2. Use the reduce method to sum the values of the filtered array.
+// 3. Return the sum
+// 4. Commit your work with the message 'sum the positive completed'
+
+function sumPositive(numArray) {
+    const positiveSum = numArray.filter(num => num > -1).reduce((acc, current) => acc + current, 0)
+    return positiveSum
+  }
+
 // End of Function List. Begin console logs below.
 console.log("palindrome: " + palindrome("racecar")) // expect result true
 console.log("sumArray: " + sumArray([1, 2, 3, 4])) // expect result 10
@@ -233,3 +245,4 @@ console.log("printLongestWord: " + printLongestWord(["chicken", "cow", "pepsi", 
 console.log("transmogrifyNumbers: " + transmogrifyNumbers(3, 2, 3)) // expect the result to be 216
 console.log("fibonacciEuler: " + fibonacciEuler(158)) // expect the result to be 188
 console.log("needleHaystack: " + needleHaystack(["porcupine", "cactus", "box cutters", "needle", "daggar"])) // expect result "3"
+console.log("sumPositive: " + sumPositive([-3, -5, 3, 6, 4, -7, 2])) // expect result 15
