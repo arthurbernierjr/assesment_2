@@ -345,9 +345,61 @@ console.log("areThereDuplicates: " + areThereDuplicates(1, 2, 3)) // expect fals
 // console.log("areThereDuplicates: " + areThereDuplicates(1, 2, 2)) // expect true
 // console.log("areThereDuplicates: " + areThereDuplicates('a', 'b', 'c', 'a')) // expect true
 /*
+// Sliding Windows is awful and I do not have effective visualization of how sliding windows works right now.
 SLIDING WINDOWS.
 Question 1: MinSubArrayLen
+This function should return the minimal length of a contiguous subarray of which the sum is greater than or equal to the integer passed to the function. If there isn't one, return 0 instead.
+1. Initialize two pointers at the start of the array and a variable to track the minimum length of the subarray
+2. Initialize a sum variable to accumulate the sums of the subarrays
+3. Expand the window by moving the end pointer, adding the values to the sum until it is greater than or equal to the target sum.
+4. Once the sum is greater than or equal to the target, try to shrink the window from the beginning to find the smallest subarray by moving the start pointer forward and subtracting values from the sum.
+5. Update the minimum length each time a smaller subarray that satisfies the condition is found
+6. Return the minimum length if found. Otherwise, return 0.
+ */
 
+function minSubArrayLen(nums, s) {
+  let windowSum = 0
+  let output = Infinity;
+  let windowStart = 0;
+  for (let windowEnd = 0; windowEnd < nums.length; windowEnd++) {
+    windowSum += nums[windowEnd];
+    // shrink the window until the windowSum is smaller than s
+    while (windowSum >= s) {
+      output = Math.min(output, windowEnd - windowStart + 1);
+      // subtract the element at the windowStart index
+      windowSum -= nums[windowStart];
+      // change windowStart to the next element
+      windowStart++;
+    }
+  }
+  return output == Infinity ? 0 : output;
+}
+/*
+minSubArrayLen pseudocode redux
+1. create function minSubArrayLen that accepts an array of integers and a target integer as parameters.
+2. Initialize a variable for the temporary sum of integers within the current window.
+3. Initialize a variable that represents the output / minimum length possible of the summed numbers within array.
+3A. This variable may be set to Infinity as its initial value for placeholding purposes to be an impossibly large number. We always want smaller, so this is functionally acceptable.
+4. Initialize a variable for the start position of the sliding window. This will start at index 0 of the array.
+5. create a for loop through which to iterate over the array.
+5A. in this for loop, your next variable, i, may be renamed 'end' for aesthetic purposes, and set to 0 to start.
+6. Add the value at i / end to the current sum at start of each loop iteration
+7. SHRINKING THE WINDOW. Create a while loop within this for loop to apply a conditional effect. While the sum isgreater than or equal to the target integer...
+7A. the output / minimum length will be the lesser value: either the current output / minimum length, or the end point index value subtracted from the start point index value plus 1 (impossible to not be at least 1)
+7B. subtract the integer value at index start from the current sum.
+7C. shift index start one position ahead to 'slide' the window.
+8. Return the answer: the output / minimum value will be returned as zero if it was not changed from initial value of infinity, or else returned as its current value from formulae.
+*/
+
+console.log("minSubArrayLen: " + minSubArrayLen([2, 3, 1, 2, 4, 3], 7)) // expect 2. [4,3] is the smallest subarray
+// console.log("minSubArrayLen: " + minSubArrayLen([2, 1, 6, 5, 4], 9)) // expect 2. [5,4] is the smallest subarray
+// console.log("minSubArrayLen: " + minSubArrayLen([3,1,7,11,2,9,8,21,62,33,19], 52)) // expect 2. [62] is greater than 52
+// console.log("minSubArrayLen: " + minSubArrayLen([1,4,16,22,5,7,8,9,10], 39)) // expect 3.
+// console.log("minSubArrayLen: " + minSubArrayLen([1,4,16,22,5,7,8,9,10],55)) // expect 5.
+// console.log("minSubArrayLen: " + minSubArrayLen([4,3,3,8,1,2,3], 11)) // expect 2.
+// console.log("minSubArrayLen: " + minSubArrayLen([1,4,16,22,5,7,8,9,10],95)) // expect 0.
+
+/*
 Question 2: FindLongestSubstring
 
 MULTIPLE POINTERS
