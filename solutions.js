@@ -132,6 +132,18 @@ function getMultipleLengths(array) {
   }
 
 
+
+// Maximum of Three Numbers
+// 1. Use the Math.max function to find the maximum of the three numbers.
+// 2. Return the maximum number.
+// 3. commit your work with the message 'maximum of three numbers completed'
+
+function maxThree(num1, num2, num3) {
+    let maxNum = Math.max(num1, num2, num3)
+    return maxNum
+  }
+
+
 // End of Function List. Begin console logs below.
 console.log("palindrome: " + palindrome("racecar")) // expect result true
 console.log("sumArray: " + sumArray([1, 2, 3, 4])) // expect result 10
@@ -141,3 +153,4 @@ console.log("calculateCube: " + calculateCube(3)) // expect result 9
 console.log("isVowel: " + isVowel("O")) // expect result true
 console.log("getTwoLengths: " + getTwoLengths("chair", "couches")) // expect result [5, 7]
 console.log("getMultipleLengths: " + getMultipleLengths(["spaghetti", "kentucky"])) // expect result [9, 8]
+console.log("maxThree: " + maxThree(152, 25, 5)) // expect the result to be 152
