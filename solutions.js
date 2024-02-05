@@ -607,8 +607,100 @@ console.log("averagePair: " + averagePair([1,2,3], 2, 5)) // expect true
 
 DIVIDE AND CONQUOR
 Question 1: Find First and Last Position of Element in Sorted Array
+Problem Statement: Given an array of integers sorted in ascending order, find the starting and ending position of a given target value. If the target is not found in the array, return [-1, -1].
+
+// 1. Binary Search for First Position: Implement a modified binary search to find the first occurrence of the target. If the target is found, instead of returning immediately, continue searching to the left (lower indices) to see if there are earlier occurrences.
+// 2. Binary Search for Last Position: Implement a modified binary search to find the last occurrence of the target. If the target is found, continue searching to the right (higher indices) to see if there are later occurrences.
+// 3. Return Positions: Use the results from the two modified binary searches to return the start and end positions of the target value in the array.
+
+*/
 
 
+
+// function findFirstAndLastPosition(arr, val) {
+//   let start = arr[0]
+//   let end = arr.length - 1
+
+//   while (start < end) {
+//     if val
+//   }
+
+// }
+
+/*
+0. declare function with accepted number array and target value parameters
+1. declare variables for starting and ending positions
+2. create default ouput value of [-1, -1] for edge case.
+3. create while loop. while left is less than right.
+4. create variable for the middle index using the average between the left and right index values
+5. If the value at middle index of array is less than target value...
+5a. left/start value becomes one above the middle
+5b. or else the right becomes the middle
+// at end of looping,
+6. If the value at left position of array don't equal target value, return the output.
+7. store the value of the lefthand side  in a variable
+8. stpre the value of righthand side in variable.
+9. create a NEW while loop, repeating stepd 3-5 to find value for RIGHT variable
+10. store the right hand side value in the output.
+11. return the final output
+
+*/
+
+function findFirstAndLastPosition(nums, target) {
+  let left = 0;
+  let right = nums.length - 1;
+  let output = [-1, -1];
+
+  // Binary search for the target (left-biased)
+  while (left < right) {
+      let middle = Math.floor((left + right) / 2);
+
+      if (nums[middle] < target) {
+          left = middle + 1;
+      } else {
+          right = middle;
+      }
+  }
+  // If the target was not found on the first pass
+  if (nums[left] != target) {
+      return output;
+  }
+  // Store the left-hand side
+  output[0] = left;
+  // Reset the right-hand side of the binary search (left-hand side remains as is)
+  right = nums.length - 1;
+  // Binary search for the target (right-biased)
+  while (left < right) {
+      let middle = Math.floor((left + right) / 2) + 1;
+      if (nums[middle] <= target) {
+          left = middle;
+      } else {
+          right = middle - 1;
+      }
+  }
+
+  // Store the right-hand side
+  output[1] = right;
+
+  return output;
+};
+
+/*
+findFirst and last position pseudocode redux.
+
+1.
+2.
+3.
+4.
+5.
+*/
+
+
+console.log("findFirstAndLastPosition: " + findFirstAndLastPosition([5,7,7,8,8,10], 8)) // should return [3, 4]
+console.log("findFirstAndLastPosition: " + findFirstAndLastPosition([5,7,7,8,8,10], 6)) // should return [-1, -1]
+console.log("findFirstAndLastPosition: " + findFirstAndLastPosition([], 6)) // should return [-1, -]
+
+/*
 
 Question 2: Pow(x, n) - BONUS QUESTION ONLY; SAVE FOR FINAL.
 
