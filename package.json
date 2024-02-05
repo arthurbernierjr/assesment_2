@@ -1,0 +1,12 @@
+{
+  "name": "laz-testing-day",
+  "version": "1.0.0",
+  "description": "#2LEET2YEET!",
+  "main": "solutions.js",
+  "scripts": {
+    "test": "LAZ-TESTING-DAY/solutions.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
