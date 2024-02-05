@@ -401,10 +401,95 @@ console.log("minSubArrayLen: " + minSubArrayLen([2, 3, 1, 2, 4, 3], 7)) // expec
 
 /*
 Question 2: FindLongestSubstring
+Write a function called findLongestSubstringwhich accepts a string and returns the length of the longest substring with all distinct characters.
+1. Initialize a variable to keep track of the longest substring length - DONE
+2. Use a pointer or index to track the start of the current substring - DONE
+3. Create a map or object to store characters and their positions within the string. - DONE
+4. Iterate through the string iwth another pointer or index to represent the end of the current substring. - DONE END
+5. As you encounter each character, check if it is already in the map/object. If it is, and its index is greater than or equal to the current start of the substring, move the start to the index after the repeated character.
+6. Update the map/object with the current character's latest index.
+7. Calculate the length of the current substring and update the longest length if necessary.
+8. Return the longest length found. - DONE
 
+*/
+
+function findLongestSubstring(s) {
+  // Store counters for the the start of the window and the longest string's length
+  let startOfWindow = 0,
+      longestStringLength = 0;
+
+  // Initialise a Map to store the characters of the current string
+  let characterMap = new Map();
+
+  // Loop through the provided string
+  for (let i = 0; i < s.length; i++) {
+      // Store the current character, and its position in the Map (saves repeatedly looking it up)
+      let currentCharacter = s[i];
+      let currentCharacterPositionInMap = characterMap.get(currentCharacter);
+
+      // Check if current character exists in the Map, and was found within the current window
+      if (currentCharacterPositionInMap >= startOfWindow) {
+          // Move the current window to start after the first instance of the current character
+          startOfWindow = currentCharacterPositionInMap + 1;
+      }
+``
+      // Add the current character to the Map with its position in the string
+      characterMap.set(currentCharacter, i);
+
+      // Store the current string length if bigger than the existing record
+      longestStringLength = Math.max(
+          longestStringLength,
+          i - startOfWindow + 1
+      );
+  }
+  return longestStringLength;
+};
+
+/*Pseudocode findLongestStringLength Redux
+// This was a high efficiency version I discovered in my give - up afte attempting a while loop solution that I just couldn't get the hang of.
+// 0. Create function findLongestSubstring which accepts parameter 's'
+// 1. Using the 'map' built-in function, create an object variable to build an fc with the character contents of a string. For a couple more lines of code built in you can do a for of loop too
+// 2. create a for loop which indexes through the string input.
+// 2A. Create a variable for the current character in the string by the current location of index
+// 2B. Create a variable for the resulting key that pushes the data into the fc Map using the .get() method
+// 3. Create a conditional wherein if the current character at position is found in the fc we've built, update by...
+// 3A. Updating the starting window position by adding the current character position value by one.
+// 4. add the current character to the map fc and location in string
+// 5. Store the current length by updating longest length variable with a conditional. Between the current value for longest length and the current gap between i/end window and starting window.
+// 6. Return longest string length.
+*/
+
+console.log("findLongestSubstring: " + findLongestSubstring('')) // expect 0
+// console.log("findLongestSubstring: " + findLongestSubstring('thisisawesome')) // expect 6
+// console.log("findLongestSubstring: " + findLongestSubstring('thecatinthehat')) // expect 7
+// console.log("findLongestSubstring: " + findLongestSubstring('bbbbbb')) // expect 1
+// console.log("findLongestSubstring: " + findLongestSubstring('longestsubstring')) // expect 8
+// console.log("findLongestSubstring: " + findLongestSubstring('thisishowwedoit')) // expect 6
+
+/*
 MULTIPLE POINTERS
 Question 1: Count Unique Values
+Problem Statement: Implement a function called countUniqueValues, which accepts a sorted array, and counts the unique values in the array. There can be negative numbers in the array, but it will always be sorted.
+// 1. If the array is empty, return 0
+// 2. Initialize a pointer or index(i) to start at the first element in the array
+// 3. Iterate through the array with another pointer or index(j) starting from the second element
+// 4. Compare the elements at i and j . if they are different, increment i and set the value at i to the value at j. This effectively moves unique values to the front of the array without needing an auxilliary data structure.
+// 5. The count of unique values will be i + 1 since i represents the index, and indexes are zero-based
+// 6. return i + 1
 
+
+
+*/
+
+function countUniqueValues(array) {
+
+}
+
+console.log("countUniqueValues: " + countUniqueValues([1,1,1,1,1,2])) // expect 2
+console.log("countUniqueValues: " + countUniqueValues([1,2,3,4,4,4,7,7,12,12,13])) // expect 7
+console.log("countUniqueValues: " + countUniqueValues([])) // expect 0
+console.log("countUniqueValues: " + countUniqueValues([-2,-1,-1,0,1])) // expect 4
+/*
 Question 2: Average Pair
 
 DIVIDE AND CONQUOR
