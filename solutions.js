@@ -530,9 +530,85 @@ console.log("countUniqueValues: " + countUniqueValues([1,1,1,1,1,2])) // expect 
 // console.log("countUniqueValues: " + countUniqueValues([-2,-1,-1,0,1])) // expect 4
 /*
 Question 2: Average Pair
+Problem Statement: Write a function called averagePair. Given a sorted array of integers and a target average, determine if there is a pair of values in the array where the average of the pair equals the target average. There may be more than one pair that matches the average target.
+// 1. If the array is empty, return false - DONE
+// 2. Initialize two pointers: one at start of array and one at end of array - DONE
+// 3. Create while loop. conditional while start pointer is less than end pointer - DONE
+// 3A. Calculate the average at the start and end pointer, collect that data - DONE
+// 3B. If the average is equal to the target average, return true - DONE
+// 3C. If the calculated average is less than the target average, move the START pointer up (increment start) to try and increase the average - DONE
+// 3D. If the calculated average is greater than the target average, move the end pointer down (decrement end) to try and decrease the average. - DONE
+// 4. If no pair is found that matches the target average, return false.
+
+*/
+// below original attempt code almost verbatim like following chatgpt version but somehow broken. I cannot explain why and felt I actually had this one in the bag.
+// function averagePair(array, avg) {
+//   if (array.length === 0) {
+//     return false
+//   }
+//   let start = 0
+//   let end = array.length - 1
+//   while (start < end) {
+//     const average = (array[start] + array[end]) / 2
+//     console.log(average)
+//     if (average === avg) {
+//       return true
+//     }
+//     else if (average < avg) {
+//       start++
+//     } else {
+//       end--
+//     }
+
+//   }
+//   return false
+// }
+
+
+function averagePair(arr, target) {
+    if (arr.length === 0) {
+    return false
+  }
+  let left = 0;
+  let right = arr.length - 1;
+
+  while (left < right) {
+      const currentAverage = (arr[left] + arr[right]) / 2
+
+      if (currentAverage === target) {
+          return true // Found a pair with the target average
+      } else if (currentAverage < target) {
+          left++ // Move towards higher values to increase the average
+      } else {
+          right-- // Move towards lower values to decrease the average
+      }
+  }
+
+  return false // No pair found with the target average
+}
+
+// averagepair pseudocode redux
+// 1. declare start and end variables at beginning / end of array
+// 2 / 0 . Create conditional if statement, return false if empty array
+// 3. initiate a while loop which runs while starting point index is less than end point index
+// 4. create a variable current average for each iteration of the loop. This will average the two position indexes' corresponding values together
+// 5. If the average is the same as the input target, return true
+// 5a. If the average is less than the input target, move starting position up one
+// 5b. If the average is more than the input target, move ending position down one
+// 5c. return false if no pair with the target average exists
+
+console.log("averagePair: " + averagePair([1,2,3], 2, 5)) // expect true
+// console.log("averagePair: " + averagePair([1,3,3,5, 6, 7, 10, 12, 19], 8)) // expect true , as [7, 10] has average of 8.5 abd [6, 10] has an average of 8
+// console.log("averagePair: " + averagePair([-1,0,3,4,5,6], 4.1)) // expect false
+// console.log("averagePair: " + averagePair([], 4)) // expect false
+
+
+/*
 
 DIVIDE AND CONQUOR
 Question 1: Find First and Last Position of Element in Sorted Array
+
+
 
 Question 2: Pow(x, n) - BONUS QUESTION ONLY; SAVE FOR FINAL.
 
