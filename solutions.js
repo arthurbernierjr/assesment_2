@@ -775,3 +775,66 @@ mergeSort pseudocode redux
 */
 
 console.log(mergeSort([1,7,5,4])) // expect [1,4,5,7]
+
+/*
+
+
+Question 4: Quick Sort
+Problem Statement: Implement Quick Sort, a sorting algorithm that follows the Divide and Conquer paradigm.
+1. Choose Pivot: Select a pivot element from the array. The choice of pivot can affect the algorithm's performance but does not affect correctness. A common approach is to pick the last element as the pivot.
+2. Partition: Rearrange the array so that all elements less than the pivot come before it, and all elements greater come after it. After this step, the pivot is in its final position.
+3. Recursively Apply: Apply quick sort to the sub-arrays formed by dividing the array around the pivot.
+4. Base Case: If the array has one or no elements, it is already sorted.
+5. Concrete Examples for Merge Sort and Quick Sort are not provided due to the nature of these algorithms being applied to sort arrays rather than producing a single deterministic output for a given input. However, the effectiveness and efficiency of both algorithms can be observed by applying them to any unsorted array of integers.
+
+
+*/
+
+function quickSort(arr) {
+  if (arr.length <= 1) {
+      return arr;
+  }
+
+  const pivot = arr[Math.floor(Math.random() * arr.length)]; // Choose a random pivot
+  const left = [];
+  const right = [];
+  const equal = [];
+
+  // Partition the array into elements less than, equal to, and greater than the pivot
+  arr.forEach(element => {
+      if (element < pivot) {
+          left.push(element);
+      } else if (element > pivot) {
+          right.push(element);
+      } else {
+          equal.push(element);
+      }
+  });
+
+  // Recursively sort the left and right partitions
+  const sortedLeft = quickSort(left);
+  const sortedRight = quickSort(right);
+
+  // Concatenate the sorted partitions and the equal elements to get the final sorted array
+  return sortedLeft.concat(equal, sortedRight);
+}
+
+
+/*
+
+Pseudocode quickSort Redux
+0. declare function quick sort which accepts an array of integers as argument.
+1. edge case. If the array length is less than or equal to one, return the value of the array
+2. declare pivot variable by random selection. use Math.random!
+3. declare left right and equal variables, empty for now
+4. for each methhod through the array. for each element...
+4a. if the element is less than the pivot value, push the element into the left array
+5. if the element is greater than the pivot value, push the element into the right array
+6. or else push the element into the equal array
+7. create two variables that use recursion to call quickSort and sort these completed left and right arrays.
+8. return the concatenatation to the end of the sorted left array the values of equal and sorted right arrays.
+
+*/
+
+
+console.log(quickSort([1,7,5,4])) // expect [1,4,5,7]
