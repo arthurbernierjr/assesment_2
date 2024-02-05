@@ -470,9 +470,9 @@ console.log("findLongestSubstring: " + findLongestSubstring('')) // expect 0
 MULTIPLE POINTERS
 Question 1: Count Unique Values
 Problem Statement: Implement a function called countUniqueValues, which accepts a sorted array, and counts the unique values in the array. There can be negative numbers in the array, but it will always be sorted.
-// 1. If the array is empty, return 0
-// 2. Initialize a pointer or index(i) to start at the first element in the array
-// 3. Iterate through the array with another pointer or index(j) starting from the second element
+// 1. If the array is empty, return 0 - done
+// 2. Initialize a pointer or index(i) to start at the first element in the array - done
+// 3. Iterate through the array with another pointer or index(j) starting from the second element = done
 // 4. Compare the elements at i and j . if they are different, increment i and set the value at i to the value at j. This effectively moves unique values to the front of the array without needing an auxilliary data structure.
 // 5. The count of unique values will be i + 1 since i represents the index, and indexes are zero-based
 // 6. return i + 1
@@ -481,14 +481,53 @@ Problem Statement: Implement a function called countUniqueValues, which accepts 
 
 */
 
-function countUniqueValues(array) {
+//original attempt:
+// function countUniqueValues(array) {
+//   if (array.length === 0) {
+//     return 0
+//   }
+//   let i = 0
+//   for (let j = 1; j < array.length; j ++) {
+//     if (array[i] !== array[j]) {
+//       i++
+//       array[i] = array[j]
+//     }
+//     console.log(array[i])
+//     console.log(i)
+//     return i + 1
+//   }
+// }
 
+function countUniqueValues(arr) {
+  if (arr.length === 0) {
+    return 0
+  }
+  let uniqueCount = 1 // at least one unique value for the variable existing.
+
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] !== arr[i - 1]) {
+      uniqueCount++
+    }
+  }
+  return uniqueCount
 }
 
+/* Count Unique Values PseudoCode Redux
+// I decided to try this in this manner to show my coding notes from before the fact. in this problem we have both my original attempt code and final answer code preserved. I found one solution which eliminated the need for j to be iterating. Is this a more efficient system?
+
+// 0. Declare the function which accepts an array as an input.
+// 1. Edge case breaker, if the array is empty return 0
+// 2. Create a variable for the total  count of different variable types
+// 3. initiat a for loop to iterate through the elements of the array.
+// 4. If the current index value of array DOESNT equal the one before, we increase the total number of different variables value within the unique count variable
+// 5. we return the unique count.
+
+*/
+
 console.log("countUniqueValues: " + countUniqueValues([1,1,1,1,1,2])) // expect 2
-console.log("countUniqueValues: " + countUniqueValues([1,2,3,4,4,4,7,7,12,12,13])) // expect 7
-console.log("countUniqueValues: " + countUniqueValues([])) // expect 0
-console.log("countUniqueValues: " + countUniqueValues([-2,-1,-1,0,1])) // expect 4
+// console.log("countUniqueValues: " + countUniqueValues([1,2,3,4,4,4,7,7,12,12,13])) // expect 7
+// console.log("countUniqueValues: " + countUniqueValues([])) // expect 0
+// console.log("countUniqueValues: " + countUniqueValues([-2,-1,-1,0,1])) // expect 4
 /*
 Question 2: Average Pair
 
