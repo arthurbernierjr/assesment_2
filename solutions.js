@@ -627,25 +627,6 @@ Problem Statement: Given an array of integers sorted in ascending order, find th
 
 // }
 
-/*
-0. declare function with accepted number array and target value parameters
-1. declare variables for starting and ending positions
-2. create default ouput value of [-1, -1] for edge case.
-3. create while loop. while left is less than right.
-4. create variable for the middle index using the average between the left and right index values
-5. If the value at middle index of array is less than target value...
-5a. left/start value becomes one above the middle
-5b. or else the right becomes the middle
-// at end of looping,
-6. If the value at left position of array don't equal target value, return the output.
-7. store the value of the lefthand side  in a variable
-8. stpre the value of righthand side in variable.
-9. create a NEW while loop, repeating stepd 3-5 to find value for RIGHT variable
-10. store the right hand side value in the output.
-11. return the final output
-
-*/
-
 function findFirstAndLastPosition(nums, target) {
   let left = 0;
   let right = nums.length - 1;
@@ -686,27 +667,111 @@ function findFirstAndLastPosition(nums, target) {
 };
 
 /*
-findFirst and last position pseudocode redux.
+0. declare function with accepted number array and target value parameters
+1. declare variables for starting and ending positions
+2. create default ouput value of [-1, -1] for edge case.
+3. create while loop. while left is less than right.
+4. create variable for the middle index using the average between the left and right index values
+5. If the value at middle index of array is less than target value...
+5a. left/start value becomes one above the middle
+5b. or else the right becomes the middle
+// at end of looping,
+6. If the value at left position of array don't equal target value, return the output.
+7. store the value of the lefthand side  in a variable
+8. stpre the value of righthand side in variable.
+9. create a NEW while loop, repeating stepd 3-5 to find value for RIGHT variable
+10. store the right hand side value in the output.
+11. return the final output
 
-1.
-2.
-3.
-4.
-5.
 */
 
-
 console.log("findFirstAndLastPosition: " + findFirstAndLastPosition([5,7,7,8,8,10], 8)) // should return [3, 4]
-console.log("findFirstAndLastPosition: " + findFirstAndLastPosition([5,7,7,8,8,10], 6)) // should return [-1, -1]
-console.log("findFirstAndLastPosition: " + findFirstAndLastPosition([], 6)) // should return [-1, -]
+// console.log("findFirstAndLastPosition: " + findFirstAndLastPosition([5,7,7,8,8,10], 6)) // should return [-1, -1]
+// console.log("findFirstAndLastPosition: " + findFirstAndLastPosition([], 6)) // should return [-1, -]
 
 /*
 
 Question 2: Pow(x, n) - BONUS QUESTION ONLY; SAVE FOR FINAL.
 
+Problem Statement: Implement pow(x, n), which calculates xraised to the power n(i.e., x^n).
+
+Solution Steps:
+
+Handle Base Case: If nis 0, return 1.
+Handle Negative Power: If nis negative, convert the problem into calculating pow(x, -n)and take the reciprocal at the end.
+Divide and Conquer: Use the property that x^n = x^(n/2) * x^(n/2)for even n, and for odd n, it's x * x^(n/2) * x^(n/2). This reduces the problem size by half with each recursive call.
+Combine Results: Calculate pow(x, n/2)once and use it to compute the final result to avoid redundant calculations.
+Examples:
+
+pow(2, 10)should return 1024.
+pow(2, -2)should return 0.25.
+pow(2, 0)should return 1.
+
+
 Question 3: Merge Sort
-
-Question 4: Quick Sort
-
+Problem Statement: Implement Merge Sort, a sorting algorithm that follows the Divide and Conquer paradigm.
+1. Divide: If the array has more than one element, split the array into two halves.
+2. Conquer: Recursively apply merge sort to both halves.
+3. Combine: Merge the two sorted halves into a single sorted array.
+4. Base Case: If the array has only one element, it is already sorted.
+5. Merge Function:
+  -The merge function takes two sorted arrays and merges them into a single sorted array by repeatedly taking the smaller of the two leading elements.
 
 */
+
+function mergeSort(arr) {
+  if (arr.length <= 1) {
+      return arr;
+  }
+  // Split the array into two halves
+  const mid = Math.floor(arr.length / 2);
+  const left = arr.slice(0, mid);
+  const right = arr.slice(mid);
+  // Recursively sort each half
+  const sortedLeft = mergeSort(left);
+  const sortedRight = mergeSort(right);
+  // Merge the sorted halves
+  return merge(sortedLeft, sortedRight);
+}
+function merge(left, right) {
+  let result = [];
+  let leftIndex = 0;
+  let rightIndex = 0;
+  // Compare elements from both arrays and merge them in sorted order
+  while (leftIndex < left.length && rightIndex < right.length) {
+      if (left[leftIndex] < right[rightIndex]) {
+          result.push(left[leftIndex]);
+          leftIndex++;
+      } else {
+          result.push(right[rightIndex]);
+          rightIndex++;
+      }
+  }
+
+  // Append any remaining elements from both arrays
+  result = result.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
+
+  return result;
+}
+
+/*
+mergeSort pseudocode redux
+0. declare a function mergeSort which accepcts an array of numbers
+1. edge case. return the value of the array if its length is one or less
+2. declare variables that split the array into its middle index, left half, and right half.
+2a. Super hint: use arr.slice() to create those nifty  substrings!
+3. Using recursion, Sort both halves using mergeSort() function and store these values in variables.
+4. return via merge function both halves sorted back together.
+5. CREATE the merge function that accepts left and right values discovered in mergeSort.
+6. declare empty array for the result values and starting/ending indexes, both at 0.
+7. initiate while loop. While the leftside is less than the right side...
+7a. create if conditional. value at left's left side is less than the right's right side...
+7b. push the value of left's left side into the results array.
+7c. increment left index up by one
+8. ELSE. push value of right's right index into results and increment right index value.
+9. concatenate the result by slicing left's left side inot a substring, right's right side, and then merging
+10. return the result
+
+*/
+
+console.log(mergeSort([1,7,5,4])) // expect [1,4,5,7]
