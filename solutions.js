@@ -697,17 +697,59 @@ Problem Statement: Implement pow(x, n), which calculates xraised to the power n(
 
 Solution Steps:
 
-Handle Base Case: If nis 0, return 1.
+Handle Base Case: If n is 0, return 1.
 Handle Negative Power: If nis negative, convert the problem into calculating pow(x, -n)and take the reciprocal at the end.
 Divide and Conquer: Use the property that x^n = x^(n/2) * x^(n/2)for even n, and for odd n, it's x * x^(n/2) * x^(n/2). This reduces the problem size by half with each recursive call.
 Combine Results: Calculate pow(x, n/2)once and use it to compute the final result to avoid redundant calculations.
-Examples:
 
-pow(2, 10)should return 1024.
-pow(2, -2)should return 0.25.
-pow(2, 0)should return 1.
+*/
 
 
+
+function pow(x, n) {
+  // Base Case: If n is 0, return 1
+  if (n === 0) {
+      return 1;
+  }
+
+  // Handle Negative Power: Convert the problem into calculating pow(x, -n) and take the reciprocal at the end
+  if (n < 0) {
+      x = 1 / x;
+      n = -n;
+  }
+
+  // Divide and Conquer
+  const halfPower = pow(x, Math.floor(n / 2));
+
+  // Combine Results
+  if (n % 2 === 0) {
+      // For even n: x^n = (x^(n/2))^2
+      return halfPower * halfPower;
+  } else {
+      // For odd n: x^n = x * (x^(n/2))^2
+      return x * halfPower * halfPower;
+  }
+}
+
+/*
+
+pseudocode pow redux
+
+00. declare function pow which accepts x and n parameters
+0. edge case. return 1 if n is zero.
+1. edge case - handling negatives. if n is a negative number, inverse it to a positive number. X now becomes a decimal of itself
+2. create a half point variable which recursively calls pow using math.floor of 1/2 n
+3. if n is even, return the product of half point variable times itself.
+4. ELSE. return x times the result of half point times itself.
+*/
+
+
+console.log(pow(2, 10)) // expect 1024
+console.log(pow(2, -2)) // expect .25
+console.log(pow(2, 0)) // expect 1
+
+
+/*
 Question 3: Merge Sort
 Problem Statement: Implement Merge Sort, a sorting algorithm that follows the Divide and Conquer paradigm.
 1. Divide: If the array has more than one element, split the array into two halves.
