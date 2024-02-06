@@ -10,3 +10,29 @@
 // 2. Within a function, what is the difference between return and console.log?
 
 // Answer: a console.log merely prints whatever data is passed as its argument (usually for testing purposes) while a return actually passes the data value that the called function is meant to produce. That is, a return actually gives the coder access to some value that can then be used in another part of the code.
+
+// Palindrome
+
+// Convert the input string to lowercase to ensure the comparison is case-insensitive
+
+function palindrome(str) {
+  let lowerCaseStr = str.toLowerCase()
+
+// Split the string into an array of characters, reverse the array, and then join it back into a string.
+  
+  let reversedStr = lowerCaseStr.split('').reverse().join('')
+
+// Compare the original lowercase string with the reversed string.
+
+// If they are the same, then function should return true; otherwise, returns false.
+
+  if(lowerCaseStr === reversedStr) {
+    return true
+  } else {return false}
+}
+
+console.log(palindrome('lssssL'))
+
+
+
+
