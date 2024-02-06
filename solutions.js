@@ -252,4 +252,20 @@ function evenFibSum(limit) {
 }
 
 
+// A NEEDLE IN THE HAYSTACK
+
+// Use the indexOf method to find the index of the "needle" in the array
+
+function findNeedle(arr) {
+
+  let needleIndex = arr.indexOf('needle')
+
+  let string = `The needle is at index ${needleIndex}`
+
+// Return a string that includes the index of the needle
+  
+  return string
+}
+
+
 
