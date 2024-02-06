@@ -115,3 +115,19 @@ function calcCube(num) {
   return numCubed
 }
 
+
+// IS A VOWEL?
+
+// Check if the input character is included in a string of vowels (both lowercase and uppercase)
+
+function isAVowel(char) {
+
+  let vowelStr = 'aeiouyAEIOUY'
+
+// Return true if the character is a vowel, otherwise return false
+
+  if (vowelStr.includes(char)) {
+    return true
+  } else {return false}
+}
+
