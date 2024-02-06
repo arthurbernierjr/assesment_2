@@ -100,4 +100,18 @@ function printPrimes(limit) {
   }
 }
 
-printPrimes(100)
+
+// CALCULATE THE CUBE
+
+// Calculate the cube of the number by multiplying the number by itself twice.
+
+function calcCube(num) {
+  let numSquared = num * num
+
+  let numCubed = numSquared * num
+
+// Return result
+
+  return numCubed
+}
+
