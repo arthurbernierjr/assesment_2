@@ -205,7 +205,7 @@ function printLongestWord (arr) {
 
 // Calculate the product of the first two numbers
 
-function transmorgifyNums (num1, num2, num3) {
+function transmorgrifyNums (num1, num2, num3) {
   let product = num1 * num2
 
 // Raise the product to the power of the third number
@@ -216,4 +216,40 @@ function transmorgifyNums (num1, num2, num3) {
 
   return result
 }
+
+
+// PROJECT EULER PROBLEM 2
+
+// Initialize two variables to store the first two numbers of the Fibonacci sequence
+
+function evenFibSum(limit) {
+  let num1 = 1
+  let num2 = 2
+
+// Use a while loop to generate Fibonacci numbers up to the specified limit
+  let sum = 0
+  let i = 1
+  while (i <= limit) {
+
+// Within the loop, check if the current number is even. If so, add it to the sum
+
+    if (num1 % 2 === 0) {
+      sum = sum + num1
+    }
+    
+// Update the Fibonacci sequence variables for the next iteration
+
+    let nextNum = num1 + num2
+    num1 = num2
+    num2 = nextNum
+
+    i++
+  }
+
+// Return the sum of even Fibonacci numbers
+
+  return sum
+}
+
+
 
