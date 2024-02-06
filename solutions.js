@@ -131,3 +131,18 @@ function isAVowel(char) {
   } else {return false}
 }
 
+
+// GET TWO LENGTHS
+
+// Return an array containing the lengths of the two input strings
+
+function getTwoLengths(str1, str2) {
+  let str1Length = str1.length
+  let str2Length = str2.length
+
+  let outputArr = []
+  outputArr.push(str1Length, str2Length)
+
+  return outputArr
+}
+
