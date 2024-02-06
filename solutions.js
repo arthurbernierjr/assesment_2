@@ -31,7 +31,7 @@ function palindrome(str) {
   } else {return false}
 }
 
-console.log(palindrome('lssssL'))
+
 
 
 
