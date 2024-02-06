@@ -200,3 +200,20 @@ function printLongestWord (arr) {
   return arr[maxIndex]
 }
 
+
+// TRANSMORGRIFY THE NUMBERS
+
+// Calculate the product of the first two numbers
+
+function transmorgifyNums (num1, num2, num3) {
+  let product = num1 * num2
+
+// Raise the product to the power of the third number
+
+  let result = product ** num3
+
+// Return result
+
+  return result
+}
+
