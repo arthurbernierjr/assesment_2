@@ -160,3 +160,17 @@ function getMultipleLengths(arr) {
   return mappedLengths
 }
 
+
+// MAXIMUM OF THREE NUMBERS
+
+// Use the Math.max function to find the maximum of the three numbers
+
+function maxOfThreeNumbers (num1, num2, num3) {
+
+  let maxNum = Math.max(num1, num2, num3)
+
+// Return the maximum numbers
+
+  return maxNum
+}
+
