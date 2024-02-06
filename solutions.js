@@ -268,4 +268,24 @@ function findNeedle(arr) {
 }
 
 
+// SUM THE POSITIVE
+
+// Use the filter method to create a new array containing only positive numbers
+
+function sumThePositive(arr) {
+
+  let positives = arr.filter((num) => num > 0)
+
+// Use the reduce method to sum the values of the filtered array
+
+  let sum = 0
+
+  for (let number of positives) {
+    sum = sum + number
+  }
+
+// Return sum
+
+  return sum
+}
 
