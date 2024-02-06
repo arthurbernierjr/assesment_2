@@ -174,3 +174,29 @@ function maxOfThreeNumbers (num1, num2, num3) {
   return maxNum
 }
 
+
+// PRINT LONGEST WORD
+
+// Use the reduce method to find the longest string in the array
+
+function printLongestWord (arr) {
+  
+  let strLengthArr = []
+
+  for (let i = 0; i < arr.length; i++) {
+    let subArr = arr[i].split('')
+    strLengthArr.push(subArr.length)
+  }
+
+  const maxLength = strLengthArr.reduce( (accumulator, currentValue) => 
+    Math.max(accumulator, currentValue)
+  )
+
+  // In case of a tie, the first word in the array order is returned
+
+  // indexOf will select the index of the first element in the array that has the max length value, so we should be good in case of a tie
+
+  let maxIndex = strLengthArr.indexOf(maxLength)
+  return arr[maxIndex]
+}
+
