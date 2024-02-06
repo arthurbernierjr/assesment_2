@@ -146,3 +146,17 @@ function getTwoLengths(str1, str2) {
   return outputArr
 }
 
+
+// GET MULTIPLE LENGTHS
+
+// Use the map function to transform each string in the input array into its length
+
+function getMultipleLengths(arr) {
+
+  let mappedLengths = arr.map( (str) => str.length)
+
+// Return the resulting array of lengths
+  
+  return mappedLengths
+}
+
