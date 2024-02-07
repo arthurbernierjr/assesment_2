@@ -140,3 +140,14 @@ function getMultipleLengths(array) {
 }
 
 console.log(transformToLengths(['apple', 'banana', 'orange', 'kiwi']))//Output [5, 6, 6, 4]
+
+// Maximim of three numbers
+function findMax(num1, num2, num3) {
+    // Math.max to find the maximum of the three numbers
+    let maxNumber = Math.max(num1, num2, num3)
+
+    // Return the maximum number
+    return maxNumber
+}
+
+console.log(findMax(10, 25, 15))//Output 25
