@@ -169,3 +169,17 @@ function longestString(array) {
 }
 
 console.log(longestString(['apple', 'banana', 'orange', 'kiwi'])) // Output: "banana"
+
+// Transmogrify the numbers
+function transmogrify(num1, num2, num3) {
+    // Calculate the product of the first two numbers
+    let product = num1 * num2
+
+    // Raise the product to the power of the third number
+    let result = Math.pow(product, num3)
+
+    // Return the result
+    return result
+}
+
+console.log(transmogrify(2, 3, 4)) //Output 1296 (2 * 3 = 6, 6^4 = 1296)
