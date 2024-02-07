@@ -92,3 +92,19 @@ function calculateCube(num) {
 
 let num = 5
 console.log(calculateCube(num)) //Output 125
+
+// Is a Vowel?
+function isVowel(char) {
+    // a string containing all vowels
+    const vowels = 'aeiouAEIOU'
+
+    // Check if the input character is included in the string of vowels
+    if (vowels.includes(char)) {
+        return true // If the character is a vowel, return true
+    } else {
+        return false // If the character is not a vowel, return false
+    }
+}
+
+console.log(isVowel('a')) //Output true
+console.log(isVowel('z')) //Output false
