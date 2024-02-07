@@ -80,3 +80,15 @@ function printPrimes(limit) {
 // Example usage
 // Print prime numbers up to 20
 printPrimes(20)
+
+// Calculate the Cube
+function calculateCube(num) {
+    // Calculate the cube of the number by multiplying the number by itself twice
+    let cube = num * num * num
+
+    // Return the result
+    return cube
+}
+
+let num = 5
+console.log(calculateCube(num)) //Output 125
