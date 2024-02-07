@@ -124,6 +124,19 @@ function getLengths(string1, string2) {
     return lengthsArray
 }
 
-let string1 = "hello"
-let string2 = "world"
+let string1 = 'hello'
+let string2 = 'world'
 console.log(getLengths(string1, string2)) //Output [5, 5]
+
+// Get multiple lengths
+function getMultipleLengths(array) {
+    // map to transform each string into its length
+    let lengthsArray = array.map(function(string) {
+        return string.length
+    })
+
+    // Return the resulting array of lengths
+    return lengthsArray
+}
+
+console.log(transformToLengths(['apple', 'banana', 'orange', 'kiwi']))//Output [5, 6, 6, 4]
