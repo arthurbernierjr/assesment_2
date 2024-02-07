@@ -8,5 +8,20 @@
 
     // A return ends a function with the object following it. Console.log doesn't end a function, but prints the argument in the console.
 
+// Palindrome
 
+const isPalindrome = (str) => {
+    // Convert the input string to lowercase to ensure the comparison is case-insensitive.
+    const strLower = str.toLowerCase()
+    // Split the string into an array of characters, reverse the array, and then join it back into a string.
+    const strLowerReversed = strLower.split('').reverse().join('')
+    // Compare the original lowercase string with the reversed string.
+    // If they are the same, the function should return true; otherwise, it returns false.    
+    if (strLower === strLowerReversed) {
+        return true
+    } else return false
+}
+
+console.log(isPalindrome("Civic")) // returns true
+console.log(isPalindrome("Corolla")) // returns false
 
