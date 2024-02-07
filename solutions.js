@@ -212,3 +212,20 @@ function sumEvenFibonacci(limit) {
 }
 
 console.log(sumEvenFibonacci(4000000))//Output 4613732 (Sum of even Fibonacci numbers up to 4000000)
+
+// A needle in a Haystack
+function findNeedleIndex(haystack, needle) {
+    // indexOf to find the index of the "needle"
+    let index = haystack.indexOf(needle)
+
+    // Return a string that includes the index of the needle
+    if (index !== -1) {
+        return `The needle is found at index ${index}.`
+    } else {
+        return 'The needle is not found in the haystack.'
+    }
+}
+
+// Example usage:
+let haystack = ['apple', 'banana', 'orange', 'kiwi', 'needle', 'pear']
+console.log(findNeedleIndex(haystack, 'needle')) //Output The needle is found at index 4.
