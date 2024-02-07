@@ -23,7 +23,7 @@ function palindrome(word) {
     }
     
 // Test cases
- console.log(palindromealindrome("radar")) // true
+ console.log(palindrome("radar")) // true
  console.log(palindrome("hello")) // false
 
 // Sum Array
@@ -43,7 +43,7 @@ function palindrome(word) {
 }
 
 let array = [1, 2, 3, 4, 5]
-console.log(sumArrayElements(array)) // Output 15
+console.log(sumArray(array)) // Output 15
 
 // Prime numbers
 // Function to check if a number is prime
@@ -139,7 +139,7 @@ function getMultipleLengths(array) {
     return lengthsArray
 }
 
-console.log(transformToLengths(['apple', 'banana', 'orange', 'kiwi']))//Output [5, 6, 6, 4]
+console.log(getMultipleLengths(['apple', 'banana', 'orange', 'kiwi']))//Output [5, 6, 6, 4]
 
 // Maximim of three numbers
 function findMax(num1, num2, num3) {
@@ -226,6 +226,23 @@ function findNeedleIndex(haystack, needle) {
     }
 }
 
-// Example usage:
 let haystack = ['apple', 'banana', 'orange', 'kiwi', 'needle', 'pear']
 console.log(findNeedleIndex(haystack, 'needle')) //Output The needle is found at index 4.
+
+// Sum the Positive
+function sumPositiveNumbers(array) {
+    // filter method to create a new array containing only positive numbers
+    let positiveNumbers = array.filter(function(num) {
+        return num > 0
+    })
+
+    // reduce method to sum the values of the filtered array
+    let sum = positiveNumbers.reduce(function(accumulator, currentValue) {
+        return accumulator + currentValue
+    }, 0)
+
+    // Return the sum
+    return sum
+}
+
+console.log(sumPositiveNumbers([-2, 3, -5, 7, 10, -12, 15])) // Output: 35 (3 + 7 + 10 + 15)
