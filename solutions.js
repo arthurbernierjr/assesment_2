@@ -183,3 +183,32 @@ function transmogrify(num1, num2, num3) {
 }
 
 console.log(transmogrify(2, 3, 4)) //Output 1296 (2 * 3 = 6, 6^4 = 1296)
+
+// Project Euler Problem 2
+function sumEvenFibonacci(limit) {
+    // variables to store the first two numbers of the Fibonacci sequence
+    let prev = 1
+    let curr = 2
+
+    // variable to store the sum of even Fibonacci numbers
+    let sum = 0
+
+    //while loop to generate Fibonacci numbers up to the specified limit
+    while (curr <= limit) {
+        // Check if the current number is even
+        if (curr % 2 === 0) {
+            // If so, add it to the sum
+            sum += curr
+        }
+
+        // Update the Fibonacci sequence variables for the next iteration
+        let next = prev + curr
+        prev = curr
+        curr = next
+    }
+
+    // Return the sum of even Fibonacci numbers
+    return sum
+}
+
+console.log(sumEvenFibonacci(4000000))//Output 4613732 (Sum of even Fibonacci numbers up to 4000000)
