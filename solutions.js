@@ -108,3 +108,22 @@ function isVowel(char) {
 
 console.log(isVowel('a')) //Output true
 console.log(isVowel('z')) //Output false
+
+// Get two Lengths
+function getLengths(string1, string2) {
+    // array to store the lengths of the strings
+    let lengthsArray = []
+
+    // length of the first string and push it to the lengthsArray
+    lengthsArray.push(string1.length)
+
+    // length of the second string and push it to the lengthsArray
+    lengthsArray.push(string2.length)
+
+    // Return the array containing the lengths
+    return lengthsArray
+}
+
+let string1 = "hello"
+let string2 = "world"
+console.log(getLengths(string1, string2)) //Output [5, 5]
