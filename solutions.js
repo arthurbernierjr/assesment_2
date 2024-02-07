@@ -151,3 +151,21 @@ function findMax(num1, num2, num3) {
 }
 
 console.log(findMax(10, 25, 15))//Output 25
+
+// Print longest word
+function longestString(array) {
+    // Use the reduce to find the longest string
+    let longestString = array.reduce(function(longest, current) {
+        // Compare the length of the current string with the length of the longest string found so far
+        if (current.length > longest.length) {
+            return current // If the current string is longer, update the longest string
+        } else {
+            return longest // Otherwise, keep the current longest string
+        }
+    }, '')
+
+    // Return the longest string found
+    return longestString
+}
+
+console.log(longestString(['apple', 'banana', 'orange', 'kiwi'])) // Output: "banana"
