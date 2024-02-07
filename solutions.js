@@ -22,7 +22,23 @@ function palindrome(word) {
         }
     }
     
-    // Test cases
-    console.log(isPalindrome("radar")) // true
-    console.log(isPalindrome("hello")) // false
-    
+// Test cases
+ console.log(isPalindrome("radar")) // true
+ console.log(isPalindrome("hello")) // false
+
+ function sumArray(array) {
+    // variable to store the sum of the array
+    let sum = 0
+
+    // for loop to iterate through the array
+    for (let i = 0; i < array.length; i++) {
+        // add the current element to the sum variable
+        sum = sum + array[i]
+    }
+
+    // After the loop, return the sum variable
+    return sum
+}
+
+let array = [1, 2, 3, 4, 5]
+console.log(sumArrayElements(array)) // Output 15
