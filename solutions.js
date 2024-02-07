@@ -23,5 +23,5 @@ const isPalindrome = (str) => {
 }
 
 console.log(isPalindrome("Civic")) // returns true
-console.log(isPalindrome("Corolla")) // returns false
+console.log(isPalindrome("Corolla")) // return false
 
