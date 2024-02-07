@@ -25,3 +25,19 @@ const isPalindrome = (str) => {
 console.log(isPalindrome("Civic")) // returns true
 console.log(isPalindrome("Corolla")) // return false
 
+// Sum Array
+
+const sumArray = (arr) => {
+    // Initialize a variable to store the sum of the array elements.
+    let sum = 0
+
+    // Use a for loop to iterate through the array.
+    arr.forEach(item => {
+        // In each iteration, add the current element to the sum variable.
+        sum += item
+    })
+    // After the loop, return the sum variable.
+    return sum
+}
+
+console.log(sumArray([1,2,4])) // returns 7
