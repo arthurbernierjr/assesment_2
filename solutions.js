@@ -79,5 +79,27 @@ function getMultipleLengths(arr) {
     return arr.map(str => str.length)
 }
 
-const strings = ["apple", "banana", "orange"]
+const strings = ["red", "blue", "green", "magenta"]
 console.log(getMultipleLengths(strings))
+
+//GET MAX NUM 
+function maximumOfThreeNumbers(num1, num2, num3) {
+    return Math.max(num1, num2, num3)
+}
+
+const maxNumber = maximumOfThreeNumbers(10, 5, 8)
+console.log(maxNumber)
+
+//PRINT LONGEST WORD
+function printLongestWord(words) {
+    if (words.length === 0) {
+        return null
+    }
+    return words.reduce((longest, current) => {
+        return current.length > longest.length ? current : longest;
+    })
+}
+
+const wordsArray = ["pneumonoultramicroscopicsilicovolcanoconiosis", "dog", "golf", "grapefruit", "rainfall"]
+console.log(printLongestWord(wordsArray))
+
