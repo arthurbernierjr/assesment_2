@@ -153,3 +153,10 @@ function projectEuler(limit) {
     return sum
 }
 console.log(projectEuler(121))
+
+// A Needle in the Haystack
+// Use the indexOfmethod to find the index of the "needle"in the array.
+// Return a string that includes the index of the needle.
+// Commit your work with the message "a needle in the haystack completed".
+const needleInTheHaystack =arr => arr.indexOf("needle")
+console.log(needleInTheHaystack(["Where", "is", "the", "needle", "in", "this", "haystack?"]))
