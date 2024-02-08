@@ -91,3 +91,10 @@ const getTwoLengths = (strOne, strTwo) => {
     return lengths
 }
 console.log(getTwoLengths("Tyler Pierson", "General Assembly"))
+
+// Get Multiple Lengths
+// Use the map function to transform each string in the input array into its length.
+// Return the resulting array of lengths.
+// Commit your work with the message "get multiple lengths completed".
+const getMultipleLengths = arr => arr.map(str => str.length)
+console.log(getMultipleLengths(["Tyler", "Jennifer", "Dean", "Ringo"]))
