@@ -160,3 +160,15 @@ console.log(projectEuler(121))
 // Commit your work with the message "a needle in the haystack completed".
 const needleInTheHaystack =arr => arr.indexOf("needle")
 console.log(needleInTheHaystack(["Where", "is", "the", "needle", "in", "this", "haystack?"]))
+
+// Sum the Positive
+// Use the filter method to create a new array containing only positive numbers.
+// Use the reduce method to sum the values of the filtered array.
+// Return the sum.
+// Commit your work with the message "sum the positive completed".
+function sumThePos(arr){
+    const posNums = arr.filter(nums => nums > 0)
+    let total = 0
+    return posNums.reduce((num1, num2) => num1 + num2, total)
+}
+console.log(sumThePos([-5,-4,-3,-2,-1,0,1,2,3,4,5]))
