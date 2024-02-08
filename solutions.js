@@ -81,3 +81,13 @@ const checkVowel = (char) => {
     return false
 }
 console.log(checkVowel("a"))
+
+// Get Two Lengths
+// Return an array containing the lengths of the two input strings.
+// Commit your work with the message "get two lengths completed".
+const getTwoLengths = (strOne, strTwo) => {
+    const lengths = []
+    lengths.push(strOne.length, strTwo.length)
+    return lengths
+}
+console.log(getTwoLengths("Tyler Pierson", "General Assembly"))
