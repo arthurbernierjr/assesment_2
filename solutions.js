@@ -98,3 +98,10 @@ console.log(getTwoLengths("Tyler Pierson", "General Assembly"))
 // Commit your work with the message "get multiple lengths completed".
 const getMultipleLengths = arr => arr.map(str => str.length)
 console.log(getMultipleLengths(["Tyler", "Jennifer", "Dean", "Ringo"]))
+
+// Maximum of Three Numbers
+// Use the Math.max function to find the maximum of the three numbers.
+// Return the maximum number.
+// Commit your work with the message "maximum of three numbers completed".
+const maxNum = (num1, num2, num3) => Math.max(num1, num2, num3)
+console.log(maxNum(43, 135, 15))
