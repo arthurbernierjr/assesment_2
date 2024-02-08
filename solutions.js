@@ -59,3 +59,10 @@ function printPrimes(num){
     }
 }
 printPrimes(17)
+
+// Calculate the Cube
+// Calculate the cube of the number by multiplying the number by itself twice.
+// Return the result.
+// Commit your work with the message "calculate the cube completed".
+const calcCube = num => Math.pow(num, 3)
+console.log(calcCube(2))
