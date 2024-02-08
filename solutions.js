@@ -103,3 +103,57 @@ function printLongestWord(words) {
 const wordsArray = ["pneumonoultramicroscopicsilicovolcanoconiosis", "dog", "golf", "grapefruit", "rainfall"]
 console.log(printLongestWord(wordsArray))
 
+//TRANSMOG THE NUMBERS
+function transmogrify(num1, num2, num3) {
+    const product = num1 * num2
+    return Math.pow(product, num3)
+}
+
+const transmogResult = transmogrify(2, 3, 4)
+console.log(transmogResult)
+
+//PROJECT EULER PROB 2
+function evenFibonacciSum(max) {
+    let fib1 = 1
+    let fib2 = 2
+    let sum = 0
+
+    while (fib2 <= max) {
+        if (fib2 % 2 === 0) {
+            sum += fib2;
+        }
+        const nextFib = fib1 + fib2;
+        fib1 = fib2;
+        fib2 = nextFib;
+    }
+
+    return sum;
+}
+
+const max = 10000
+console.log("The sum of even Fibonacci numbers up to", max, "is", evenFibonacciSum(max))
+
+//NEEDLE IN THE HAYSTACK
+function findNeedle(haystack) {
+    const needleIndex = haystack.indexOf("needle")
+    if (needleIndex !== -1) {
+        return `Found needle at ${needleIndex}.`
+    } else {
+        return "Needle wasn't found"
+    }
+}
+
+const haystack = ["richard", "golf course", "needle", "computer", "tarzana, ca"]
+console.log(findNeedle(haystack))
+
+//SUM THE POSITIVE
+function sumPositiveNumbers(arr) {
+    const positiveNumbers = arr.filter(num => num > 0)
+    const sum = positiveNumbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0)
+    return sum
+}
+
+const numbers = [-21, 16, 3, -3, 37, -12, 12]
+console.log("sum = ", sumPositiveNumbers(numbers))
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
