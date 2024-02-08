@@ -42,3 +42,28 @@ function sumArray(arr) {
 // After the loop, return the sum variable.
     return sum
 }
+
+//Prime Numbers 
+
+// Check if the number is less than or equal to 1. If so, return false because it's not prime.
+function primeNum(num) {
+    if (num <= 1) {
+        return false
+    }
+// Use a for loop to iterate from 2 up to the square root of the number.
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+// If the number is divisible by any number in this range return false
+        if (num % i === 0) {
+            return false
+        }
+    }
+    return true
+}
+
+function printPrimes(print) {
+    for (let i = 2; i <= print; i++){
+        if(checkPrime(i) === true) {
+            console.log(i)
+        }
+    }
+}
