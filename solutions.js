@@ -21,3 +21,17 @@ function SumArrQ(arr) {
 }
 const array = [11, 13, 32, 1]
 console.log(sumArray(array))
+
+//PRIME
+function checkPrime (num) {
+    if(num <= 1){
+        return false
+    }
+    for(let i = 2; i < num; i++){
+    if (num % i == 0) {
+        return false
+    }
+}
+    return true
+}
+console. log (checkPrime (9))
