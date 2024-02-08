@@ -122,3 +122,11 @@ function printLongestWord(arr) {
     })
 }
 console.log(printLongestWord(['Tyler', 'General Assembly', 'Software Engineering']))
+
+// Transmogrify the Numbers
+// Calculate the product of the first two numbers.
+// Raise the product to the power of the third number.
+// Return the result.
+// Commit your work with the message "transmogrify the numbers completed".
+const transmogrify = (num1, num2, num3) => Math.pow((num1*num2), num3)
+console.log(transmogrify(3, 3, 2))
