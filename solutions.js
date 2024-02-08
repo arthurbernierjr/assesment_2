@@ -125,16 +125,47 @@ console.log(printLongestWord(["tie", "t-shirt", "pants"]))
 
 // transmogrifyNumbers
 
-
+function transmogrifyNumbers(num1, num2, num3) {
+    const product = num1 * num2
+    const result = Math.pow(product, num3)
+    return result
+}
+console.log(transmogrifyNumbers(2, 3, 4))
 
 // projectEulerProblem2
 
+function projectEulerProblem2(limit) {
+    let sum = 0
+    let first = 1
+    let second = 2
+
+    while (second <= limit) {
+        if (second % 2 === 0) {
+            sum += second
+        }
+        const next = first + second
+        first = second 
+        second = next
+    }
+
+    return sum
+}
+console.log(projectEulerProblem2(4000000))
 
 
 // aNeedleInTheHaystack
 
-
+function aNeedleInTheHaystack(haystack, needle) {
+    const index = haystack.indexOf(needle)
+    return "The needle is at index: " + index
+}
+console.log(aNeedleInTheHaystack(["apple", "banana", "cherry"], "banana"))
 
 // sumThePositive
 
-
+function sumThePositive(numbers) {
+    const positiveNumbers = numbers.filter(num => num > 0)
+    const sum = positiveNumbers.reduce((acc, cur) => acc + cur, 0)
+    return sum
+  }
+  console.log(sumThePositive([-1, 2, 3, -4, 5]))
