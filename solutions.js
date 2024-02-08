@@ -45,3 +45,17 @@ function checkPrime(num) {
     return true
 }
 console.log(checkPrime(9))
+
+// printPrimes
+// Use a for loop to iterate through numbers from 2 up to the specified limit.
+// For each number, use the checkPrimefunction to check if it's prime.
+// If checkPrimereturns true, console.log the number.
+// Commit your work with the message "prime numbers completed".
+function printPrimes(num){
+    for(let i = 2; i <= num; i++){
+        if(checkPrime(i)){
+            console.log(i)
+        }
+    }
+}
+printPrimes(17)
