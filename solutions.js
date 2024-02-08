@@ -11,3 +11,18 @@
 // Commit your work with the message "palindrome completed".
 const palindrome = (string) => string.toLowerCase() === string.toLowerCase().split('').reverse().join('') ? true:false
 console.log(palindrome("racecar"))
+
+// Sum Array
+// Initialize a variable to store the sum of the array elements.
+// Use a for loop to iterate through the array.
+// In each iteration, add the current element to the sum variable.
+// After the loop, return the sum variable.
+// Commit your work with the message "sum array completed".
+function sumArray(num) {
+    let sum = 0
+    for(let i = 0; i < num.length; i++){
+        sum += num[i]
+    }
+    return sum
+}
+console.log(sumArray([1,2,3,4]))
