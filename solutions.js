@@ -267,3 +267,96 @@ function areThereDuplicates(){
     return false
 }
 console.log(areThereDuplicates('a', 'a', 1, 'c'))
+
+// Example: MaxSubarraySum
+// Problem Statement: Write a function called maxSubarraySumwhich accepts an array of integers and a number called n. The function should calculate the maximum sum of nconsecutive elements in the array.
+
+// Solution Steps:
+
+// Edge Case Check: If nis greater than the array length, return nullbecause it's not possible to find a subarray of length n.
+// Initial Sum Calculation: Calculate the sum of the first nelements to initialize the max sum.
+// Sliding the Window:
+
+// Start a loop from the nth element of the array.
+// Subtract the element at the start of the window and add the element at the end of the window to the sum. This effectively slides the window over by one position.
+// Update the max sum if the new sum is greater than the current max sum.
+// Return Max Sum: After sliding through the entire array, return the max sum found.
+function maxSubArray(arr, n){
+    let maxSum = 0
+    let tempSum = 0
+    if(arr.length < n) return null
+
+    for(let i = 0; i < n; i++){
+        maxSum += arr[i]
+    }
+
+    tempSum = maxSum
+
+    for(let i = n; i < arr.length; i++){
+        tempSum = tempSum - arr[i - n] + arr[i]
+        maxSum = Math.max(maxSum, tempSum)
+    }
+    return maxSum
+}
+console.log(maxSubArray([1, 2, 3, 4, 5, 6], 2))
+
+// Question 1: MinSubArrayLen
+// Problem Statement: Write a function called minSubArrayLen which accepts two parameters - an array of positive integers and a positive integer. This function should return the minimal length of a contiguous subarray of which the sum is greater than or equal to the integer passed to the function. If there isn't one, return 0 instead.
+
+// Solution Steps:
+
+// Initialize two pointers at the start of the array and a variable to track the minimum length of the subarray.
+// Initialize a sum variable to accumulate the sums of the subarrays.
+// Expand the window by moving the end pointer, adding the values to the sum until it is greater than or equal to the target sum.
+// Once the sum is greater than or equal to the target, try to shrink the window from the beginning to find the smallest subarray by moving the start pointer forward and subtracting values from the sum.
+// Update the minimum length each time a smaller subarray that satisfies the condition is found.
+// Return the minimum length if found; otherwise, return 0.
+function minSubArrayLen(arr, n) {
+    let currentLen = 0
+    let minLen = arr.length
+    let sum = 0
+
+    for (let i = 0; i < arr.length; i++) {
+        sum += arr[i]
+        currentLen++
+
+        while (sum >= n) {
+            minLen = Math.min(minLen, currentLen)
+            sum -= arr[i - currentLen + 1]
+            currentLen--
+        }
+    }
+    if(minLen > arr.length){ 
+        return 0
+    } else return minLen
+}
+console.log(minSubArrayLen([1, 1, 5, 1], 7))
+
+// Question 2: FindLongestSubstring
+// Problem Statement: Write a function called findLongestSubstring which accepts a string and returns the length of the longest substring with all distinct characters.
+
+// Solution Steps:
+
+// Initialize a variable to keep track of the longest substring length.
+// Use a pointer or index to track the start of the current substring.
+// Create a map or object to store characters and their positions within the string.
+// Iterate through the string with another pointer or index to represent the end of the current substring.
+// As you encounter each character, check if it is already in the map/object. If it is, and its index is greater than or equal to the current start of the substring, move the start to the index after the repeated character.
+// Update the map/object with the current character's latest index.
+// Calculate the length of the current substring and update the longest length if necessary.
+// Return the longest length found.
+function findLongestSubstring(str){
+    const counter = {}
+    let longestSubstrLen = 0
+    let start = 0
+    for(let i = 0; i < str.length; i++){
+        const currentChar = str[i]
+        if(counter[currentChar] >= start){
+            start = counter[currentChar] + 1
+        }
+        counter[currentChar] = i
+        longestSubstrLen = Math.max(longestSubstrLen, i - start + 1)
+    }
+    return longestSubstrLen
+}
+console.log(findLongestSubstring('the cat in the hat'))
