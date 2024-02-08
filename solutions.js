@@ -130,3 +130,26 @@ console.log(printLongestWord(['Tyler', 'General Assembly', 'Software Engineering
 // Commit your work with the message "transmogrify the numbers completed".
 const transmogrify = (num1, num2, num3) => Math.pow((num1*num2), num3)
 console.log(transmogrify(3, 3, 2))
+
+// Project Euler Problem 2
+// Initialize two variables to store the first two numbers of the Fibonacci sequence.
+// Use a while loop to generate Fibonacci numbers up to the specified limit.
+// Within the loop, check if the current number is even. If so, add it to the sum.
+// Update the Fibonacci sequence variables for the next iteration.
+// Return the sum of even Fibonacci numbers.
+// Commit your work with the message "Project Euler Problem 2 completed".
+function projectEuler(limit) {
+    let sum = 0
+    let num1 = 1
+    let num2 = 1
+    while(num2 <= limit){
+        if(num2 % 2 === 0){
+            sum += num2
+        }
+        const nextNum = num1 + num2
+        num1 = num2
+        num2 = nextNum
+    }
+    return sum
+}
+console.log(projectEuler(121))
