@@ -55,3 +55,29 @@ function calculateCube(number) {
 const num = 5
 const cube = calculateCube(num)
 console.log(`${num} cubed is ${cube}`)
+
+//IS IT A VOWEL
+function isVowel(char) {
+    const vowels = "aeiou"
+    return vowels.includes(char)
+}
+
+console.log(isVowel('a'))
+console.log(isVowel('b'))
+
+//GET TWO STRING LENGTHS
+function twoStrLengths(str1, str2) {
+    return [str1.length, str2.length]
+}
+
+const string1 = "Hello"
+const string2 = "World"
+console.log(getTwoLengths(string1, string2))
+
+//GET MULTIPLE LENGTHS
+function getMultipleLengths(arr) {
+    return arr.map(str => str.length)
+}
+
+const strings = ["apple", "banana", "orange"]
+console.log(getMultipleLengths(strings))
