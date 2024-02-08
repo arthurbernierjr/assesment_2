@@ -26,6 +26,19 @@ function palindrome(str) {
     }
 }
 
-let result = (palindrome("racecar"))
-console.log(result)
+//call function
+// let result = (palindrome("racecar"))
+// console.log(result)
 
+//Sum Array 
+// Initialize a variable to store the sum of the array elements.
+function sumArray(arr) {
+    let sum = 0
+// Use a for loop to iterate through the array.
+    for (i = 0; i < arr.length; i++) {
+// In each iteration, add the current element to the sum variable.
+        sum = sum + arr[i]
+    }
+// After the loop, return the sum variable.
+    return sum
+}
