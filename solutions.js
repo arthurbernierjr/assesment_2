@@ -91,3 +91,18 @@ function getTwoLengths(str1, str2) {
 // Return an array containing the lengths of the two input strings.
     return [str1.length, str2.length]
 }
+
+//Get multiple Lengths 
+// Use the map function to transform each string in the input array into its length.
+// Return the resulting array of lengths.
+function getMultipleLengths(arr){
+    return arr.map(str => str.length)
+}
+
+// Maximum of Three Numbers
+function maxOfThreeNums(num1, num2, num3) {
+//Use the Math.max function to find the maximum of the three numbers.
+//Return the maximum number.
+    return Math.max(num1, num2, num3)
+}
+
