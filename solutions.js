@@ -399,7 +399,7 @@ function minSubArrayLen(nums, target) {
     }
     return minLen === Infinity ? 0 : minLen
 }
-console.log(minSubArrayLen([2, 1, 6, 5, 4], 9)); // 2
+console.log(minSubArrayLen([2, 1, 6, 5, 4], 9)) // 2
 console.log(minSubArrayLen([3, 1, 7, 11, 2, 9, 8, 21, 62, 33, 19], 52)) // 1
 
 // create pointers at the start of the array and a variable for minimum length of subarray
@@ -411,4 +411,35 @@ console.log(minSubArrayLen([3, 1, 7, 11, 2, 9, 8, 21, 62, 33, 19], 52)) // 1
 // If the current sum is less than the target and the end pointer has reached the end of the array
 // Break the loop
 // Return the minimum length of the subarray that satisfies the condition, otherwise return 0
+
+// FindLongestSubstring
+function findLongestSubstring(str) {
+    let longestLength = 0
+    let seen = {}
+    let start = 0
+
+    for (let end = 0; end < str.length; end++) {
+        let char = str[end]
+        if (seen[char] >= start) {
+            start = seen[char] + 1
+        }
+        seen[char] = end
+        let currentLength = end - start + 1
+        longestLength = Math.max(longestLength, currentLength)
+    }
+    return longestLength
+}
+console.log(findLongestSubstring('')) // 0
+console.log(findLongestSubstring('thisisawesome')) // 6
+
+// create a variable to track the longest substring length
+// create an object to store characters and their position in the string
+// create pointer to track start of current substring
+// Iterate through the string with another pointer to represent the end of the current substring
+// If the character is already in the object and its index is greater than or equal to the current start
+// Move the start to the index after the repeated character
+// Update the object with the current character's latest index
+// Calculate the length of the current substring
+// Update the longest length
+// Return the longest length found
 
