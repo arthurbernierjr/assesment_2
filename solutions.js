@@ -273,6 +273,20 @@ function validAnagram(first, second) {
 
     return true
 }
+// Check if the lengths of the two strings are different
+// Create an empty object to count occurrences of characters
+// populate the counter using a for loop iterating oer the first string
+// If letter exists in the lookup object, increment its count; otherwise, set its count to 1
+// Iterate over each character of the second string with for loop
+// If the letter cannot be found in the lookup object or its count is zero, it's not an anagram
+// Decrement the count of the letter in the lookup object
+// If all characters are successfully matched, it's an anagram return true
+
+
+
+
+
+
 // Same frequency
 function sameFrequency(num1, num2) {
     let strNum1 = num1.toString()
@@ -332,3 +346,69 @@ console.log(areThereDuplicates(1, 2, 2)) // true
 // Iterate through the counter with a for in loop
 // If the value is greaer than one it means there's a duplicate, return true
 // If no duplicates found return false
+
+// Sliding Window
+// maxSubarraySum
+function maxSubarraySum(arr, n) {
+    let maxSum = 0;
+    let tempSum = 0;
+    if (arr.length < n) return null;
+    
+    // Initial window sum
+    for (let i = 0; i < n; i++) {
+        maxSum += arr[i];
+    }
+    tempSum = maxSum;
+    
+    // Slide the window
+    for (let i = n; i < arr.length; i++) {
+        tempSum = tempSum - arr[i - n] + arr[i];
+        maxSum = Math.max(maxSum, tempSum);
+    }
+    
+    return maxSum;
+}
+// Initialize variables to keep track of the maximum sum and the current sum of the window
+// If the array length is less than n, there are not enough elements to form a subarray of size n
+// Calculate the initial window sum by summing the first n elements of the array
+// Assign the initial window sum to the temporary sum variable
+// Slide the window to the right, updating the temporary sum by subtracting the element leaving the window
+// and adding the element entering the window, then updating the maximum sum if necessary
+// Slide the window by subtracting the previous element and adding the next element
+// Update the maximum sum if the temporary sum becomes larger
+// Return the maximum sum of any subarray of size n in the array
+
+// MinSubArrayLen
+function minSubArrayLen(nums, target) {
+    let start = 0
+    let end = 0
+    let minLen = Infinity
+    let sum = 0
+
+    while (start < nums.length) {
+        if (sum < target && end < nums.length) {
+            sum += nums[end]
+            end++
+        } else if (sum >= target) {
+            minLen = Math.min(minLen, end - start)
+            sum -= nums[start]
+            start++
+        } else {
+            break
+        }
+    }
+    return minLen === Infinity ? 0 : minLen
+}
+console.log(minSubArrayLen([2, 1, 6, 5, 4], 9)); // 2
+console.log(minSubArrayLen([3, 1, 7, 11, 2, 9, 8, 21, 62, 33, 19], 52)) // 1
+
+// create pointers at the start of the array and a variable for minimum length of subarray
+// loop through the array, while loop
+// If the current sum is less than the target and the end pointer hasn't reached the end of the array
+// Expand the window by moving the end pointer forward and adding the value to the sum
+// If the current sum is greater than or equal to the target
+// Try to shrink the window by moving the start pointer forward and subtracting the value from the sum
+// If the current sum is less than the target and the end pointer has reached the end of the array
+// Break the loop
+// Return the minimum length of the subarray that satisfies the condition, otherwise return 0
+
