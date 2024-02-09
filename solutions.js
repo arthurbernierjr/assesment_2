@@ -191,3 +191,80 @@ const sumPositive = arr => {
 }
 
 console.log(sumPositive([1,2,3,4, 10])) // returns 16!
+
+// NOTE: Pseudocode is combined with resulting code
+
+// Question 1: Valid Anagram
+
+    // Given two strings, write a function to determine if the second string is an anagram of the first. An anagram is a word or phrase formed by rearranging the letters of another, such as "cinema", formed from "iceman".
+
+// MY ATTEMPT
+
+const anagram = (str1, str2) => {
+    // turn strings into arrays with .split()
+    const arr1 = str1.split('')
+    const arr2 = str2.split('')
+
+    // if words have different lengths return false
+    if (arr1.length !== arr2.length) return false
+
+    // initialize a frequency counter for both words
+    const counter1 = {}
+    const counter2 = {}
+
+    // run counters for both arrays
+    for (let i = 0; i < arr1.length; i++) {
+        const letter = arr1[i]
+        counter1[letter] = (counter1[letter] || 0) + 1
+    }
+
+    for (let i = 0; i < arr2.length; i++) {
+        const letter = arr2[i]
+        counter2[letter] = (counter2[letter] || 0) + 1
+    }
+
+    // compare counters using for in
+    for (const letter in counter1) {    
+        if (counter1[letter] !== counter2[letter]) return false
+    }
+    return true
+
+}
+
+console.log(anagram("cinema","iceman"), anagram("cinema","hello!")) // returns true, false
+
+// SOLUTION PSEUDOCODE
+
+// if strings have different lengths return false
+
+// initialize a counter object for the first string
+
+// build counter object in a for loop using ternary expression
+
+// loop through the second string
+
+// save each letter as variable
+
+// if counter object doesn't have that property, return false
+
+// if it does, subtract 1 from the value
+
+// return true after loop
+
+// MY SECOND ATTEMPT
+
+const betterAnagram = (str1, str2) => {
+    if (str1.length !== str2.length) return false
+    const lookup = {}
+    for (let i = 0; i < str1.length; i++) {
+        let letter = str1[i]
+        lookup[letter] ? lookup[letter] +=1 : lookup[letter] = 1
+    }
+    for (let i = 0; i < str2.length; i++) {
+        let letter = str2[i]
+        if (lookup[letter]) {
+            lookup[letter] -= 1
+        } else return false
+    }
+    return true
+}
