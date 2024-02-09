@@ -106,3 +106,9 @@ function maxOfThreeNums(num1, num2, num3) {
     return Math.max(num1, num2, num3)
 }
 
+//Print Longest Word
+function printLongestWord(words) {
+// Use the reduce method to find the longest string in the array.
+// In case of a tie, the first word in the array order is returned.
+    return words.reduce((longest, current) => current.length > longest.length ? current : longest);
+  }
