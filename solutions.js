@@ -86,3 +86,8 @@ function checkVowel(char) {
     }
 }
 
+// Get Two Lengths
+function getTwoLengths(str1, str2) {
+// Return an array containing the lengths of the two input strings.
+    return [str1.length, str2.length]
+}
