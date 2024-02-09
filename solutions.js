@@ -262,9 +262,47 @@ const betterAnagram = (str1, str2) => {
     }
     for (let i = 0; i < str2.length; i++) {
         let letter = str2[i]
-        if (lookup[letter]) {
-            lookup[letter] -= 1
-        } else return false
+        if (!lookup[letter]) {
+            return false
+        } else {
+            lookup[letter] -= 1 
+        }
     }
     return true
 }
+
+// Question 2: Same Frequency
+// Problem Statement: Given two positive integers, find out if the two numbers have the same frequency of digits.
+
+// PSUEDOCODE
+
+const sameFrequency = (num1, num2) => {
+    // translate numbers to strings
+    const str1 = num1.toString()
+    const str2 = num2.toString()
+    // if different lengths return false
+    if (str1.length !== str2.length) return false
+    // initialize lookup counter
+    const lookup = {}
+    // build lookup counter using ternary expression
+    for (let i = 0; i < str1.length; i++) {
+        let digit = str1[i]
+        lookup[digit] ? lookup[digit] += 1 : lookup[digit] = 1
+    }
+    // loop through second string
+    for (let i = 0; i < str2.length; i++) {
+        let digit = str2[i]
+        // if lookup doesn't have each property return false
+        if (!lookup[digit]) {
+            return false
+            // if it does, remove 1
+        } else {            
+            lookup[digit] -= 1
+        }
+        return true
+    }
+}
+
+console.log(sameFrequency(182, 281), sameFrequency(34, 14)) // returns true false
+
+
