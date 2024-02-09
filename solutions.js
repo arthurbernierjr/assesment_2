@@ -360,3 +360,107 @@ function findLongestSubstring(str){
     return longestSubstrLen
 }
 console.log(findLongestSubstring('the cat in the hat'))
+
+// Multiple Pointers
+// The Multiple Pointers pattern involves creating pointers or values that correspond to an index or position and move towards the beginning, end, or middle based on a certain condition. This technique is efficient for solving problems with minimal space complexity, often in linear time.
+
+// How It Works
+// Pointer Initialization: Depending on the problem, pointers are typically initialized at the beginning, end, or sometimes the middle of a collection.
+// Condition-Based Movement: The pointers move based on a condition set by the problem. For example, if you're trying to find a pair of numbers that sum to zero, you might move the pointers closer together or further apart based on their sum.
+// Solution Identification: The movement continues until the solution is found or the pointers meet or pass each other, indicating that no solution exists.
+// Example: SumZero
+// Problem Statement: Write a function called sumZerowhich accepts a sorted array of integers. The function should find the first pair where the sum is 0. Return an array that includes both values that sum to zero or undefinedif a pair does not exist.
+
+// Solution Steps:
+
+// Pointer Initialization: Initialize two pointers, one at the beginning of the array (left) and one at the end (right).
+// Iterate with Condition: While the leftpointer is less than the rightpointer:
+
+// Calculate Sum: Calculate the sum of the values at the two pointers.
+// Sum Zero Check: If the sum is 0, return the pair of values as they are the first pair to sum to zero.
+// Move Pointers Based on Sum:
+// If the sum is less than 0, move the leftpointer up (increment) to increase the sum.
+// If the sum is greater than 0, move the rightpointer down (decrement) to decrease the sum.
+// No Pair Found: If the loop ends without finding a pair, return undefined
+function sumZero(arr){
+    let left = 0
+    let right = arr.length - 1
+
+    while(left < right){
+        let sum = arr[left] + arr[right]
+        if(sum === 0){
+            return [arr[left], arr[right]]
+        } else if(sum < 0){
+            left++
+        } else {
+            right --
+        }
+    }
+    return undefined
+}
+console.log(sumZero([-13,-12,-10,-6,0,1,2,3,4,5,6,7]))
+
+// Question 1: Count Unique Values
+// Problem Statement: Implement a function called countUniqueValues, which accepts a sorted array, and counts the unique values in the array. There can be negative numbers in the array, but it will always be sorted.
+
+// Solution Steps:
+
+// If the array is empty, return 0.
+// Initialize a pointer or index (i) to start at the first element of the array.
+// Iterate through the array with another pointer or index (j), starting from the second element.
+// Compare the elements at iand j. If they are different, increment i, and set the value at ito the value at j. This effectively moves unique values to the front of the array without needing an auxiliary data structure.
+// The count of unique values will be i + 1since irepresents the index, and indexes are zero-based.
+// Return i + 1.
+function countUniqueValues(arr){
+    if(arr.length === 0){
+        return 0
+    }
+    let left = 0
+    let right = 1
+    let counter = 1
+
+    while(right < arr.length){
+        if(arr[left] !== arr[right]){
+            counter++
+            left = right
+        }
+        right++
+    }
+    return counter
+}
+console.log(countUniqueValues([1,2,3,4,4,4,7,7,12,12,13]))
+
+// Question 2: Average Pair
+// Problem Statement: Write a function called averagePair. Given a sorted array of integers and a target average, determine if there is a pair of values in the array where the average of the pair equals the target average. There may be more than one pair that matches the average target.
+
+// Solution Steps:
+
+// If the array is empty, return false.
+// Initialize two pointers: one at the start (start) of the array and the other at the end (end).
+// While the startpointer is less than the endpointer:
+
+// Calculate the average of the values at the start and end pointers.
+// If the calculated average is equal to the target average, return true.
+// If the calculated average is less than the target average, move the startpointer up (increment start) to try and increase the average.
+// If the calculated average is greater than the target average, move the endpointer down (decrement end) to try and decrease the average.
+// If no pair is found that matches the target average, return false.
+function averagePair(arr, target){
+    if(arr.length === 0){
+        return false
+    }
+    let start = 0
+    let end = arr.length - 1
+
+    while(start < end){
+        let avg = (arr[start] + arr[end]) / 2
+        if(avg === target){
+            return true
+        } else if (avg < target){
+            start++
+        } else {
+            end--
+        }
+    }
+    return false
+}
+console.log(averagePair([1,3,3,5,6,7,10,12,19], 8))
