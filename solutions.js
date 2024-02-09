@@ -305,4 +305,28 @@ const sameFrequency = (num1, num2) => {
 
 console.log(sameFrequency(182, 281), sameFrequency(34, 14)) // returns true false
 
+// Are There Duplicates
+// Problem Statement: Implement a function called areThereDuplicates, which accepts a variable number of arguments, and checks whether there are any duplicates among the arguments passed in.
+
+// pseudocode
+
+const dupes = (...args) => {
+    // return false if there are fewer than 2 arguments
+    if (args.length < 2) return false
+    // initialize lookup counter
+    const lookup = {}
+    // loop through arguments
+    for (let i = 0; i < args.length; i++) {
+        // save each argument
+        let arg = args[i]
+        // if lookup[arg] is true, return true, or else save to lookup counter
+        if (lookup[arg]) {
+            return true
+        } else lookup[arg] = 1
+    }
+    return false
+}
+
+console.log(dupes(1,2,3), dupes(1,2,2), dupes('a', 'b', 'c', 'a')) // returns false true true
+
 
