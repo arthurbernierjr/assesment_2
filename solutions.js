@@ -443,3 +443,54 @@ console.log(findLongestSubstring('thisisawesome')) // 6
 // Update the longest length
 // Return the longest length found
 
+// Multiple Pointers
+// SumZero
+function sumZero(arr) {
+    let left = 0;
+    let right = arr.length - 1;
+    
+    while (left < right) {
+        let sum = arr[left] + arr[right];
+        if (sum === 0) {
+            return [arr[left], arr[right]];
+        } else if (sum < 0) {
+            left++;
+        } else {
+            right--;
+        }
+    }
+    
+    return undefined;
+}
+// Initialize two pointers, left and right, pointing to the start and end of the array respectively
+// Iterate through the array until the left pointer is less than the right pointer, while loop
+// Calculate the sum of the elements pointed to by the left and right pointers
+// If the sum is equal to zero, return the pair of elements
+// If the sum is less than zero, increment the left pointer to increase the sum
+// If the sum is greater than zero, decrement the right pointer to decrease the sum
+// If no pair with sum zero is found, return undefined
+
+// Count Unique Values
+function countUniqueValues(arr) {
+    if (arr.length === 0) {
+        return 0
+    }
+    let i = 0
+
+    for (let j = 1; j < arr.length; j++) {
+        if (arr[i] !== arr[j]) {
+            i++
+            arr[i] = arr[j]
+        }
+    }
+    return i + 1
+}
+console.log(countUniqueValues([1, 1, 1, 1, 1, 2])) // 2
+console.log(countUniqueValues([1, 2, 3, 4, 4, 4, 7, 7, 12, 12, 13])) // 7
+
+// If the array is empty return 0
+// create index i to start at the first element of the array
+// Iterate through the array with another pointer or index (j), starting from the second element, for loop
+// Compare the elements at i and j. If they are different, increment i and set the value at i to the value at j.
+// This moves unique values to the front of the array
+// The count of unique values will be i + 1 since i represents the index, and indexes are zero-based.
