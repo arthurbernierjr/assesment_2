@@ -464,3 +464,55 @@ function averagePair(arr, target){
     return false
 }
 console.log(averagePair([1,3,3,5,6,7,10,12,19], 8))
+
+// Divide and Conquer
+// The Divide and Conquer strategy is an algorithm design paradigm that solves a problem by recursively breaking it down into two or more sub-problems of the same or related type, until these become simple enough to be solved directly. Solutions to the sub-problems are then combined to give a solution to the original problem.
+
+// How It Works
+// Divide: The problem is divided into smaller sub-problems.
+// Conquer: Each sub-problem is solved recursively.
+// Combine: The solutions to the sub-problems are combined to solve the original problem.
+// Example: Binary Search
+// Problem Statement: Given a sorted array of integers, write a function called search, that accepts a value and returns the index where the value passed to the function is located. If the value is not found, return -1.
+
+// Solution Steps:
+
+// Initialize Pointers: Start with two pointers, leftset to the start of the array and rightset to the end of the array.
+// While Loop: While the left pointer is less than or equal to the right pointer, perform the following steps:
+
+// Find the Middle: Calculate the middle index by taking the floor of the average of leftand rightpointers.
+// Check Middle Value: Compare the value at the middle index with the target value.
+// If the middle value is equal to the target, return the index of the middle.
+// If the middle value is less than the target, move the leftpointer to middle + 1.
+// If the middle value is greater than the target, move the rightpointer to middle - 1.
+// Target Not Found: If the loop ends and the target has not been found, return -1.
+function search(arr, target){
+    let left = 0
+    let right = arr.length - 1
+
+    while(left <= right){
+        let mid = Math.floor((left + right) / 2)
+        if(arr[mid] === target){
+            return mid
+        } else if (arr[mid] < target){
+            left = mid + 1
+        } else {
+            right = mid - 1
+        }
+    }
+    return -1
+}
+console.log(search([5,7,7,8,8,10], 7))
+
+// Question 1: Find First and Last Position of Element in Sorted Array
+// Problem Statement: Given an array of integers sorted in ascending order, find the starting and ending position of a given target value. If the target is not found in the array, return [-1, -1].
+
+// Solution Steps:
+
+// Binary Search for First Position: Implement a modified binary search to find the first occurrence of the target. If the target is found, instead of returning immediately, continue searching to the left (lower indices) to see if there are earlier occurrences.
+// Binary Search for Last Position: Implement a modified binary search to find the last occurrence of the target. If the target is found, continue searching to the right (higher indices) to see if there are later occurrences.
+// Return Positions: Use the results from the two modified binary searches to return the start and end positions of the target value in the array.
+function binarySearch(arr, val){
+    
+}
+console.log(binarySearch([5,7,7,8,8,10], 8))
