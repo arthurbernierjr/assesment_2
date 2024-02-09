@@ -309,3 +309,26 @@ console.log(sameFrequency(34, 14)) // false
 // Compare the two frequency counters using a for...in loop
 // Return true if all keys have the same values
 
+// Are There Duplicates
+function areThereDuplicates() {
+    let counter = {}
+
+    for (let argument of arguments) {
+        counter[argument] = (counter[argument] || 0) + 1
+    }
+
+    for (let key in counter) {
+        if (counter[key] > 1) {
+            return true
+        }
+    }
+    return false
+}
+console.log(areThereDuplicates(1, 2, 3)) // false
+console.log(areThereDuplicates(1, 2, 2)) // true
+
+// create counter to count occurence of each argument
+// Iterate through the arguments with a for of loop to populate the counter
+// Iterate through the counter with a for in loop
+// If the value is greaer than one it means there's a duplicate, return true
+// If no duplicates found return false
