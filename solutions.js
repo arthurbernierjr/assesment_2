@@ -150,3 +150,28 @@ console.log(printLong(["i ","think ","this is the longest"])) // returns "this i
 const transmogrify = arr => Math.pow((arr[0] * arr[1]), arr[2])
 console.log(transmogrify([2,2,2])) // returns 16 (4^2)
 
+// Project Euler Problem 2
+
+const euler = limit => {
+    // Initialize two variables to store the first two numbers of the Fibonacci sequence.
+    let previous = 0
+    let current = 1
+    let sumOfEven = 0
+    // Use a while loop to generate Fibonacci numbers up to the specified limit.
+    while (current <= limit) { 
+        // Within the loop, check if the current number is even. If so, add it to the sum.
+        if (current % 2 === 0) sumOfEven += current
+        // Update the Fibonacci sequence variables for the next iteration.
+        const next = previous + current             
+        previous = current
+        current = next        
+    }
+    // Return the sum of even Fibonacci numbers.
+    return sumOfEven
+}
+
+console.log(euler(50)) // returns 44
+
+
+
+
