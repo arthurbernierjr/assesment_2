@@ -289,3 +289,168 @@ function sumThePositive(arr) {
   return sum
 }
 
+
+// PART 2
+
+// PROBLEM SOLVING PATTERNS
+
+// FREQUENCY COUNTER
+
+// Question 1 (example): Valid Anagram
+
+// Pseudocode for solution:
+
+// 1. Check if lengths of strings are the same.  If not, return false.
+
+// 2. Create an empty object to serve as the frequency counter.
+
+// 3. Use a for loop to iterate through the first string. Use a ternary operator to check if the letter is already a key in the object.  If it is, increase the value by one.  If it's not, set the value to one.
+
+// 4. Use a second for loop to iterate through the second string.  Check each letter to see if it is already present as a key in the frequency counter.  If it is, decrease the value of that key by one.  If it's not, return false.
+
+// 5. If the second for loop is able to finish running without having returned false, then the strings are anagrams and the function should return true.
+
+
+// Question 2: SAME FREQUENCY
+
+// *** Solution attempt (figured it out) ***:
+
+function sameFreq(num1, num2) {
+  // Convert both numbers to string representations to easily iterate over the digits
+  
+    const str1 = num1.toString()
+    const str2 = num2.toString()
+  
+    // Forgot this step on original attempt!
+    if (str1.length !== str2.length) {
+      return false
+    }
+  
+  // Initialize two frequency counter objects for each number
+  
+    const counter1 = {}
+    const counter2 = {}
+  
+    // Populate the frequency counters by iterating over each digit of the two numbers
+  
+    for (let i = 0; i < str1.length; i++) {
+      counter1[str1[i]] ? counter1[str1[i]] += 1 : counter1[str1[i]] = 1
+    }
+  
+    for (let i = 0; i < str2.length; i++) {
+      counter2[str2[i]] ? counter2[str2[i]] += 1 : counter2[str2[i]] = 1
+    }
+  
+    // Compare the two requency counters.  If they have the same keys with the same values, the numbers have the same frequency of digits; otherwise, they do not.
+  
+    // Return true if the frequencies match, otherwise return false
+  
+    for (let key in counter1) {
+      let counter2Keys = Object.keys(counter2)
+      if (!(counter2Keys.includes(key))) {
+        return false
+      }
+      if (!(counter2[key] === counter1[key])) {
+        return false
+      }
+    } 
+    return true
+  }
+  
+  // Answer found online with my pseudocode:
+  
+  function sameFrequency(a, b){
+      let integerA = a.toString();
+      let integerB = b.toString();
+      if (integerA.length !== integerB.length) {
+          return false;
+          
+      }
+      const lookup = {};
+      for (let i = 0; i < integerA.length; i++) {
+          let number = integerA[i];
+          lookup[number] ? lookup[number] += 1 : lookup[number] = 1;
+      }
+      for (let i = 0; i < integerB.length; i++) {
+          let number = integerB[i];
+          if (!lookup[number]){
+              return false;
+          } else {
+            lookup[number] -= 1;  
+          }
+      }
+      return true
+  }
+  
+  // 1. convert both integers to strings
+  
+  // 2. check if they are the same length.  If they aren't return false. 
+  
+  // 3. assign empty object to variable for a frequency counter
+  
+  // 4. loop through the first integer's digits and add key value pairs to lookup object.
+  
+  // 5. loop through second integer's digits and check if they are in the frequency counter object.  If one isn't, return false.  If one is, decrease the frequency of the value of that key.
+  
+  // 6. Return true if it makes it through loop without returning false. Note: they solved this very similar to the validAnagram case, but I'm not sure it's in line with the instructions provided for the problem.
+  
+  
+  
+  // Question 3: ARE THERE DUPLICATES
+  
+  // *** Solution attempt (figured out) ***
+  
+  function areThereDuplicates(...args) {
+  
+    // Use a frequency counter object to count the occurrences of each argument
+    
+    counter = {}
+  
+    // Populate frequency counter by iterating over the arguments
+  
+    for (let i = 0; i < args.length; i++) {
+      counter[args[i]] ? counter[args[i]] += 1 : counter[args[i]] = 1
+    }
+  
+    // Iterate through the values of the frequency counter.  If any value is greater than 1, it means a duplicate exists.
+  
+    // Return true if any duplicates are found, otherwise return false.
+  
+    for (let key in counter) {
+      if (counter[key] > 1) {
+        return true
+      }
+    }
+  
+    return false
+  
+    // NOTE: as currently set up, 2 and '2' will count as a duplicates. Instructions were unclear whether this is permissible or not. In interview, ask about it!
+  }
+  
+  // Answer found online with my pseudocode:
+  
+  const areThereDuplicatesSolution = (...args) => {
+    const argFrequency = {};
+    for (let idx = 0; idx < args.length; idx += 1) {
+      argFrequency[args[idx]] = (argFrequency[args[idx]] || 0) + 1;
+    }
+    const argFrequencyVals = Object.values(argFrequency);
+    for (let idx = 0; idex <= argFrequencyVals.length; idx += 1) {
+      if (argFrequencyVals[idx] > 1) {
+        return true
+      }
+    }
+    return false
+  
+  // Note: we solved this very similarly.
+  }
+  
+  // 1. Assign an empty object to a variable to act as a frequency counter
+  
+  // 2. Set up a for loop to iterate over arguments and add them as keys to the frequency counter.  The way they do it is they set the value of the key by first checking if it's in the counter with a disjunction. If it's not, it's added with a value of 0 and one is added to it. If it is, just increases the value by one.
+  
+  // 3. Assigns a variable to the object values in the frequency counter
+  
+  // 4. Loops through the values of the keys in the frequency counter to check if any are any that are equal to more than one. If so, there are duplicates, so return true. If the loop finishes and no duplicates are found, return false.
+  
+  
