@@ -643,3 +643,151 @@ const findLongestSubstringSolution = str => {
 // 4. Set the value of the character key in the object to the loop index plus 1. The addition of one helps account for increase of the loop index on the next cycle.
       
 // 5. Return the length of the longest substring.
+
+
+// MULTIPLE POINTERS
+
+// Example Pseudocode
+
+// 1. Initialize a left and right pointer by assigning a variable the value of 0 and another with the length of the array minus one.
+
+// 2. Set a loop that won't stop until the left pointer is greater than or equal to the right pointer.
+
+// 3. Initialize a variable to hold the sum of the two pointers' values as indexes in the array.
+
+// 4. Check if the sum is 0.  If so, return the two values in the array that's indexes are the current pointers.
+
+// 5. If the sum is not 0, check to see if the sum is positive or negative. If it's negative, add one to the left pointer. If it's positive, subtract one from the right pointer.
+
+// 6. If the loop finishes without the sum ever reaching 0, then return undefined.
+
+// Question 1: Count Unique Values
+
+// *** my solution attempt (figured it out easily) ***
+
+function countUniqueValues(arr) {
+
+// If the array is empty, return 0
+
+  if (arr.length < 1) return 0
+
+// Initialize a pointer or index (i) to start at the first element of the array.
+
+  let startPoint = 0
+
+// Iterate through the array with another pointer or index(j), starting from the second element
+
+  for (let i = 1; i < arr.length; i++) {
+
+// Compare the elements at i and j. If they are different, increment i, and set the value at i to the value at j.
+
+    if (arr[startPoint] !== arr[i]) {
+      startPoint++
+      arr[startPoint] = arr[i]
+    }
+  }
+// The count of the unique values will be i + 1 since i represents the index, and indexes are zero-based.
+  
+  return startPoint + 1
+}
+
+// Solution found online with pseudocode:
+
+function countUniqueValuesSolution(array){
+  if(array.length==0)return 0;
+    let i=0;
+        for (let j = 1; j < array.length; j++) {
+          if(array[i]!=array[j]){
+            i++;
+            array[i]=array[j];
+          }
+        }       
+  return i+1;
+}
+
+// 1. Check to see if array is empty. If it is, return 0.
+
+// 2. Set a variable to act as the starting point index.
+
+// 3. Iterate through the array starting at index 1.
+
+// 4. Compare the value of the elements at the starting index and the current loop index. If they are different, increase the starting index by one and set the value of the array element at that index to the value of the element at the current loop index.
+
+// 5. Once loop is finished, return the starting index + 1 (the number of unique elements).
+
+
+// Question 2: Average Pair
+
+// *** My solution attempt (figured out easily) ***:
+
+function averagePair(arr, int) {
+
+// If the array is empty, return false.
+
+  if (arr.length < 1) return false
+
+// Initialize two pointers, one at the start of the array and the other at the end
+
+  let start = 0
+  let end = arr.length - 1
+
+// While the start pointer is less than the end pointer:
+
+  while (start < end) {
+
+// Calculate the average of the values at the start and end pointers
+
+    let average = (arr[start] + arr[end])/2
+
+// If the calculated average is equal to the target average, return true
+
+    if (average === int) {
+      return true
+    }
+
+// If the caculated average is less than the target average, move the start pointer up to try and increase the average
+
+    if (average < int) {
+      start++
+
+// If the calculated average is greater than the target average, move the end pointer down.
+
+    } else {
+      end--
+    }
+  }
+
+// If no pair is found that matches the target average, return false
+
+  return false
+}
+
+
+// Solution found online with pseudocode:
+
+function averagePairSolution(arr, n){
+  let i = 0
+  let j = arr.length-1;
+  while(i < j){
+    let avg = (arr[i]+arr[j]) / 2 
+    if(avg === n) return true;
+    else if(avg < n) i++
+    else j--
+  }
+  return false;
+}
+
+// 1. Set a start point to act as index 0 and an end point to act as the final index in the array.
+
+// 2. While the start point is less than the end point, loop through the array and, on each cycle, calculate the average of the values at the start and end point.
+
+// 3. If the average matches the number given as an argument, return true.
+
+// 4. If the average is less than the number argument, increase the start point. If it's more, decrease the end point.
+
+// 5. If the loop finishes and the average never matched the given number, return false.
+
+
+
+
+
