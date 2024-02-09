@@ -41,3 +41,33 @@ const sumArray = (arr) => {
 }
 
 console.log(sumArray([1,2,4])) // returns 7
+
+// Prime Numbers
+
+// checkPrime
+
+const checkPrime = num => {
+    // Check if the number is less than or equal to 1. If so, return falsebecause it's not prime.
+    if (num <= 1) return false
+    // Use a for loop to iterate from 2 up to the square root of the number.    
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+        // If the number is divisible by any number in this range, return false.
+        if (num % i === 0) return false
+    }
+    // If no divisors are found, return true.
+    return true
+}
+
+console.log(checkPrime(5)) // returns true!
+
+// printPrimes
+const printPrimes = limit => {
+    // Use a for loop to iterate through numbers from 2 up to the specified limit.
+    for (let i = 2; i <= limit; i++) {
+        // For each number, use the checkPrimefunction to check if it's prime.
+        // If checkPrimereturns true, console.log the number.
+        if (checkPrime(i)) console.log(i)
+    }
+}
+
+printPrimes(20)
