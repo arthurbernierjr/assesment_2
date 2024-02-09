@@ -788,6 +788,137 @@ function averagePairSolution(arr, n){
 // 5. If the loop finishes and the average never matched the given number, return false.
 
 
+// DIVIDE AND CONQUER
 
+// Example: Binary Search
+
+// Pseucode:
+
+// 1. Initialize a start point set at 0 and an end point set at the final index of the array.
+
+// 2. While the end point is greater than the start point, initialize a variable to to act as a midpoint of the array.
+
+// 3. If the value at the mid point is the same as the value argument, return the mid point variable.
+
+// 4. If the value at the mid point is less than the value argument, set the start point at the mid point variable + 1.
+
+// 5. If the value at the mid point is greater than the value argument, set the end point at the mid point - 1.
+
+// 6. If the loop finishes without the target value having been found, return -1.
+
+
+// Question 1: Find First and Last Position of Element in Sorted Array
+
+// *** my solution attempt (couldn't figure it out without looking it up, but it makes sense now) *** :
+
+function firstOccurrence(arr, int) {
+  
+// Implement a modified binary search to find the first occurrence of the target. If the target is found, instead of returning immediately, continue searching to the left (lower) indices to see if there are earlier occurrences.
+
+  let left = 0
+  let right = arr.length - 1
+
+  while (left <= right) {
+    let middle = Math.floor((left + right) / 2)
+    let currentElement = arr[middle]
+  
+    if (currentElement === int) {
+      if ((arr[middle - 1] < int) || (middle === 0)) {
+        return middle
+      } else {
+        right = middle - 1
+      }
+    } else if (currentElement < int) {
+      left = middle + 1
+    } else {
+      right = middle - 1
+    }
+  }
+return -1
+}
+// Implement a modified binary search to find the last occurrence of the target. If the target is found, continue searching to the right (higher indices) to see if there are later occurrences.
+
+function lastOccurrence(arr, int) {
+  
+  let left = 0
+  let right = arr.length - 1
+  
+  while (left <= right) {
+    let middle = Math.floor((left + right) / 2)
+    let currentElement = arr[middle]
+    
+    if (currentElement === int) {
+      if ((arr[middle + 1] > int) || (middle === arr.length - 1)) {
+        return middle
+      } else {
+        left = middle + 1
+      }
+    } else if (currentElement < int) {
+      left = middle + 1
+    } else {
+      right = middle - 1
+    }
+  }
+  return -1
+}
+
+// Use the results from the two modified binary searches to return the start and end positions of the target value in the array.
+
+function firstAndLastOccurrence(arr, int) {
+  return [firstOccurrence(arr, int), lastOccurrence(arr, int)]
+}
+
+// Solution found online with pseudocode: 
+
+function firstSolution(arr,low,high,x,n)
+{
+    if (high >= low) {
+        let mid = low + Math.floor((high - low) / 2);
+        if ((mid == 0 || x > arr[mid - 1]) && arr[mid] == x)
+            return mid;
+        else if (x > arr[mid])
+            return first(arr, (mid + 1), high, x, n);
+        else
+            return first(arr, low, (mid - 1), x, n);
+    }
+    return -1;
+}
+ 
+function lastSolution(arr, low, high, x, n)
+{
+    if (high >= low) {
+        let mid = low + Math.floor((high - low) / 2);
+        if ((mid == n - 1 || x < arr[mid + 1]) && arr[mid] == x)
+            return mid;
+        else if (x < arr[mid])
+            return last(arr, low, (mid - 1), x, n);
+        else
+            return last(arr, (mid + 1), high, x, n);
+    }
+    return -1;
+}
+ 
+    // let arr = [ 1, 2, 2, 2, 2, 3, 4, 7, 8, 8 ];
+    // let n = arr.length; 
+ 
+    // let x = 8;
+    // document.write("First Occurrence = " + first(arr, 0, n - 1, x, n),"</br>");
+    // console.log("Last Occurrence = " + last(arr, 0, n - 1, x, n),"</br>");
+
+// 1. Declare a function to find the lowest index of the occurrence. 
+
+// 2. Set low to the first index of the array and high to the last.
+
+// 3. Check if high is greater than low. If it is, set the mid point as the average of the two plus low.
+
+// 4. After setting the mid, check to see if either the mid is 0 (to avoid returning -1 if the first value of array matches the target) or the target value is greater than the array value at mid - 1 (meaning that the next value down does not match the target), and if the array value at mid matches the target value.  If so, return mid.
+
+// 5. Otherwise, if the target value is greater than the array value at mid, call the function again with the low value replaced by mid + 1. If the target value is less than the array value at mid, call the function again the the high value replaced by mid - 1.
+
+// 6. If the conditionals run and nothing is returned, return -1 for the first value.
+
+// 7. Make a similar function that instead returns the highest occurrence of the target value.
+
+// 8. The first and last index values should be returned after both functions have run.
 
 
