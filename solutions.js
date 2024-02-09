@@ -71,3 +71,11 @@ const printPrimes = limit => {
 }
 
 printPrimes(20)
+
+// Calculate the Cube
+
+// Calculate the cube of the number by multiplying the number by itself twice.
+// Return the result.
+const cube = num => Math.pow(num, 3)
+
+console.log(cube(3)) // returns 27!
