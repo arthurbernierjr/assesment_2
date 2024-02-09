@@ -329,4 +329,36 @@ const dupes = (...args) => {
 
 console.log(dupes(1,2,3), dupes(1,2,2), dupes('a', 'b', 'c', 'a')) // returns false true true
 
+// MaxSubarraySum
+// Problem Statement: Write a function called maxSubarraySum which accepts an array of integers and a number called n. The function should calculate the maximum sum of nconsecutive elements in the array.
 
+const maxSubarraySum = (arr, n) => {
+    // if array is less than n return null
+    if (arr.length < n) return null    
+    // initialize temp sum & max sum
+    let tempSum = 0
+    let maxSum = 0
+    // create initial window of first n items of array
+    for (let i = 0; i < n; i++) {
+        // add items in array and save to maxSum
+        maxSum += arr[i]
+    }
+
+    // set tempSum to maxSum
+    tempSum = maxSum
+
+    // create sliding window for loop where first item is subtracted and last item is added
+    for (let i = n; i < arr.length; i++) {
+        // console.log(arr[i])
+        tempSum = tempSum - arr[i - n] + arr[i] 
+        if (tempSum > maxSum) maxSum = tempSum
+    }
+    return maxSum
+
+}
+
+console.log(maxSubarraySum([1,2,3,4,5], 2))
+
+
+
+// if sum in iteration is larger than max, set max to sum in interation
