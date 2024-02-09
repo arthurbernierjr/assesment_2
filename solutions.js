@@ -922,3 +922,55 @@ function lastSolution(arr, low, high, x, n)
 // 8. The first and last index values should be returned after both functions have run.
 
 
+// Question 2: Pow(x, n)
+
+// *** my solution attempt (solved pretty easily, but I think I should not have used ** trick. Updated after solution looked up. Had some trouble figuring out the negative bit without **) ***
+
+function pow(x, n) {
+
+  if (n === 0) {
+    return 1
+  }
+
+  let m = parseInt(n / 2, 10)
+  let res = (pow(x, m))
+
+  if (n < 0) {
+    return pow(1 / x, -1 * n)
+  }
+
+  if (n % 2 === 0) {
+    return res * res
+  } else {
+    return x * res * res
+  }
+}
+
+// Solution found online with Pseudocode:
+
+function power(x, y)
+{
+    if (y == 0)
+        return 1;
+    else if (y % 2 == 0)
+        return power(x, parseInt(y / 2, 10)) *
+            power(x, parseInt(y / 2, 10));
+    else
+        return x * power(x, parseInt(y / 2, 10)) *
+                power(x, parseInt(y / 2, 10));
+}
+ 
+// Driver code
+// let x = 2;
+// let y = 3;
+ 
+// document.write(power(x, y));
+
+// 1. Check if second argument (y) is 0. If so, return 1, as any number to the 0th power is 1.
+
+// 2. If y is even, return the product of two recursive functions that both have the second argument as y / 2 (parsed into with radix ten to convert from a decimal).
+
+// 3. If y is odd, return the same but multiply the product by the first argument (x)
+
+
+
