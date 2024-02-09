@@ -246,3 +246,66 @@ function sumPositiveNumbers(array) {
 }
 
 console.log(sumPositiveNumbers([-2, 3, -5, 7, 10, -12, 15])) // Output: 35 (3 + 7 + 10 + 15)
+
+// valid anagram
+function validAnagram(first, second) {
+    if (first.length !== second.length) {
+        return false
+    }
+
+    const lookup = {}
+
+    for (let i = 0; i < first.length; i++) {
+        let letter = first[i]
+        // If letter exists, increment, otherwise set to 1
+        lookup[letter] ? lookup[letter] += 1 : lookup[letter] = 1
+    }
+
+    for (let i = 0; i < second.length; i++) {
+        let letter = second[i]
+        // Can't find letter or letter is zero then it's not an anagram
+        if (!lookup[letter]) {
+            return false
+        } else {
+            lookup[letter] -= 1
+        }
+    }
+
+    return true
+}
+// Same frequency
+function sameFrequency(num1, num2) {
+    let strNum1 = num1.toString()
+    let strNum2 = num2.toString()
+
+    if (strNum1.length !== strNum2.length) {
+        return false
+    }
+    
+    let counter1 = {}
+    let counter2 = {}
+
+    for (let digit of strNum1) {
+        counter1[digit] = (counter1[digit] || 0) + 1
+    }
+    for (let digit of strNum2) {
+        counter2[digit] = (counter2[digit] || 0) + 1
+    }
+
+    for (let key in counter1) {
+        if (counter1[key] !== counter2[key]) {
+            return false
+        }
+    }
+    return true
+}
+console.log(sameFrequency(182, 281))  // true
+console.log(sameFrequency(34, 14)) // false
+
+// Convert the numbers into strings
+// Check if the lengths of the two strings are different
+// Create two frequency counters for each number
+// Iterate through each digit using a for...of loop for each number
+// Compare the two frequency counters using a for...in loop
+// Return true if all keys have the same values
+
