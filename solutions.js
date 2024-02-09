@@ -973,4 +973,84 @@ function power(x, y)
 // 3. If y is odd, return the same but multiply the product by the first argument (x)
 
 
+// Question 3: Merge Sort
+
+// Solution Attempt (from class):
+
+function mergeSort(arr) {
+  
+  if (arr.length <= 1) {
+    return arr
+  }
+    
+  let halfArr = Math.floor(arr.length / 2)
+    
+  let leftHalf = mergeSort(arr.slice(0, halfArr))
+  let rightHalf = mergeSort(arr.slice(halfArr))
+    
+  return merge(leftHalf, rightHalf)
+}
+
+// HELPER FUNCTION: merge two sorted arrays
+function merge(arr1, arr2) {
+  let result = []
+  
+  while (arr1.length && arr2.length) {
+    if(arr1[0] <= arr2[0]) {
+      result.push(arr1.shift());
+    } else {
+      result.push(arr2.shift());
+    }
+  }
+  
+  return result.concat(arr1, arr2);
+}
+
+// Solution found online with pseudocode:
+
+function mergeSort(arr) {
+
+  if (arr.length <= 1) return arr
+  let mid = Math.floor(arr.length / 2)
+
+  let left = mergeSort(arr.slice(0, mid))
+  let right = mergeSort(arr.slice(mid))
+  return merge(left, right)
+}
+
+function merge(left, right) {
+  let sortedArr = [] 
+  while (left.length && right.length) {
+
+    if (left[0] < right[0]) {
+      sortedArr.push(left.shift())
+    } else {
+      sortedArr.push(right.shift())
+    }
+  }
+  return [...sortedArr, ...left, ...right]
+}
+merge([1, 4], [2, 6, 9]) // [1, 2, 4, 6, 9]
+
+// for mergeSort function
+
+// 1. Create a base case that returns the array if the length of the array is 0.
+
+// 2. Initialize a mid point of the array.
+
+// 3. Set the left and right variables to cover one half of the available array by recursively calling mergeSort with a slice of the array from the beginning to the mid point and another from the mid point to the end.
+
+// 4. Return merge helper function with both left and right.
+
+// for merge helper function
+
+// 5. In merge(left, right), initialize an array to hold the sorted items.
+
+// 6. While the left and right variables have a length, loop through the array. 
+
+// 7. If the value of the first value of left is less than the first value of right, push the value from the left into the sorted array and shift that element out of left. Otherwise, push the right value into the sorted array and shift that element out of the right.
+
+// 8. Once the loop has finished, return a concatenated array consisting of the sorted array, the left arr, and the right arr.
+
+
 
