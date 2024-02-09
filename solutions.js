@@ -120,3 +120,11 @@ const getMultipleLengths = arr => {
 
 console.log(getMultipleLengths(["i'm ","pretty sure "," this'll work"])) // returns [ 4, 12, 13 ]
 
+// Maximum of Three Numbers
+
+// Use the Math.maxfunction to find the maximum of the three numbers.
+// Return the maximum number.
+const maxOfThree = arr => Math.max(...arr)
+    
+console.log(maxOfThree([6,1,7])) // returns 7!
+// Commit your work with the message "maximum of three numbers completed".
