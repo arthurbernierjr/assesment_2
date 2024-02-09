@@ -172,6 +172,11 @@ const euler = limit => {
 
 console.log(euler(50)) // returns 44
 
+// A Needle in the Haystack
+// Use the indexOfmethod to find the index of the "needle"in the array.
+// Return a string that includes the index of the needle.
 
-
+const findNeedle = (arr, needle) => `${needle}'s index in the array is ${arr.indexOf(needle)}`
+    
+console.log(findNeedle(['find', 'the', 'needle', 'in', 'this', 'haystack'], "needle")) // returns "needle's index in the array is 2"
 
