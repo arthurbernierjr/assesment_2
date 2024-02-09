@@ -75,3 +75,14 @@ function calculateCube(num) {
 // Return the result.
     return Math.pow(number, 3)
 }
+
+function checkVowel(char) {
+//Check if the input character is included in a string of vowels (both lowercase and uppercase).
+    const vowels = ['a','e','i','o','u','A','E','I','O','U']
+    for (let i = 0; i <= vowels.length, i++) {
+        if(char === vowels[i])
+//Return true if the character is a vowel, otherwise return false.
+        return true
+    }
+}
+
