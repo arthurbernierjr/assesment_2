@@ -111,4 +111,14 @@ function printLongestWord(words) {
 // Use the reduce method to find the longest string in the array.
 // In case of a tie, the first word in the array order is returned.
     return words.reduce((longest, current) => current.length > longest.length ? current : longest);
-  }
+}
+
+//Transmogrify the Numbers
+function transmogrify(num1, num2, num3) {
+//Calculate the product of the first two numbers.
+    const product = num1 * num2;
+//Raise the product to the power of the third number.
+//Return the result.
+    return Math.pow(product, num3);
+ }
+  
