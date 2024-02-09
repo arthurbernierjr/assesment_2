@@ -141,4 +141,12 @@ const printLong = arr => {
     
     // In case of a tie, the first word in the array order is returned.
 }
-console.log(printLong(["return","longest","item in the array"])) // returns "item in the array". I couldn't figure out the tie.
+console.log(printLong(["i ","think ","this is the longest"])) // returns "this is the longest". I couldn't figure out the tie.
+
+// Transmogrify the Numbers
+// Calculate the product of the first two numbers.
+// Raise the product to the power of the third number.
+// Return the result.
+const transmogrify = arr => Math.pow((arr[0] * arr[1]), arr[2])
+console.log(transmogrify([2,2,2])) // returns 16 (4^2)
+
