@@ -67,3 +67,11 @@ function printPrimes(print) {
         }
     }
 }
+
+//Calculate the Cube
+
+// Calculate the cube of the number by multiplying the number by itself twice.
+function calculateCube(num) {
+// Return the result.
+    return Math.pow(number, 3)
+}
