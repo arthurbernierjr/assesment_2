@@ -106,4 +106,17 @@ const getTwoLengths = arr => {
 }
 console.log(getTwoLengths(["I hope this ","works..."])) // returns [12, 8]
 
+// Get Multiple Lengths
+
+const getMultipleLengths = arr => {
+    let lenArr = []
+    // Use the mapfunction to transform each string in the input array into its length.
+    arr.map(item => {
+        lenArr.push(item.length)
+    })
+    // Return the resulting array of lengths.
+    return lenArr
+}
+
+console.log(getMultipleLengths(["i'm ","pretty sure "," this'll work"])) // returns [ 4, 12, 13 ]
 
