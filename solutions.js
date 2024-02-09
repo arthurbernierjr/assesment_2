@@ -180,3 +180,14 @@ const findNeedle = (arr, needle) => `${needle}'s index in the array is ${arr.ind
     
 console.log(findNeedle(['find', 'the', 'needle', 'in', 'this', 'haystack'], "needle")) // returns "needle's index in the array is 2"
 
+// Sum the Positive
+
+const sumPositive = arr => {
+    // Use the filtermethod to create a new array containing only positive numbers.
+    const evensArr = arr.filter(num => num % 2 === 0)
+    // Use the reducemethod to sum the values of the filtered array.
+    // Return the sum
+    return evensArr.reduce((accumulator, currentValue) => accumulator + currentValue)    
+}
+
+console.log(sumPositive([1,2,3,4, 10])) // returns 16!
