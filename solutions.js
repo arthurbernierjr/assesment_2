@@ -93,3 +93,17 @@ const isVowel = letter => {
 }
 
 console.log(isVowel("X"),isVowel("A") ) // returns false, true!
+
+// Get Two Lengths
+
+const getTwoLengths = arr => {
+    // Return an array containing the lengths of the two input strings.
+    let lenArr = []
+    arr.forEach(item => {
+        lenArr.push(item.length)
+    })
+    return lenArr
+}
+console.log(getTwoLengths(["I hope this ","works..."])) // returns [12, 8]
+
+
