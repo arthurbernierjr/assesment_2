@@ -141,7 +141,4 @@ const printLong = arr => {
     
     // In case of a tie, the first word in the array order is returned.
 }
-console.log(printLong(["return","longest","item in the array"]))
-
-
-// Commit your work with the message "print longest word completed".
+console.log(printLong(["return","longest","item in the array"])) // returns "item in the array". I couldn't figure out the tie.
