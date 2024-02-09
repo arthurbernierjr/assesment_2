@@ -1008,17 +1008,17 @@ function merge(arr1, arr2) {
 
 // Solution found online with pseudocode:
 
-function mergeSort(arr) {
+function mergeSortSolution(arr) {
 
   if (arr.length <= 1) return arr
   let mid = Math.floor(arr.length / 2)
 
-  let left = mergeSort(arr.slice(0, mid))
-  let right = mergeSort(arr.slice(mid))
-  return merge(left, right)
+  let left = mergeSortSolution(arr.slice(0, mid))
+  let right = mergeSortSolution(arr.slice(mid))
+  return mergeSolution(left, right)
 }
 
-function merge(left, right) {
+function mergeSolution(left, right) {
   let sortedArr = [] 
   while (left.length && right.length) {
 
@@ -1030,7 +1030,7 @@ function merge(left, right) {
   }
   return [...sortedArr, ...left, ...right]
 }
-merge([1, 4], [2, 6, 9]) // [1, 2, 4, 6, 9]
+
 
 // for mergeSort function
 
@@ -1053,4 +1053,56 @@ merge([1, 4], [2, 6, 9]) // [1, 2, 4, 6, 9]
 // 8. Once the loop has finished, return a concatenated array consisting of the sorted array, the left arr, and the right arr.
 
 
+// Question 4: Quick Sort
+
+// My solution (from class):
+
+function quickSort(arr){
+  if (arr.length <= 1) {
+    return arr
+  }
+  let pivot = arr[0]
+  let leftArr = []
+  let rightArr = []
+  let result = []
+    
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] < pivot) {
+      leftArr.push(arr[i])
+    } else {
+      rightArr.push(arr[i])
+    }
+  }
+  return result.concat(quickSort(leftArr), pivot, quickSort(rightArr))
+}
+
+// Solution from online with pseudocode
+
+const quickSortSolution = (arr) => {
+  if (arr.length <= 1) {
+    return arr;
+  }
+
+  let pivot = arr[0];
+  let leftArr = [];
+  let rightArr = [];
+
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] < pivot) {
+      leftArr.push(arr[i]);
+    } else {
+      rightArr.push(arr[i]);
+    }
+  }
+
+  return [...quickSortSolution(leftArr), pivot, ...quickSortSolution(rightArr)];
+};
+
+// 1. Create a base case to return the array if it's length is 0.
+
+// 2. Initialize a pivot point value at the start of the array, and initialize two additional arrays to hold either the values that are less than the pivot or greater than it.
+
+// 3. Iterate over the array while pushing every value that's less than the pivot value into the "left" array and the rest into the right.
+
+// 4. Return a concatenated array, which include calling quick sort on the left arr, the pivot value, and calling quick sort on the right arr. The pivot is considered sorted, the smaller arrays will continue to get broken down with new pivots being assigned, and eventually we'll have a sorted array of all of the pivot values.
 
