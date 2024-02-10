@@ -374,8 +374,7 @@ const minSubArrayLen = (arr, threshold) => {
         total += arr[endPointer]
 
         // while the sum >= threshold
-        while (total >= threshold) {
-            console.log(total)
+        while (total >= threshold) {            
             // set curLen to end - start and add 1 to get length
             let curLen = endPointer - startPointer + 1
             // if curLen < minLen or minLen hasn't been set yet, set minLen to curLen
@@ -520,7 +519,32 @@ const averagePair = (arr, avg) => {
 
 console.log(averagePair([1,2,3], 2.5), averagePair([-1,0,3,4,5,6], 4.1)) // returns true false
 
+// Binary Search
+// Problem Statement: Given a sorted array of integers, write a function called search, that accepts a value and returns the index where the value passed to the function is located. If the value is not found, return -1.
 
+const search = (arr, val) => {
+    // initialize a left and right pointer
+    let left = 0
+    let right = arr.length -1
 
+    // run loop while left is less than right
+    while (left < right) {
+        // divide the array, save index as check
+        let mid = Math.floor((left + right) / 2)
+        let check = arr[mid]
+        // if arr[check] equals value, return check
+        if (check === val) {
+            return mid
+            // else if less, set right to middle -1
+        } else if (check < val) {
+            right = mid -1
+            // else set left to middle + 1
+        } else {
+            left = mid + 1
+        }
+    }
+    // return -1
+    return -1
+}
 
-
+console.log(search([1,2,3], 2)) // returns 1
