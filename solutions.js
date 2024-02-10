@@ -526,3 +526,84 @@ console.log(averagePair([-1, 0, 3, 4, 5, 6], 4.1)) // false
 // if the average is less than the target, increment the start
 // if the average is greater than the target, decrement the end
 // if no pair is found, retrun false
+
+// Divide and Conquer
+// Binary Search
+function search(array, val) {
+    let left = 0;
+    let right = array.length - 1;
+
+    while (left <= right) {
+        let middle = Math.floor((left + right) / 2);
+        let currentElement = array[middle];
+
+        if (currentElement === val) {
+            return middle;
+        } else if (currentElement < val) {
+            left = middle + 1;
+        } else {
+            right = middle - 1;
+        }
+    }
+
+    return -1;
+}
+
+// Create pointers at the beginning and end of the array
+// While the left pointer is less than or equal to the right pointer, while loop
+// Calculate the middle index of the array
+// create a variable with the value at the middle index
+// If the value at the middle index is equal to the target value, return the index
+// If the value at the middle index is less than the target value, move the left pointer to the middle + 1
+// If the value at the middle index is greater than the target value, move the right pointer to the middle - 1
+// If the target value is not found in the array, return -1
+
+// Find First and Last Position of Element in Sorted Array
+function findFirstAndLastPosition(nums, target) {
+    function findFirst(nums, target) {
+        let left = 0
+        let right = nums.length -1
+        let firstPosition = -1
+
+        while (left <= right) {
+            let mid = Math.floor((left + right) / 2)
+            if(nums[mid] >= target) {
+                if (nums[mid] === target) {
+                    firstPosition = mid
+                }
+                right = mid - 1
+            } else {
+                left = mid + 1
+            }
+        }
+        return firstPosition
+    }
+    function findLast(nums, target) {
+        let left = 0
+        let right = nums.length - 1
+        let lastPosition = -1
+
+        while (left <= right) {
+            let mid = Math.floor((left + right) / 2)
+            if (nums[mid] <= target) {
+                if (nums[mid] === target) {
+                    lastPosition = mid
+                }
+                left = mid + 1
+            } else {
+                right = mid - 1
+            }
+        }
+        return lastPosition
+    }
+    let first = findFirst(nums, target)
+    let last = findLast(nums, target)
+
+    return [first, last]
+}
+console.log(findFirstAndLastPosition([5, 7, 7, 8, 8, 10], 8)) // [3, 4]
+console.log(findFirstAndLastPosition([5, 7, 7, 8, 8, 10], 6)) // [-1, -1]
+
+// Bianary Search for first point
+// bianary search for last point
+// create variables for both points and return them in an array
