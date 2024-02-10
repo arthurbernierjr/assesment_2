@@ -151,3 +151,13 @@ function findNeedle(haystack) {
 //Return a string that includes the index of the needle.
     return `The needle is at position ${index}`
 }
+
+// Sum the Positive
+function sumPositive(nums) {
+// Use the filter method to create a new array containing only positive numbers.
+    const positiveNums = nums.filter(nums => nums > 0)
+// Use the reduce method to sum the values of the filtered array.
+    const sum = positiveNums.reduce((acc, current) => acc + current, 0)
+// Return the sum.
+    return sum
+}
