@@ -512,7 +512,156 @@ console.log(search([5,7,7,8,8,10], 7))
 // Binary Search for First Position: Implement a modified binary search to find the first occurrence of the target. If the target is found, instead of returning immediately, continue searching to the left (lower indices) to see if there are earlier occurrences.
 // Binary Search for Last Position: Implement a modified binary search to find the last occurrence of the target. If the target is found, continue searching to the right (higher indices) to see if there are later occurrences.
 // Return Positions: Use the results from the two modified binary searches to return the start and end positions of the target value in the array.
-function binarySearch(arr, val){
-    
+function searchRange(nums, target) {
+    function findFirst(nums, target) {
+        let left = 0
+        let right = nums.length - 1
+        let firstIndex = -1
+
+        while (left <= right) {
+            let mid = Math.floor((left + right) / 2)
+            if (nums[mid] === target) {
+                firstIndex = mid
+                right = mid - 1
+            } else if (nums[mid] < target) {
+                left = mid + 1
+            } else {
+                right = mid - 1
+            }
+        }
+        return firstIndex
+    }
+
+    function findLast(nums, target) {
+        let left = 0
+        let right = nums.length - 1
+        let lastIndex = -1
+
+        while (left <= right) {
+            let mid = Math.floor((left + right) / 2)
+            if (nums[mid] === target) {
+                lastIndex = mid
+                left = mid + 1
+            } else if (nums[mid] < target) {
+                left = mid + 1
+            } else {
+                right = mid - 1
+            }
+        }
+        return lastIndex
+    }
+    const firstIndex = findFirst(nums, target)
+    const lastIndex = findLast(nums, target)
+
+    return [firstIndex, lastIndex]
 }
-console.log(binarySearch([5,7,7,8,8,10], 8))
+console.log(searchRange([5, 7, 7, 8, 8, 10], 8))
+console.log(searchRange([5, 7, 7, 8, 8, 10], 6))
+
+// Question 2: Pow(x, n)
+// Problem Statement: Implement pow(x, n), which calculates x raised to the power n(i.e., x^n).
+
+// Solution Steps:
+
+// Handle Base Case: If n is 0, return 1.
+// Handle Negative Power: If n is negative, convert the problem into calculating pow(x, -n)and take the reciprocal at the end.
+// Divide and Conquer: Use the property that x^n = x^(n/2) * x^(n/2) for even n, and for odd n, it's x * x^(n/2) * x^(n/2). This reduces the problem size by half with each recursive call.
+// Combine Results: Calculate pow(x, n/2)once and use it to compute the final result to avoid redundant calculations.
+function myPow(x, n) {
+    if (n === 0) return 1
+
+    if (n < 0) {
+        x = 1 / x
+        n = -n
+    }
+
+    const powRecursive = (x, n) => {
+        if (n === 0) return 1
+        
+        const halfPow = powRecursive(x, Math.floor(n / 2))
+        if (n % 2 === 0) {
+            return halfPow * halfPow
+        } else {
+            return x * halfPow * halfPow
+        }
+    }
+
+    return powRecursive(x, n)
+}
+console.log(myPow(2, 10))
+
+// Question 3: Merge Sort
+// Problem Statement: Implement Merge Sort, a sorting algorithm that follows the Divide and Conquer paradigm.
+
+// Solution Steps:
+
+// Divide: If the array has more than one element, split the array into two halves.
+// Conquer: Recursively apply merge sort to both halves.
+// Combine: Merge the two sorted halves into a single sorted array.
+// Base Case: If the array has only one element, it is already sorted.
+// Merge Function:
+
+// The merge function takes two sorted arrays and merges them into a single sorted array by repeatedly taking the smaller of the two leading elements.
+function mergeSort(arr) {
+    if (arr.length <= 1) {
+        return arr
+    }
+
+    const mid = Math.floor(arr.length / 2)
+    const left = arr.slice(0, mid)
+    const right = arr.slice(mid)
+
+    return merge(mergeSort(left), mergeSort(right))
+}
+
+function merge(leftArr, rightArr) {
+    const mergedArr = []
+    let leftIndex = 0
+    let rightIndex = 0
+
+    while (leftIndex < leftArr.length && rightIndex < rightArr.length) {
+        if (leftArr[leftIndex] < rightArr[rightIndex]) {
+            mergedArr.push(leftArr[leftIndex])
+            leftIndex++
+        } else {
+            mergedArr.push(rightArr[rightIndex])
+            rightIndex++
+        }
+    }
+
+    return mergedArr.concat(leftArr.slice(leftIndex)).concat(rightArr.slice(rightIndex))
+}
+
+console.log(mergeSort([5, 2, 67, 3, 2, 84, 1]))
+
+
+// Question 4: Quick Sort
+// Problem Statement: Implement Quick Sort, a sorting algorithm that follows the Divide and Conquer paradigm.
+
+// Solution Steps:
+
+// Choose Pivot: Select a pivot element from the array. The choice of pivot can affect the algorithm's performance but does not affect correctness. A common approach is to pick the last element as the pivot.
+// Partition: Rearrange the array so that all elements less than the pivot come before it, and all elements greater come after it. After this step, the pivot is in its final position.
+// Recursively Apply: Apply quick sort to the sub-arrays formed by dividing the array around the pivot.
+// Base Case: If the array has one or no elements, it is already sorted.
+// Concrete Examples for Merge Sort and Quick Sort are not provided due to the nature of these algorithms being applied to sort arrays rather than producing a single deterministic output for a given input. However, the effectiveness and efficiency of both algorithms can be observed by applying them to any unsorted array of integers.
+function quickSort(arr) {
+    if (arr.length <= 1) {
+        return arr
+    }
+
+    const pivot = arr[arr.length - 1]
+    const left = []
+    const right = []
+
+    for (let i = 0; i < arr.length - 1; i++) {
+        if (arr[i] < pivot) {
+            left.push(arr[i])
+        } else {
+            right.push(arr[i])
+        }
+    }
+
+    return [...quickSort(left), pivot, ...quickSort(right)] 
+}
+console.log(quickSort([5, 2, 67, 3, 2, 84, 1]))
