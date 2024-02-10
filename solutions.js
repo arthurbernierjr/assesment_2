@@ -607,3 +607,27 @@ console.log(findFirstAndLastPosition([5, 7, 7, 8, 8, 10], 6)) // [-1, -1]
 // Bianary Search for first point
 // bianary search for last point
 // create variables for both points and return them in an array
+
+// Pow(x, n)
+function pow(x, n) {
+    if (n === 0) {
+        return 1
+    }
+    if (n < 0) {
+        x = 1 / x
+        n = -n
+    }
+    const half = pow(x, Math.floor(n / 2))
+    if (n % 2 === 0) {
+        return half * half
+    } else {
+        return half * half * x
+    }
+}
+console.log(pow(2, 10)) // 1024
+console.log(pow(2, -2)) // 0.25
+
+// if n is 0 return 1
+// if n is negative convert the problem into calculating pow(x, -n) and take the reciprocal at the end
+// Divide and Conquer: Use the property that x^n = x^(n/2) * x^(n/2) for even n, and for odd n, it's x * x^(n/2) * x^(n/2)
+// Combine Results: Calculate pow(x, n/2) once and use it to compute the final result to avoid redundant calculations
