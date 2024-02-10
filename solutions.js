@@ -121,4 +121,25 @@ function transmogrify(num1, num2, num3) {
 //Return the result.
     return Math.pow(product, num3);
  }
-  
+
+//Project Euler Problem 2
+
+ function projectEuler(limit) {
+ //Initialize two variables to store the first two numbers of the Fibonacci sequence.
+    let sum = 0
+    let num1 = 1
+    let num2 = 1
+//Within the loop, check if the current number is even. If so, add it to the sum.
+//Use a while loop to generate Fibonacci numbers up to the specified limit.
+//Update the Fibonacci sequence variables for the next iteration.
+    while(num2 <= limit){
+        if(num2 % 2 === 0){
+            sum += num2
+        }
+        const nextNum = num1 + num2
+        num1 = num2
+        num2 = nextNum
+    }
+//Return the sum of even Fibonacci numbers.
+    return sum
+}
