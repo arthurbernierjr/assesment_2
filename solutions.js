@@ -230,25 +230,34 @@ console.log(sumThePos([-5,-4,-3,-2,-1,0,1,2,3,4,5]))
 // Compare Counters: Iterate through one counter object, and for each letter, check if the letter exists in the second counter with the same frequency. If not, return false.
 // Return True: If all letters match in frequency, return true.
 function validAnagrams(first, second) {
+    // Check to see if the length of the first string is different from the length of the second string, if so return false
     if(first.length !== second.length){
         return false
     }
+    // Initialize a counter and set it to zero
     let counter = {}
+    // Do a for...of loop to get each character of the first string
     for(let char of first.toLowerCase()){
         if(char !== ' '){
+            // If the character is not blank, set counter[char] + 1 || 1
             counter[char] = counter[char] + 1 || 1
         }
     }
+    // Do another for...of loop to get each character of the second string
     for(let char of second.toLowerCase()){
         if(char !== ' '){
+            // If the character is not blank, subtract 1 from counter[char]
             counter[char] = counter[char] - 1
         }
     }
+    // Do a for...in loop to check each char in the counter object
     for(let char in counter){
+        // If counter[char] does not equal zero, return false
         if(counter[char] !== 0){
             return false
         }
     }
+    // Otherwise return true
     return true
 }
 console.log(validAnagrams("Tyler", "relyT"))
@@ -264,22 +273,30 @@ console.log(validAnagrams("Tyler", "relyT"))
 // Compare the two frequency counters. If they have the same keys with the same values, the numbers have the same frequency of digits; otherwise, they do not.
 // Return trueif the frequencies match, otherwise return false.
 function sameFreq(num1, num2){
+    // Create variables to set both parameters to strings
     firstNum = num1.toString()
     secondNum = num2.toString()
+    // Check to see if the firstNum length is different than the secondNum length
     if(firstNum.length !== secondNum.length){
+        // If so, return false
         return false
     }
+    // Initialize a counter and set it to zero
     let counter = {}
+    // Do a for...of loop to grab each digit within the first number
     for(let num of firstNum){
+        // If the digit is not blank, add 1 to counter[num]
         if(num !== ' '){
             counter[num] = counter[num] + 1 || 1
         }
     }
+    // Do the same for...loop for the secondNum but subtract 1 instead
     for(let num of secondNum){
         if(num !== ' '){
             counter[num] = counter[num] - 1
         }
     }
+    // Do a for...in loop to see if counter[num] equals zero, if not, return false
     for(let num in counter){
         if(counter[num] !== 0){
             return false
@@ -299,15 +316,21 @@ console.log(sameFreq(34, 43))
 // Iterate through the values of the frequency counter. If any value is greater than 1, it means a duplicate exists.
 // Return trueif any duplicates are found, otherwise return false.
 function areThereDuplicates(){
+    // Initialize a counter object to zero
     const counter = {}
+    // Create a for...of loop to grab each argument in the arguments array
     for(let arg of arguments){
+        // Whether there is a value in counter[arg] or it is zero, add 1 to the value
         counter[arg] = (counter[arg] || 0) + 1
     }
+    // Do a for...in loop to grab each key in the counter object
     for(let key in counter){
+        // If the counter[key] is greater than 1, return true
         if(counter[key] > 1){
             return true
         }
     }
+    // Otherwise return false
     return false
 }
 console.log(areThereDuplicates('a', 'a', 1, 'c'))
@@ -326,18 +349,26 @@ console.log(areThereDuplicates('a', 'a', 1, 'c'))
 // Update the max sum if the new sum is greater than the current max sum.
 // Return Max Sum: After sliding through the entire array, return the max sum found.
 function maxSubArray(arr, n){
+    // Initialize a max variable set to zero and a temporary sum variable set to zero
     let maxSum = 0
     let tempSum = 0
+    // If the length of the array is less than 'n', return null
     if(arr.length < n) return null
 
+    // Create a for loop to iterate through each number less than 'n'
     for(let i = 0; i < n; i++){
+        // Set maxSum += to arr[i]
         maxSum += arr[i]
     }
 
+    // Set the temporary sum to the same value as the max sum
     tempSum = maxSum
 
+    // Create another for loop, setting i to n, iterate through the length of the array
     for(let i = n; i < arr.length; i++){
+        // Temporary sum should be set to the current tempSum - arr[i-n] + arr[i]
         tempSum = tempSum - arr[i - n] + arr[i]
+        // Use a Math.max to determine whether maxSum or tempSum is greater and then set maxSum to that number
         maxSum = Math.max(maxSum, tempSum)
     }
     return maxSum
@@ -356,22 +387,33 @@ console.log(maxSubArray([1, 2, 3, 4, 5, 6], 2))
 // Update the minimum length each time a smaller subarray that satisfies the condition is found.
 // Return the minimum length if found; otherwise, return 0.
 function minSubArrayLen(arr, n) {
+    // Set variables for the current length, and sum and set them to zero
     let currentLen = 0
+    // Set a minimun length variable and set it to the array length
     let minLen = arr.length
     let sum = 0
 
+    // Create a for loop to iterate through the length of the array
     for (let i = 0; i < arr.length; i++) {
+        // Add the current array index to the sum
         sum += arr[i]
+        // Increate the currentLen variable
         currentLen++
 
+        // Create a while loop and ensure it breaks if the sum is no longer greater than or equal to 'n'
         while (sum >= n) {
+            // Set the minLen equal to the Math.min of minLen and currentLen
             minLen = Math.min(minLen, currentLen)
+            // Sum should subtract arr[i - currentLen + 1]
             sum -= arr[i - currentLen + 1]
+            // Have the currentLen decrease by one
             currentLen--
         }
     }
+    // If the minimum length is greater than the array length, return zero
     if(minLen > arr.length){ 
         return 0
+        // Otherwise, return the minLen
     } else return minLen
 }
 console.log(minSubArrayLen([1, 1, 5, 1], 7))
@@ -390,15 +432,22 @@ console.log(minSubArrayLen([1, 1, 5, 1], 7))
 // Calculate the length of the current substring and update the longest length if necessary.
 // Return the longest length found.
 function findLongestSubstring(str){
+    // Initialize a counter and set it to a blank object
     const counter = {}
+    // Set a variable for longestSubStr and a start and set them both to zero
     let longestSubstrLen = 0
     let start = 0
+    // Create a for loop to iterate through the length of the string
     for(let i = 0; i < str.length; i++){
+        // Create a const for currentChar and set it equal to the string index
         const currentChar = str[i]
+        // If the counter[currentChar] is greater that or equal to the start, then set the start equal to counter[currentChar] + 1
         if(counter[currentChar] >= start){
             start = counter[currentChar] + 1
         }
+        // Set counter[currentChar] equal to the index
         counter[currentChar] = i
+        // Set the longest substring to whichever number is greater between longestSubstrLen and i-start+1
         longestSubstrLen = Math.max(longestSubstrLen, i - start + 1)
     }
     return longestSubstrLen
@@ -427,15 +476,21 @@ console.log(findLongestSubstring('the cat in the hat'))
 // If the sum is greater than 0, move the rightpointer down (decrement) to decrease the sum.
 // No Pair Found: If the loop ends without finding a pair, return undefined
 function sumZero(arr){
+    // Set a left and a right pointer by setting left to zero and right to arr.length - 1
     let left = 0
     let right = arr.length - 1
 
+    // While the left index is less than the right
     while(left < right){
+        // Set the sum equal to the number in the left index plus the number in the right
         let sum = arr[left] + arr[right]
+        // If the sum is equal to zero, return the number on the left and the number on the right
         if(sum === 0){
             return [arr[left], arr[right]]
+        // Else if the sum is less than zero, increase the left value by one
         } else if(sum < 0){
             left++
+        // Otherwise, decrease the right by 1
         } else {
             right --
         }
@@ -456,18 +511,27 @@ console.log(sumZero([-13,-12,-10,-6,0,1,2,3,4,5,6,7]))
 // The count of unique values will be i + 1since irepresents the index, and indexes are zero-based.
 // Return i + 1.
 function countUniqueValues(arr){
+    // Check to see if the array length is equal to zero, if it is, return zero
     if(arr.length === 0){
         return 0
     }
+    // Set a variable for the left number in the array and set it to zero
     let left = 0
+    // Set a variable for the right number and set it equal to one
     let right = 1
+    // Create a counter variable and set it to one since the first set of values is already going to be unique
     let counter = 1
 
+    // While right is less than the array length, perform the following actions
     while(right < arr.length){
+        // If the left number is not equal to the right number
         if(arr[left] !== arr[right]){
+            // Increase the counter by 1
             counter++
+            // Set the left value equal to the right
             left = right
         }
+        // Increase the right value by one
         right++
     }
     return counter
@@ -489,18 +553,26 @@ console.log(countUniqueValues([1,2,3,4,4,4,7,7,12,12,13]))
 // If the calculated average is greater than the target average, move the endpointer down (decrement end) to try and decrease the average.
 // If no pair is found that matches the target average, return false.
 function averagePair(arr, target){
+    // If the array length is equal to zero return false
     if(arr.length === 0){
         return false
     }
+    // Set a 'start' variable to zero
     let start = 0
+    // Set an 'end' variable and set it to the last index of the array
     let end = arr.length - 1
 
+    // Create a while loop to see if the 'start' index is less than the 'end' index
     while(start < end){
+        // Set a variable to calculate the average by adding the start and end together and dividing it by 2
         let avg = (arr[start] + arr[end]) / 2
+        // If the average is equal to the target, return true
         if(avg === target){
             return true
+            // Else if the average is less than the target, increase the start by 1
         } else if (avg < target){
             start++
+            // Else decrease the end variable by 1
         } else {
             end--
         }
@@ -531,15 +603,21 @@ console.log(averagePair([1,3,3,5,6,7,10,12,19], 8))
 // If the middle value is greater than the target, move the rightpointer to middle - 1.
 // Target Not Found: If the loop ends and the target has not been found, return -1.
 function search(arr, target){
+    // Set a left and a right pointer
     let left = 0
     let right = arr.length - 1
 
+    // Create a while loop to check if the left is less than or equal to the right
     while(left <= right){
+        // Create a mid variable that takes the floor of left plus right and divides it by two
         let mid = Math.floor((left + right) / 2)
+        // If the mid number is equal to the target, return mid index
         if(arr[mid] === target){
             return mid
+            // else if mid number is less than the target, set left equal to mid + 1
         } else if (arr[mid] < target){
             left = mid + 1
+            // else set the right index to mid - 1
         } else {
             right = mid - 1
         }
@@ -557,18 +635,27 @@ console.log(search([5,7,7,8,8,10], 7))
 // Binary Search for Last Position: Implement a modified binary search to find the last occurrence of the target. If the target is found, continue searching to the right (higher indices) to see if there are later occurrences.
 // Return Positions: Use the results from the two modified binary searches to return the start and end positions of the target value in the array.
 function searchRange(nums, target) {
+    // Create a function to find the first target
     function findFirst(nums, target) {
+        // set left equal to zero and right equal to the last index
         let left = 0
         let right = nums.length - 1
+        // Set a variable for the firstIndex and set it equal to -1, this is how to make sure -1 is returned if the target is not found
         let firstIndex = -1
 
+        // While left is less than or equal to right, perform the following actions
         while (left <= right) {
+            // Set a mid variable
             let mid = Math.floor((left + right) / 2)
+            // if the mid num is equal to the target, set firstIndex = to mid
+            // Set the right index equal to mid - 1
             if (nums[mid] === target) {
                 firstIndex = mid
                 right = mid - 1
+                // else if nums[mid] is less than the target, set left equal to mid + 1
             } else if (nums[mid] < target) {
                 left = mid + 1
+                // set right equal to mid - 1
             } else {
                 right = mid - 1
             }
@@ -576,6 +663,8 @@ function searchRange(nums, target) {
         return firstIndex
     }
 
+    // Create a function to find the last target
+    // Do the same process as above to find the last index
     function findLast(nums, target) {
         let left = 0
         let right = nums.length - 1
@@ -594,6 +683,7 @@ function searchRange(nums, target) {
         }
         return lastIndex
     }
+    // Create two variables for the firstIndex and the lastIndex and set it equal to the results from the first two functions
     const firstIndex = findFirst(nums, target)
     const lastIndex = findLast(nums, target)
 
@@ -612,19 +702,25 @@ console.log(searchRange([5, 7, 7, 8, 8, 10], 6))
 // Divide and Conquer: Use the property that x^n = x^(n/2) * x^(n/2) for even n, and for odd n, it's x * x^(n/2) * x^(n/2). This reduces the problem size by half with each recursive call.
 // Combine Results: Calculate pow(x, n/2)once and use it to compute the final result to avoid redundant calculations.
 function myPow(x, n) {
+    // If n is equal to zero, return 1
     if (n === 0) return 1
 
+    // If n is less than zero, set x = to 1 / x
+    // and set n = -n, this will check if the number is a negative and set convert the numbers to positive
     if (n < 0) {
         x = 1 / x
         n = -n
     }
 
+    // Create an arrow function that checks if n is equal to zero and returns 1
     const powRecursive = (x, n) => {
         if (n === 0) return 1
-        
+        // Calculate x raised to the power of half of n using recursion
         const halfPow = powRecursive(x, Math.floor(n / 2))
+        // If n is even, return halfPow squared
         if (n % 2 === 0) {
             return halfPow * halfPow
+            // Else return x times halfPow squared
         } else {
             return x * halfPow * halfPow
         }
@@ -647,32 +743,46 @@ console.log(myPow(2, 10))
 
 // The merge function takes two sorted arrays and merges them into a single sorted array by repeatedly taking the smaller of the two leading elements.
 function mergeSort(arr) {
+    // If the length of the array is less than or equal to one, return the array
     if (arr.length <= 1) {
         return arr
     }
 
+    // Set variables for the mid, left, and right of the subArray
     const mid = Math.floor(arr.length / 2)
+    // The left sub array will be a slice from zero to mid
     const left = arr.slice(0, mid)
+    // The right will be a slice from mid onward
     const right = arr.slice(mid)
 
+    // Return a merge of mergeSort(left) and mergeSort(right)
     return merge(mergeSort(left), mergeSort(right))
 }
 
+// Create another function to handle the merge of two arrays
 function merge(leftArr, rightArr) {
+    // Create a variable with a blank array
     const mergedArr = []
+    // Let both the left and the right index be equal to zero
     let leftIndex = 0
     let rightIndex = 0
 
+    // While the left index is less than the leftArr length && the right index is less than the rightArr length, perform the following actions
     while (leftIndex < leftArr.length && rightIndex < rightArr.length) {
+        // If the leftArr[leftIndex] is less than the right
         if (leftArr[leftIndex] < rightArr[rightIndex]) {
+            // Push the leftArr[leftIndex] into the mergedArr array
             mergedArr.push(leftArr[leftIndex])
+            // Increase the leftIndex by one
             leftIndex++
+            // Otherwise push the right and increase the right
         } else {
             mergedArr.push(rightArr[rightIndex])
             rightIndex++
         }
     }
 
+    // Return a concatenation of the leftArr.slice(leftIndex) and the right
     return mergedArr.concat(leftArr.slice(leftIndex)).concat(rightArr.slice(rightIndex))
 }
 
@@ -690,22 +800,29 @@ console.log(mergeSort([5, 2, 67, 3, 2, 84, 1]))
 // Base Case: If the array has one or no elements, it is already sorted.
 // Concrete Examples for Merge Sort and Quick Sort are not provided due to the nature of these algorithms being applied to sort arrays rather than producing a single deterministic output for a given input. However, the effectiveness and efficiency of both algorithms can be observed by applying them to any unsorted array of integers.
 function quickSort(arr) {
+    // If the array length is less than or equal to one, return the array
     if (arr.length <= 1) {
         return arr
     }
 
+    // Create a pivot point by setting it equal to the last number in the array
     const pivot = arr[arr.length - 1]
+    // Create a blank left and right array
     const left = []
     const right = []
 
+    // Create a for loop that iterates every number up to the last index
     for (let i = 0; i < arr.length - 1; i++) {
+        // If the current array index is less than the pivot, push that number into the left array
         if (arr[i] < pivot) {
             left.push(arr[i])
+            // Else, push it into the right
         } else {
             right.push(arr[i])
         }
     }
 
+    // Use spread syntax to place all of the numbers within the quickSort array for the left, pivot, and then another spread for quickSort right
     return [...quickSort(left), pivot, ...quickSort(right)] 
 }
 console.log(quickSort([5, 2, 67, 3, 2, 84, 1]))
