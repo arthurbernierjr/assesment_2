@@ -672,3 +672,28 @@ const merge = (arr1, arr2) => {
 }
 
 console.log(mergeSort([1,2,4,0,4,4,1])) // returns [0, 1, 1, 2, 4, 4, 4]
+
+// Quick Sort
+// Problem Statement: Implement Quick Sort, a sorting algorithm that follows the Divide and Conquer paradigm.
+
+const quickSort = arr => {
+    if (arr.length <= 1) {
+        return arr
+    }
+    let pivot = arr[arr.length - 1]
+    let low = []
+    let high = []
+    for (let i = 0; i < arr.length - 1; i++) {
+        if (arr[i] <= pivot) {
+            low.push(arr[i])
+        } else {
+            high.push(arr[i])
+        }
+    }
+    return [...quickSort(low), pivot, ...quickSort(high)]
+  }
+  
+  console.log(quickSort([0, 100, 2, 64, 2])) // returns [ 0, 2, 2, 64, 100 ]
+
+  // that's it arthur??? that's the best you can do??!? 
+  // jkjkjkjk
