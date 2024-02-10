@@ -494,3 +494,35 @@ console.log(countUniqueValues([1, 2, 3, 4, 4, 4, 7, 7, 12, 12, 13])) // 7
 // Compare the elements at i and j. If they are different, increment i and set the value at i to the value at j.
 // This moves unique values to the front of the array
 // The count of unique values will be i + 1 since i represents the index, and indexes are zero-based.
+
+// Avereage Pair
+function averagePair(arr, target) {
+    if (arr.length === 0) {
+        return false
+    }
+    let start = 0
+    let end = arr.length - 1
+
+    while (start < end) {
+        let average = (arr[start] + arr[end]) / 2
+        if (average === target) {
+            return true
+        } else if (average < target) {
+            start++
+        } else {
+            end--
+        }
+    }
+    return false
+}
+console.log(averagePair([1, 3, 3, 5, 6, 7, 10, 12, 19], 8)) // true
+console.log(averagePair([-1, 0, 3, 4, 5, 6], 4.1)) // false
+
+// If the array is empty return false
+// Create two pointers on each ends of the array
+// While the start pointer is less than the end, while loop
+// calculate the average of the values at the start and end
+// if the average is equal to the target return true
+// if the average is less than the target, increment the start
+// if the average is greater than the target, decrement the end
+// if no pair is found, retrun false
