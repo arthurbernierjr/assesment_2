@@ -461,3 +461,34 @@ const sumZero = arr => {
 
 console.log(sumZero([1,2,3,-3])) // returns [ 3, -3 ]
 
+// Question 1: Count Unique Values
+// Problem Statement: Implement a function called countUniqueValues, which accepts a sorted array, and counts the unique values in the array. There can be negative numbers in the array, but it will always be sorted.
+
+// My thinking was to either use a for loop and increment 1 every time an item in the array doesn't equal the preceding one, or to use a frequency counter and count the number of properties in the counter object. Neither of those use the multiple pointers method so i will follow the pseudocode provided.
+
+const countUniqueValues = arr => {
+    // If the array is empty, return 0.
+    if (!arr.length) return 0
+
+    // Initialize a pointer or index (i) to start at the first element of the array.
+    let i = 0
+    // Iterate through the array with another pointer or index (j), starting from the second element.
+    for (let j = 1; j < arr.length; j++) {
+
+        // Compare the elements at iand j. If they are different, increment i, and set the value at ito the value at j. This effectively moves unique values to the front of the array without needing an auxiliary data structure.
+        if (arr[i] !== arr[j]) {            
+            arr[i] = arr[j]
+            i++
+        }
+
+    }
+    // The count of unique values will be i + 1since irepresents the index, and indexes are zero-based.
+// Return i + 1.
+    return i + 1
+
+}
+
+console.log(countUniqueValues([1,1,1,1,2])) // returns 2
+
+
+
