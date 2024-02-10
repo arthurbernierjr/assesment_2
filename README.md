@@ -35,4 +35,8 @@
     2. countUniqueValues
     3. averagePair
 5. Divide and Conquer:
-    1. 
+    1. Binary Search*
+    2. Find First and Last Position of Element in Sorted Array
+    3. Pow(x, n)
+    4. Merge Sort (Ref: git/[some-sort-algos](https://github.com/nicolebeechler/some-sort-algos/blob/main/script.js))
+    5. Quick Sort (Ref: git/[some-sort-algos](https://github.com/nicolebeechler/some-sort-algos/blob/main/script.js))

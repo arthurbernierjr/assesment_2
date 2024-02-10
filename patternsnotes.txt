@@ -33,4 +33,12 @@ The Multiple Pointers pattern involves creating pointers or values that correspo
 2. **Condition-Based Movement**: The pointers move based on a condition set by the problem. For example, if you're trying to find a pair of numbers that sum to zero, you might move the pointers closer together or further apart based on their sum.
 3. **Solution Identification**: The movement continues until the solution is found or the pointers meet or pass each other, indicating that no solution exists.
 
+# Divide and Conquer
 
+The Divide and Conquer strategy is an algorithm design paradigm that solves a problem by recursively breaking it down into two or more sub-problems of the same or related type, until these become simple enough to be solved directly. Solutions to the sub-problems are then combined to give a solution to the original problem.
+
+### How It Works
+
+1. **Divide**: The problem is divided into smaller sub-problems.
+2. **Conquer**: Each sub-problem is solved recursively.
+3. **Combine**: The solutions to the sub-problems are combined to solve the original problem.

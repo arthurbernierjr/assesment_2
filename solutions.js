@@ -399,3 +399,221 @@ if (sumZeroResult1) {
     console.log("No pair with sum zero found.")
 }
 
+function countUniqueValues(arr) {
+    if (arr.length === 0) {
+        return 0
+    }
+
+    let i = 0
+
+    for (let j = 1; j < arr.length; j++) {
+        if (arr[i] !== arr[j]) {
+            i++
+            arr[i] = arr[j]
+        }
+    }
+
+    return i + 1
+}
+
+console.log(countUniqueValues([1, 1, 1, 1, 1, 2])) // Output: 2
+console.log(countUniqueValues([1, 2, 3, 4, 4, 4, 7, 7, 12, 12, 13])) // Output: 7
+console.log(countUniqueValues([])) // Output: 0
+console.log(countUniqueValues([-2, -1, -1, 0, 1])) // Output: 4
+
+
+function averagePair(arr, target) {
+    if (arr.length === 0) {
+        return false;
+    }
+
+    let start = 0
+    let end = arr.length - 1
+
+    while (start < end) {
+        const avg = (arr[start] + arr[end]) / 2
+
+        if (avg === target) {
+            return true
+        } else if (avg < target) {
+            start++
+        } else {
+            end--
+        }
+    }
+
+    return false
+}
+
+console.log(averagePair([1, 2, 3], 2.5)) // Output: true
+console.log(averagePair([1, 3, 3, 5, 6, 7, 10, 12, 19], 8)) // Output: true
+console.log(averagePair([-1, 0, 3, 4, 5, 6], 4.1)) // Output: false
+console.log(averagePair([], 4)) // Output: false
+
+
+// binary search 
+
+function search(array, val) {
+    let left = 0;
+    let right = array.length - 1;
+
+    while (left <= right) {
+        let middle = Math.floor((left + right) / 2);
+        let currentElement = array[middle];
+
+        if (currentElement === val) {
+            return middle;
+        } else if (currentElement < val) {
+            left = middle + 1;
+        } else {
+            right = middle - 1;
+        }
+    }
+
+    return -1;
+}
+
+const searchArray1 = [1, 3, 5, 7, 9, 11, 13, 15]
+const searchTarget1 = 7
+console.log(search(searchArray1, searchTarget1)) // Output: 3 (Index position of 7)
+
+const searchArray2 = [2, 4, 6, 8, 10]
+const searchTarget2 = 5
+console.log(search(searchArray2, searchTarget2)) // Output: -1 (5 is n/a)
+
+
+function findFirstAndLastPosition(nums, target) {
+    function binarySearchFirst(nums, target) {
+        let left = 0
+        let right = nums.length - 1
+        let firstPosition = -1
+
+        while (left <= right) {
+            let mid = Math.floor((left + right) / 2)
+
+            if (nums[mid] === target) {
+                firstPosition = mid
+                right = mid - 1
+            } else if (nums[mid] < target) {
+                left = mid + 1
+            } else {
+                right = mid - 1
+            }
+        }
+
+        return firstPosition
+    }
+
+    function binarySearchLast(nums, target) {
+        let left = 0
+        let right = nums.length - 1
+        let lastPosition = -1
+
+        while (left <= right) {
+            let mid = Math.floor((left + right) / 2)
+
+            if (nums[mid] === target) {
+                lastPosition = mid
+                left = mid + 1
+            } else if (nums[mid] < target) {
+                left = mid + 1
+            } else {
+                right = mid - 1
+            }
+        }
+
+        return lastPosition;
+    }
+
+    const firstPosition = binarySearchFirst(nums, target)
+    const lastPosition = binarySearchLast(nums, target)
+
+    return [firstPosition, lastPosition]
+}
+
+console.log(findFirstAndLastPosition([5,7,7,8,8,10], 8)) // Output: [3, 4]
+console.log(findFirstAndLastPosition([5,7,7,8,8,10], 6)) // Output: [-1, -1]
+console.log(findFirstAndLastPosition([], 6)) // Output: [-1, -1]
+
+
+function pow(x, n) {
+    if (n === 0) {
+        return 1
+    }
+
+    if (n < 0) {
+        x = 1 / x
+        n = -n
+    }
+
+    const halfPower = pow(x, Math.floor(n / 2))
+
+    return n % 2 === 0 ? halfPower * halfPower : x * halfPower * halfPower
+}
+
+// Examples
+console.log(pow(2, 10)) // Output: 1024
+console.log(pow(2, -2)) // Output: 0.25
+console.log(pow(2, 0))  // Output: 1
+
+
+function mergeSort(arr) {
+
+    if (arr.length <= 1) {
+        return arr
+    }
+
+    const middle = Math.floor(arr.length / 2)
+    const left = arr.slice(0, middle)
+    const right = arr.slice(middle)
+
+    return merge(mergeSort(left), mergeSort(right))
+  }
+  
+  
+  function merge(arr1, arr2) {
+    var result = [];
+  
+    while (arr1.length && arr2.length) {
+      if(arr1[0] <= arr2[0]) {
+        result.push(arr1.shift());
+      } else {
+        result.push(arr2.shift());
+      }
+    }
+  
+    return result.concat(arr1, arr2);
+  }
+
+  const arr1 = [9, 7, 6, 0, 1, 3]
+
+  console.log("mergeSort = " + mergeSort(arr1))
+
+  
+  function quickSort(arr){
+    
+    if (arr.length <= 1) {
+        return arr
+    }
+
+    const pivot = arr[arr.length-1] 
+    const right = []
+    const left = []
+
+    for (let i = 0; i < arr.length-1; i++) {
+        if (arr[i] < pivot){
+            left.push(arr[i])
+        }
+        else {
+            right.push(arr[i])
+        }
+    }
+
+    return quickSort(left).concat(pivot, quickSort(right))
+
+  }
+
+  const arr = [0, 9, 6, 5, 4]
+
+  console.log("quickSort = " + quickSort(arr))
+
