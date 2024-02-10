@@ -349,7 +349,6 @@ const maxSubarraySum = (arr, n) => {
 
     // create sliding window for loop where first item is subtracted and last item is added
     for (let i = n; i < arr.length; i++) {
-        // console.log(arr[i])
         tempSum = tempSum - arr[i - n] + arr[i] 
         if (tempSum > maxSum) maxSum = tempSum
     }
@@ -357,8 +356,39 @@ const maxSubarraySum = (arr, n) => {
 
 }
 
-console.log(maxSubarraySum([1,2,3,4,5], 2))
+console.log(maxSubarraySum([1,2,3,4,5], 2)) // returns 9
 
+// Question 1: MinSubArrayLen
+// Problem Statement: Write a function called minSubArrayLen which accepts two parameters - an array of positive integers and a positive integer. This function should return the minimal length of a contiguous subarray of which the sum is greater than or equal to the integer passed to the function. If there isn't one, return 0 instead.
 
+const minSubArrayLen = (arr, threshold) => {
+    // initialize start pointer, end pointer, sum, minLen
+    let startPointer = 0
+    let endPointer = 0
+    let total = 0
+    let minLen = 0
+    // loop through array while the end is less than arr.length
+    while (endPointer < arr.length) {
+        
+        // add item to total
+        total += arr[endPointer]
 
-// if sum in iteration is larger than max, set max to sum in interation
+        // while the sum >= threshold
+        while (total >= threshold) {
+            console.log(total)
+            // set curLen to end - start and add 1 to get length
+            let curLen = endPointer - startPointer + 1
+            // if curLen < minLen or minLen hasn't been set yet, set minLen to curLen
+            if (!minLen || curLen < minLen) minLen = curLen
+            // shift the window by subtracting arr[start] from sum and incrementing start
+            total -= arr[startPointer]
+            startPointer ++
+        }
+        // increment the end up one
+        endPointer ++
+    }
+    // return minLen
+    return minLen
+}
+
+console.log(minSubArrayLen([1,4,16,22,5,7,8,9,10],95), minSubArrayLen([2,3,1,2,4,3], 7))
