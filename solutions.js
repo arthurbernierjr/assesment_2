@@ -9,6 +9,8 @@
 // Compare the original lowercase string with the reversed string.
 // If they are the same, the function should return true; otherwise, it returns false.
 // Commit your work with the message "palindrome completed".
+
+// Make an arrow function to split the lowercase version of the string, reverse it, and join it back together. Use a ternary expression to determine whether it is true or false.
 const palindrome = (string) => string.toLowerCase() === string.toLowerCase().split('').reverse().join('') ? true:false
 console.log(palindrome("racecar"))
 
@@ -18,11 +20,17 @@ console.log(palindrome("racecar"))
 // In each iteration, add the current element to the sum variable.
 // After the loop, return the sum variable.
 // Commit your work with the message "sum array completed".
-function sumArray(num) {
+
+function sumArray(arr) {
+    // initialize a sum to zero
     let sum = 0
-    for(let i = 0; i < num.length; i++){
-        sum += num[i]
+
+    // Crete a for loop that runs for the length of the array
+    for(let i = 0; i < arr.length; i++){
+        // Add each index of the array with arr[i]
+        sum += arr[i]
     }
+    // Return the sum
     return sum
 }
 console.log(sumArray([1,2,3,4]))
@@ -34,17 +42,20 @@ console.log(sumArray([1,2,3,4]))
 // If the number is divisible by any number in this range, return false.
 // If no divisors are found, return true.
 function checkPrime(num) {
+    // Start by checking if the number is less than or equal to one and return false
     if(num <= 1){
         return false
     }
+    // Create a for loop starting at index 2 and iterating up to "num"
     for(let i = 2; i < num; i++){
+        // Check to see if the argument can be divided by any number that comes before it. If it can, then return false, because it is not prime, otherwise return true.
         if(num % i === 0) {
             return false
         }
     }
     return true
 }
-console.log(checkPrime(9))
+console.log(checkPrime(7))
 
 // printPrimes
 // Use a for loop to iterate through numbers from 2 up to the specified limit.
@@ -52,18 +63,26 @@ console.log(checkPrime(9))
 // If checkPrimereturns true, console.log the number.
 // Commit your work with the message "prime numbers completed".
 function printPrimes(num){
+    // Initiate a variable called primes where I will store the new array of prime numbers.
+    let primes = []
+    // Create a for loop to check any number greater than 2
     for(let i = 2; i <= num; i++){
+        // Run checkPrime on every number that comes prior to the "num" to determine if it is in fact a prime number
         if(checkPrime(i)){
-            console.log(i)
+            // If the number prior to "num" is a prime number, push it into the "primes" array
+            primes.push(i)
         }
     }
+    return primes
 }
-printPrimes(17)
+console.log(printPrimes(17))
 
 // Calculate the Cube
 // Calculate the cube of the number by multiplying the number by itself twice.
 // Return the result.
 // Commit your work with the message "calculate the cube completed".
+
+// Use the Math.pow function to calculate the num to the power of 3
 const calcCube = num => Math.pow(num, 3)
 console.log(calcCube(2))
 
@@ -72,8 +91,11 @@ console.log(calcCube(2))
 // Return trueif the character is a vowel, otherwise return false.
 // Commit your work with the message "is a vowel completed".
 const checkVowel = (char) => {
+    // Set a variable to house all of the vowels
     const vowels = ["a", "e", "i", "o", "u"]
+    // Take the "char" and loop through the vowels variable to see if it matches
     for (let i = 0; i <= vowels.length; i++){
+        // Set the char to lowercase so that it does not matter whether the argument is upper or lowercase
         if(char.toLowerCase() === vowels[i]){
             return true
         }
@@ -86,7 +108,9 @@ console.log(checkVowel("a"))
 // Return an array containing the lengths of the two input strings.
 // Commit your work with the message "get two lengths completed".
 const getTwoLengths = (strOne, strTwo) => {
+    // Set a variable called lengths with an empty array
     const lengths = []
+    // Push into lengths the strOne.length and the strTwo.length
     lengths.push(strOne.length, strTwo.length)
     return lengths
 }
@@ -96,6 +120,8 @@ console.log(getTwoLengths("Tyler Pierson", "General Assembly"))
 // Use the map function to transform each string in the input array into its length.
 // Return the resulting array of lengths.
 // Commit your work with the message "get multiple lengths completed".
+
+// Use map to create a function that will interate through each item in the argument array and return its length
 const getMultipleLengths = arr => arr.map(str => str.length)
 console.log(getMultipleLengths(["Tyler", "Jennifer", "Dean", "Ringo"]))
 
@@ -103,6 +129,8 @@ console.log(getMultipleLengths(["Tyler", "Jennifer", "Dean", "Ringo"]))
 // Use the Math.max function to find the maximum of the three numbers.
 // Return the maximum number.
 // Commit your work with the message "maximum of three numbers completed".
+
+// Use Math.max to take in a select amount of numbers and return the highest one
 const maxNum = (num1, num2, num3) => Math.max(num1, num2, num3)
 console.log(maxNum(43, 135, 15))
 
@@ -111,12 +139,14 @@ console.log(maxNum(43, 135, 15))
 // In case of a tie, the first word in the array order is returned.
 // Commit your work with the message "print longest word completed".
 function printLongestWord(arr) {
+    // Use reduce to take in two parameters and return a function
     return arr.reduce((currentWord, longest) => {
-        if(currentWord.length > longest.length){
-            return currentWord
-        } else if(currentWord.length === longest.length){
+        // Check to see if the currentWords length is longer than or equal to the longests length
+        if(currentWord.length >= longest.length){
+            // If currentWord is longer than or equal, return the currentWord
             return currentWord
         } else {
+            // Otherwise return longest since it remains the longest string
             return longest
         }
     })
@@ -128,6 +158,8 @@ console.log(printLongestWord(['Tyler', 'General Assembly', 'Software Engineering
 // Raise the product to the power of the third number.
 // Return the result.
 // Commit your work with the message "transmogrify the numbers completed".
+
+// Use Math.pow to take in a number and raise it to the power or the second number in the argument. Use the numbers in the parameter of the transmogrify function.
 const transmogrify = (num1, num2, num3) => Math.pow((num1*num2), num3)
 console.log(transmogrify(3, 3, 2))
 
@@ -139,15 +171,23 @@ console.log(transmogrify(3, 3, 2))
 // Return the sum of even Fibonacci numbers.
 // Commit your work with the message "Project Euler Problem 2 completed".
 function projectEuler(limit) {
+    // Initialize the sum to 0
     let sum = 0
+    // Initialize num1 and num2 to the first number in the Fibonacci sequence, 1
     let num1 = 1
     let num2 = 1
+    // Check to see if num2 remains less than or equal to the limit
     while(num2 <= limit){
+        // If so, check to see if num2 modulo 2 is 0
         if(num2 % 2 === 0){
+            // If num2 is even, add num2 to sum
             sum += num2
         }
+        // Set another variable that takes num1 and num2 and adds them together to iterate the number by one
         const nextNum = num1 + num2
+        // Set num1 equal to num2 to move it forward
         num1 = num2
+        // Set num2 equal to nextNum to move it forward
         num2 = nextNum
     }
     return sum
@@ -159,6 +199,7 @@ console.log(projectEuler(121))
 // Return a string that includes the index of the needle.
 // Commit your work with the message "a needle in the haystack completed".
 const needleInTheHaystack =arr => arr.indexOf("needle")
+// Use indexOf and type in the argument of "needle" to find the exact index of the string.
 console.log(needleInTheHaystack(["Where", "is", "the", "needle", "in", "this", "haystack?"]))
 
 // Sum the Positive
@@ -167,8 +208,11 @@ console.log(needleInTheHaystack(["Where", "is", "the", "needle", "in", "this", "
 // Return the sum.
 // Commit your work with the message "sum the positive completed".
 function sumThePos(arr){
+    // Set a variable called posNums to filter through the array, create a parameter called "nums" and checks to see if it is greater than 0
     const posNums = arr.filter(nums => nums > 0)
+    // Set a total to zero
     let total = 0
+    // Return a reduce function of posNums that takes in num1 and num2 and adds it to the total
     return posNums.reduce((num1, num2) => num1 + num2, total)
 }
 console.log(sumThePos([-5,-4,-3,-2,-1,0,1,2,3,4,5]))
