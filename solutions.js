@@ -397,7 +397,7 @@ console.log(minSubArrayLen([1,4,16,22,5,7,8,9,10],95), minSubArrayLen([2,3,1,2,4
 
 // Problem Statement: Write a function called findLongestSubstring which accepts a string and returns the length of the longest substring with all distinct characters.
 
-// This is my attempt. It's wrong because it has an O(N^2) time complexity and it looks only at adjacent characters.
+// This is my attempt. It's wrong because it has an O(N^2) time complexity and it looks only at adjacent characters. Now i'm thinking I can use a frequency counter to solve the second problem. If I have time I'll come back.
 
 const findLongestSubstring = arr => {
     // initialize a start pointer as 0, end pointer as 1, and maxLength as 1
@@ -425,4 +425,39 @@ const findLongestSubstring = arr => {
     return maxLen
 }
 
+
+// SumZero
+// Problem Statement: Write a function called sumZerowhich accepts a sorted array of integers. The function should find the first pair where the sum is 0. Return an array that includes both values that sum to zero or undefinedif a pair does not exist.
+
+// initialize a left var of 0
+// initialize a right var of arr.len -1
+
+// loop while left is less than right so that they don't converge
+
+// save a sum variable as left + right
+// if the sum is 0, return pair
+
+// if it's less than 0, pos increment left. this works because the array is sorted
+// otherwise, neg increment right
+
+// return undefined if none of this works
+
+const sumZero = arr => {
+    let left = 0
+    let right = arr.length -1
+
+    while (left < right) {
+        let sum = arr[left] + arr[right]
+        if (sum === 0) {
+            return [arr[left], arr[right]]
+        } else if (sum < 0) {
+            left ++
+        } else {
+            right --
+        }
+    }
+    return undefined
+}
+
+console.log(sumZero([1,2,3,-3])) // returns [ 3, -3 ]
 
