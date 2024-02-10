@@ -631,3 +631,51 @@ console.log(pow(2, -2)) // 0.25
 // if n is negative convert the problem into calculating pow(x, -n) and take the reciprocal at the end
 // Divide and Conquer: Use the property that x^n = x^(n/2) * x^(n/2) for even n, and for odd n, it's x * x^(n/2) * x^(n/2)
 // Combine Results: Calculate pow(x, n/2) once and use it to compute the final result to avoid redundant calculations
+
+// MergeSort
+function mergeSort(arr) {
+    if (arr.length <= 1) {
+        return arr
+    }
+    const middle = Math.floor(arr.length / 2)
+    const leftHalf = mergeSort(arr.slice(0, middle))
+    const rightHalf = mergeSort(arr.slice(middle))
+
+    return merge(leftHalf, rightHalf)
+}
+function merge(leftArr, rightArr) {
+    let result = []
+    let leftIndex = 0
+    let rightIndex = 0
+
+    while(leftIndex < leftArr.length && rightIndex < rightArr.length) {
+        if (leftArr[leftIndex] < rightArr[rightIndex]) {
+            result.push(leftArr[leftIndex])
+            leftIndex++
+        } else {
+            result.push(rightArr[rightIndex])
+            rightIndex++
+        }
+    }
+     while (leftIndex < leftArr.length) {
+        result.push(leftArr[leftIndex])
+        leftIndex++
+    }
+    while (rightIndex < rightArr.length) {
+        result.push(rightArr[rightIndex])
+        rightIndex++
+    }
+    return result
+}
+console.log(mergeSort([8, 3, 9, 5, 2, 7, 1, 6])) // [1, 2, 3, 5, 6, 7, 8, 9]
+
+// If the array has only one element, it is already sorted,  base case
+// Divide: Split the array into two halves
+// Conquer: Recursively apply merge sort to both halves
+// Combine: Merge the two sorted halves into a single sorted array
+// create merge function
+// Merge the two sorted arrays into a single sorted array
+// Add remaining elements from left array, if any
+// Add remaining elements from right array, if any
+// return result
+
