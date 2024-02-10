@@ -490,5 +490,37 @@ const countUniqueValues = arr => {
 
 console.log(countUniqueValues([1,1,1,1,2])) // returns 2
 
+// Average Pair
+// Problem Statement: Write a function called averagePair. Given a sorted array of integers and a target average, determine if there is a pair of values in the array where the average of the pair equals the target average. There may be more than one pair that matches the average target.
+
+const averagePair = (arr, avg) => {
+    // initialize a left var of 0
+    let left = 0
+    // initialize a right var of arr.len -1
+    let right = arr.length - 1
+
+    // loop while left is less than right so that they don't converge
+    while (left < right) {
+        // save a temp average variable as left * right / 2
+        tempAvg = (arr[left] + arr[right]) / 2
+        // if the temp average equals the average arg, return true
+        if (tempAvg === avg) {
+            return true
+        } else if (tempAvg < avg) {
+            // if it's less than avg, pos increment left
+            left ++
+        } else {
+            // otherwise, neg increment right
+            right --
+        }
+    }
+    // return false outside of loop
+    return false
+}
+
+console.log(averagePair([1,2,3], 2.5), averagePair([-1,0,3,4,5,6], 4.1)) // returns true false
+
+
+
 
 
