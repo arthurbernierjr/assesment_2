@@ -1,0 +1,36 @@
+# Problem-Solving Patterns
+
+## Frequency Counter
+
+The Frequency Counter pattern is a common technique used in coding challenges and algorithms to track the frequencies of specific elements in one or more collections (like arrays or strings). Instead of using nested loops, which often result in O(n²) time complexity, the Frequency Counter pattern uses objects (or sets/maps in languages other than JavaScript) to achieve O(n) time complexity, making it more efficient for large datasets.
+
+### How It Works
+
+1. **Initialization**: Create one or more objects to keep track of the frequencies of elements.
+2. **Population**: Iterate through the collection(s) and populate the object(s) with each element's frequency.
+3. **Comparison**: Perform the necessary operations or comparisons using the populated object(s).
+
+This pattern is particularly useful for solving problems related to anagrams, duplicates, or any scenario where you need to compare the number of occurrences of elements across data structures.
+
+## Sliding Window
+
+The Sliding Window pattern is an efficient way to solve problems involving arrays or sequences in a continuous subset or subarray. It is particularly useful when you need to calculate something among all contiguous subarrays of a fixed size or find the longest/shortest sequence that meets certain criteria. This pattern can help reduce the time complexity from O(n²) to O(n) by avoiding unnecessary re-computation.
+
+### How It Works
+
+1. **Window Initialization**: Start with an initial "window" of elements, which could be a single element or a subset of the array, depending on the problem.
+2. **Window Expansion**: Expand the window until it reaches the desired condition or size.
+3. **Window Sliding**: Once the window is at its maximum size or meets a certain condition, slide the window over by one element at a time, adjusting calculations as necessary to reflect the current window's contents.
+4. **Condition Checking**: At each step, check for the condition you're trying to satisfy (e.g., maximum sum, longest sequence) and update your answer accordingly.
+
+## Multiple Pointers
+
+The Multiple Pointers pattern involves creating pointers or values that correspond to an index or position and move towards the beginning, end, or middle based on a certain condition. This technique is efficient for solving problems with minimal space complexity, often in linear time.
+
+### How It Works
+
+1. **Pointer Initialization**: Depending on the problem, pointers are typically initialized at the beginning, end, or sometimes the middle of a collection.
+2. **Condition-Based Movement**: The pointers move based on a condition set by the problem. For example, if you're trying to find a pair of numbers that sum to zero, you might move the pointers closer together or further apart based on their sum.
+3. **Solution Identification**: The movement continues until the solution is found or the pointers meet or pass each other, indicating that no solution exists.
+
+
