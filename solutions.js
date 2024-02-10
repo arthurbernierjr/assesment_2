@@ -143,3 +143,11 @@ function transmogrify(num1, num2, num3) {
 //Return the sum of even Fibonacci numbers.
     return sum
 }
+
+// A Needle in the Haystack
+function findNeedle(haystack) {
+// Use the indexOf method to find the index of the "needle" in the array.
+    const index = haystack.indexOf('needle')
+//Return a string that includes the index of the needle.
+    return `The needle is at position ${index}`
+}
