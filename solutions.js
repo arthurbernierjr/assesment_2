@@ -552,7 +552,7 @@ console.log(search([1,2,3], 2)) // returns 1
 // Find First and Last Position of Element in Sorted Array
 // Problem Statement: Given an array of integers sorted in ascending order, find the starting and ending position of a given target value. If the target is not found in the array, return [-1, -1].
 
-
+// i know this isn't DRY but I'm grinding to finish this. If i had more time I would have condensed first() and last() into one function w/ an additional parameter
 
 const findFirstAndLastPosition = (arr, n) => {
     // call two functions: findFirst & findLast
@@ -616,3 +616,33 @@ const last = (arr,n) => {
 }
 
 console.log(findFirstAndLastPosition([5,7,7,8,8,10], 8)) // returns [ 3, 4 ]
+
+// Pow(x, n)
+// Problem Statement: Implement pow(x, n), which calculates xraised to the power n(i.e., x^n).
+
+// initialize 
+
+function pow(x, n) {
+    // Handle base case where power of 0 equals 1... somehow... math lol
+    if (n === 0) {
+        return 1;
+    }
+
+    // make product inverse and change n to positive
+    if (n < 0) {
+        return 1 / pow(x, -n);
+    }
+    
+    // calculate power of halves
+    let half = pow(x, Math.floor(n / 2));
+    
+    // if even, multiply halves
+    if (n % 2 === 0) {
+        return half * half;
+    // if odd, multiple halves and add the remainder
+    } else {
+        return x * half * half;
+    }
+}
+
+console.log(pow(2, 10)) // returns 1024
