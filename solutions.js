@@ -391,4 +391,38 @@ const minSubArrayLen = (arr, threshold) => {
     return minLen
 }
 
-console.log(minSubArrayLen([1,4,16,22,5,7,8,9,10],95), minSubArrayLen([2,3,1,2,4,3], 7))
+console.log(minSubArrayLen([1,4,16,22,5,7,8,9,10],95), minSubArrayLen([2,3,1,2,4,3], 7)) // returns 0 2
+
+// FindLongestSubstring
+
+// Problem Statement: Write a function called findLongestSubstring which accepts a string and returns the length of the longest substring with all distinct characters.
+
+// This is my attempt. It's wrong because it has an O(N^2) time complexity and it looks only at adjacent characters.
+
+const findLongestSubstring = arr => {
+    // initialize a start pointer as 0, end pointer as 1, and maxLength as 1
+    let start = 0
+    let end = 1
+    let maxLen = 1
+
+    // loop while end < arr.length
+    while (end < arr.length) {
+
+        // loop while end pointer greater than arr.len & isn't equal to the previous item
+        while (arr[end] && arr[end] != arr[end-1]) {
+            // initialize and define current length var as end -  start
+            let curLen = end - start + 1
+            // set maxLen to currentLen if it's larger
+            if (curLen > maxLen) maxLen = curLen
+            // increment end pointer
+            end ++
+        }
+        // increment start pointer ++
+        start ++
+        // resent end pointer to start pointer + 1
+        end = start + 1
+    }
+    return maxLen
+}
+
+
