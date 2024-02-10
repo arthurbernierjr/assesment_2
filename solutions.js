@@ -548,3 +548,71 @@ const search = (arr, val) => {
 }
 
 console.log(search([1,2,3], 2)) // returns 1
+
+// Find First and Last Position of Element in Sorted Array
+// Problem Statement: Given an array of integers sorted in ascending order, find the starting and ending position of a given target value. If the target is not found in the array, return [-1, -1].
+
+
+
+const findFirstAndLastPosition = (arr, n) => {
+    // call two functions: findFirst & findLast
+    return [first(arr,n), last(arr,n)]
+}
+
+const first = (arr,n) => {
+    // initialize left and right pointers
+    let left = 0
+    let right = arr.length -1
+    // initialize index as -1
+    let index = -1
+    // loop while left is less than right
+    while (left <= right) {
+        // set middle value
+        let mid = Math.floor((left + right) / 2)
+        // save check as middle value
+        let check = arr[mid]
+        // if check is value, set index to mid & set right to mid -1
+        if (check === n) {
+            index = mid
+            right = mid -1
+            // if check is greater than value, set right to mid -1
+        } else if (check > n) {
+            right = mid -1
+            // if else set left to mid + 1
+        } else {
+            left = mid + 1
+        }
+    }
+    // return index
+    return index
+}
+
+const last = (arr,n) => {
+    // initialize left and right pointers
+    let left = 0
+    let right = arr.length -1
+    // initialize index as -1
+    let index = -1
+    // loop while left is less than right
+    while (left <= right) {
+        // set middle value
+        let mid = Math.floor((left + right) / 2)
+        // save check as middle value
+        let check = arr[mid]
+        // if check is value, set index to mid & set left to mid +1
+        if (check === n) {
+            index = mid
+            left = mid +1
+            // if check is greater than value, set right to mid -1
+        } else if (check > n) {
+            right = mid -1
+            // if else set left to mid + 1
+        } else {
+            left = mid + 1
+        }
+    }
+    // return index
+    return index
+}
+
+console.log(findFirstAndLastPosition([5,7,7,8,8,10], 8)) // returns [ 3, 4 ]
