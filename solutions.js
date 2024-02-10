@@ -157,3 +157,68 @@ const numbers = [-21, 16, 3, -3, 37, -12, 12]
 console.log("sum = ", sumPositiveNumbers(numbers))
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//QUESTION 1
+//check if the lengths of the strings are equal. If not return false
+//count letters in both strings
+//iterate through the characters of the first string and update the count of each letter in the object
+//iterate through the characters of the second string and update the count of each letter in the object
+//check if all letters exist inthe other object the same amount of times. return false if not. return true if otherwise
+
+//QUESTION 2
+//convert numbers to string
+//initialize frequency counters for each number
+//populate frequency counters by iterating trough each string
+//compare the freq counters
+//if they match, return true otherwise return false
+
+function sameFrequency(num1, num2) {
+    const str1 = num1.toString()
+    const str2 = num2.toString()
+    const counter1 = {}
+    const counter2 = {}
+
+    for (let num of str1) {
+        counter1[num] = (counter1[num] || 0) + 1
+    }
+    for (let num of str2) {
+        counter2[num] = (counter2[num] || 0) + 1
+    }
+    for (let key in counter1) {
+        if (counter1[key] !== counter2[key]) {
+            return false
+        }
+    }
+    return true
+}
+console.log(sameFrequency(218, 128))
+console.log(sameFrequency(12, 211))
+
+//QUESTION 3
+// initialize empty object frequency counter
+//for each number increment the count in frequency counter
+//if value greater than 1, return true
+//if value less than less than 1 return false
+
+function areThereDuplicates() {
+    const counter = {}
+    for (let num of numbers) {
+        counter[num] = (counter[num] || 0) + 1
+    }
+    for (let key in counter) {
+        if (counter[key] > 1) {
+            return true
+        }
+    }
+    return false
+}
+
+console.log(areThereDuplicates(4, 5, 6))
+console.log(areThereDuplicates(4, 3, 4))
+
+//QUESTION 4
+//check if n is greater than the array length
+//calculate the sum of the first n elements to initialize the max sum
+//start a loop from the nth element of the array.
+//update the max sum if the new sum is greater than the current max sum
+//return the max sum 
