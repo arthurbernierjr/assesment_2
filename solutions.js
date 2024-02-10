@@ -620,8 +620,6 @@ console.log(findFirstAndLastPosition([5,7,7,8,8,10], 8)) // returns [ 3, 4 ]
 // Pow(x, n)
 // Problem Statement: Implement pow(x, n), which calculates xraised to the power n(i.e., x^n).
 
-// initialize 
-
 function pow(x, n) {
     // Handle base case where power of 0 equals 1... somehow... math lol
     if (n === 0) {
@@ -646,3 +644,31 @@ function pow(x, n) {
 }
 
 console.log(pow(2, 10)) // returns 1024
+
+// Merge Sort
+// Problem Statement: Implement Merge Sort, a sorting algorithm that follows the Divide and Conquer paradigm.
+
+const mergeSort = arr => {
+    if (arr.length <= 1) return arr
+
+    let mid = Math.floor(arr.length / 2)
+
+    let left = mergeSort(arr.slice(0, mid))
+    let right = mergeSort(arr.slice(mid))
+    return merge(left, right)
+}
+  
+  // helper function
+const merge = (arr1, arr2) => {
+    var result = []
+    while (arr1.length && arr2.length) {
+        if (arr1[0] <= arr2[0]) {
+            result.push(arr1.shift())
+        } else {
+            result.push(arr2.shift())
+        }
+    }
+    return result.concat(arr1, arr2)
+}
+
+console.log(mergeSort([1,2,4,0,4,4,1])) // returns [0, 1, 1, 2, 4, 4, 4]
