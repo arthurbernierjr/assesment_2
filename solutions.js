@@ -211,19 +211,77 @@ console.log(isVowel('s')); // Output: false
 
 //Chat Gpt end 
 
+//is a vowel completed
+
+
 // Get Two Lengths
 // Return an array containing the lengths of the two input strings.
 // Commit your work with the message "get two lengths completed".
+
+//My attempt First
+function twoLengths (str) {
+    return [str.length]
+}
+console.log(twoLengths("hello", "work???"));
+// My Second attempt
+function twoLengths2 (str) {
+    const one = [str.length]
+    const two = [str.length]
+    return [one, two]
+}
+console.log(twoLengths2("first", "second"))
+
+//CHAT GPT 
+function getTwoLengths(str1, str2) {
+    return [str1.length, str2.length];
+}
+console.log(getTwoLengths("hello", "work???"));
+
+function twoLengths2Fixed(str1, str2) {
+    const one = str1.length;
+    const two = str2.length;
+    return [one, two];
+}
+console.log(twoLengths2Fixed("first", "second"));
+//NOTES if we are testing for multiple strings not just one we need to argument multiple strings as the most effiecient way because we are splitting them. But WE COULD define what as string is in a const but that would be more more, and less efficient.
+//get two lengths completed//
+
 // Get Multiple Lengths
 // Use the mapfunction to transform each string in the input array into its length.
 // Return the resulting array of lengths.
 // Commit your work with the message "get multiple lengths completed".
 
+//PRE NOTES // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map but we wil ltry it with strings
+//MY attempt
+function multipleLengths (strings){
+    return strings.map(str => str.length); // kept erroring without defining str => str.length because i guess we werent actually defining what map we were getting.
+}
+console.log(multipleLengths(['wow', 'itried', 'im getting irritated']))
+//Notes map is a callback function not a parameter, more of an argument, so we needed to define what a string technically actually was. .map of str equals greater then str.length , not sure why = didnt work but it needed to be changed to => 
+
+//get multiple lengths completed 
+
 
 // Maximum of Three Numbers
-// Use the Math.maxfunction to find the maximum of the three numbers.
+// Use the Math.maxfunction to find the maximum of the three numbers.          // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max
 // Return the maximum number.
 // Commit your work with the message "maximum of three numbers completed".
+
+//My attempt
+function topThree(number1,number2,number3){
+    return Math.max(number1,number2,number3)
+}
+console.log(topThree('5','155','555','222'))
+// Attempt 2?
+function maxThree(numbers){
+    const findMax = numbers.map(Number) // Help with chat gpt syntax i knew an array would be cleaner because then you can have a longer amount of numbers to test for instead of just 3 like the code above.
+    return Math.max(...findMax)
+}
+console.log(maxThree(['111','222','333','444','556']))
+
+//maximum of three numbers completed//
+
+
 // Print Longest Word
 // Use the reducemethod to find the longest string in the array.
 // In case of a tie, the first word in the array order is returned.
