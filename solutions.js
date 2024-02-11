@@ -31,7 +31,7 @@
 // Compare the original lowercase string with the reversed string.
 // If they are the same, the function should return true; otherwise, it returns false. // will be ussing === for when coding
 // Commit your work with the message "palindrome completed".
-
+console.log('Palindrome')
 function palindrome(str) { //addd a str parameter in the function
     str = str.toLowerCase() 
     // console.log(str) // print out lower case
@@ -45,6 +45,7 @@ function palindrome(str) { //addd a str parameter in the function
 console.log(palindrome("Lol"))
 console.log(palindrome("wow"))
 console.log(palindrome("Not Forward Or Backwards"))
+console.log('Palindrome End')
 // Notes we need to lowercase everything so it can end up truthy if it uses the same characters. 
 //We nee to split reverse and join the str incase its multiple parts and so it ends up being one str so it can recognize that it can or cant be truthy otherwise it will always be false
 // We need to return the str === unoReveser const to compare to see if its truthy or not // We also cant just console log it because that wont solve our issue for actually running the function.
@@ -56,7 +57,7 @@ console.log(palindrome("Not Forward Or Backwards"))
 // In each iteration, add the current element to the sum variable.
 // After the loop, return the sum variable.
 // Commit your work with the message "sum array completed".
-
+console.log('SumArray Start')
 function sumArray(arr) {
     let sum = 0; // we are using let because we will be changing the value of sumb. // ALWAYS start at 0 if the loop i = 0
 
@@ -93,6 +94,7 @@ sumArray([1,5,22,55,77])
 // console.log(sumArray([1, 2, 3, 4, 5])); // Output: 15
 
 // sum array completed
+console.log('SumArray End')
 
 
 // Prime Numbers
@@ -106,7 +108,7 @@ sumArray([1,5,22,55,77])
 // For each number, use the checkPrimefunction to check if it's prime.
 // If checkPrimereturns true, console.log the number.
 // Commit your work with the message "prime numbers completed".
-
+console.log('CheckPrime Start-------------------------------')
 function checkPrime(number) {
     if (number <= 1) {
         return false; // Numbers less than or equal to 1 are not prime
@@ -144,6 +146,7 @@ function printPrimes(limit) {
     }
 }
 printPrimes(69); 
+console.log('CheckPrime End---------------------------------')
 //Ghat gpt end version
 // Notes 
 //we literally do the math for what a prime number is for checkPrime, square root is the closes way i was able to find. Then we have loop what is considered false and whats true for prime numbers.
@@ -159,6 +162,7 @@ printPrimes(69);
 // Commit your work with the message "calculate the cube completed".
 
 //My attempt
+console.log('CalculateCube Start----------------------')
 let cubed = 0
 function calculateCube(number, cubed) { // always use number when we are using the number parameter
     return cubed = number * number
@@ -171,7 +175,7 @@ console.log(calculateCube(15))
 // so i let cubed which i defined its number * * itself twice.
 // So far the only one i was able to code from scratch under 20 minutes... without cheating and only searched up parameter rules in order to get cubed to work because it wasnt inside the functions scope.
 
-
+console.log('CalculateCube End-----------------------')
 //calculate the cube completed//
 
 // Is a Vowel?
@@ -195,7 +199,7 @@ console.log(calculateCube(15))
 // console.log(vowel('s'))
 // My attempt... End 
 //Chat Gpt 
-
+console.log('isVowel Start---------------------------')
 function isVowel(letter) {
     let vowels = "aeiouAEIOU"; // Define a string containing all vowels (both lowercase and uppercase)
 
@@ -209,6 +213,7 @@ function isVowel(letter) {
 console.log(isVowel('A'));
 console.log(isVowel('s')); // Output: false
 
+console.log('isVowel End---------------------------')
 //Chat Gpt end 
 
 //is a vowel completed
@@ -218,6 +223,7 @@ console.log(isVowel('s')); // Output: false
 // Return an array containing the lengths of the two input strings.
 // Commit your work with the message "get two lengths completed".
 
+console.log('twoLengths Start---------------------------')
 //My attempt First
 function twoLengths (str) {
     return [str.length]
@@ -243,6 +249,7 @@ function twoLengths2Fixed(str1, str2) {
     return [one, two];
 }
 console.log(twoLengths2Fixed("first", "second"));
+console.log('twoLengths End---------------------------')
 //NOTES if we are testing for multiple strings not just one we need to argument multiple strings as the most effiecient way because we are splitting them. But WE COULD define what as string is in a const but that would be more more, and less efficient.
 //get two lengths completed//
 
@@ -253,12 +260,13 @@ console.log(twoLengths2Fixed("first", "second"));
 
 //PRE NOTES // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map but we wil ltry it with strings
 //MY attempt
+console.log('multipleLengths Start---------------------------')
 function multipleLengths (strings){
     return strings.map(str => str.length); // kept erroring without defining str => str.length because i guess we werent actually defining what map we were getting.
 }
 console.log(multipleLengths(['wow', 'itried', 'im getting irritated']))
 //Notes map is a callback function not a parameter, more of an argument, so we needed to define what a string technically actually was. .map of str equals greater then str.length , not sure why = didnt work but it needed to be changed to => 
-
+console.log('multipleLengths End---------------------------')
 //get multiple lengths completed 
 
 
@@ -268,6 +276,7 @@ console.log(multipleLengths(['wow', 'itried', 'im getting irritated']))
 // Commit your work with the message "maximum of three numbers completed".
 
 //My attempt
+console.log('topThree Start---------------------------')
 function topThree(number1,number2,number3){
     return Math.max(number1,number2,number3)
 }
@@ -278,19 +287,62 @@ function maxThree(numbers){
     return Math.max(...findMax)
 }
 console.log(maxThree(['111','222','333','444','556']))
-
+console.log('topThree END---------------------------')
 //maximum of three numbers completed//
 
 
 // Print Longest Word
-// Use the reducemethod to find the longest string in the array.
+// Use the reducemethod to find the longest string in the array. //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
 // In case of a tie, the first word in the array order is returned.
 // Commit your work with the message "print longest word completed".
+console.log('Print Longest Word START---------------------------')
+//Pseudo code
+// function printLongest (arr){
+//     const longest = (arr,arr2) // Reduce somewhere in the return
+//     if (arr.length > arr2.length){
+//         return longest
+//     }
+// } 
+//Actual attempt with reduce
+function printLongest(arr) { // lets flip the parameter as an array so we can text for multiple strings inside of the ONE set of array
+    return arr.reduce((str1, str2) => // Reduce so we get one print instead of all the strings in the arr, WE want ONE answer for the function 1 PART of the array... Remember this for math strings as well., we put the return here so print what the next arguments are needed to determine whats the solution.
+        str2.length > str1.length ? str2 : str1, ''); // Confused here // USED CHAT GPT to type it correctly  //we will reduce to one string but the argument is IS str2 greater to str1 AND ? NOW prints whichever is gonna be longer str2 : OR str1 '') basically this whole line defines whichever is longer will print
+}
+console.log(printLongest(["Coding is so ez!", "General Assembly is something", "totally Not william", "william"]));
+console.log('Print Longest Word END---------------------------')
+//print longest word completed//
+
+
 // Transmogrify the Numbers
 // Calculate the product of the first two numbers.
 // Raise the product to the power of the third number.
 // Return the result.
 // Commit your work with the message "transmogrify the numbers completed".
+console.log('transmogrify START---------------------------')
+//My Attempt
+function transmogrify(num1, num2, num3){
+    const sqd = num1 * num2;
+    const printResult = (sqd * num3)
+    return printResult;
+}
+console.log(transmogrify('5','5','5'))
+//CHAT GPT 
+function transmogrify2(num1, num2, num3) {
+    // Calculate the product of the first two numbers
+    const product = num1 * num2;
+    
+    // Raise the product to the power of the third number
+    const result = Math.pow(product, num3); // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow
+
+    // Return the result
+    return result;
+}
+// Example usage:
+console.log(transmogrify2(5, 5, 5)); // Output: 1296 (2 * 3 = 6, 6^4 = 1296)
+console.log('transmogrify End---------------------------')
+//Chat GPT END
+// TRANSMOGRIFY THE NUMBERS COMPLETED.
+
 // Project Euler Problem 2
 // Initialize two variables to store the first two numbers of the Fibonacci sequence.
 // Use a while loop to generate Fibonacci numbers up to the specified limit.
@@ -298,12 +350,111 @@ console.log(maxThree(['111','222','333','444','556']))
 // Update the Fibonacci sequence variables for the next iteration.
 // Return the sum of even Fibonacci numbers.
 // Commit your work with the message "Project Euler Problem 2 completed".
+console.log('Project Euler Problem 2 Start---------------------------')
+//my attempt 
+// function fibonacci (max){
+//     let number1 = 1;
+//     let number2 = 2;
+//     let equal = 0;
+    
+//     while (number2 > max) {
+//         if (number2 % 2 === 0){ // if return is in it wont work for the next if statement
+//             equal += number2 // added step three if its divisble by 2 and its truthy += the equals / sum
+//         }
+//         const fib2 = number1 + number2;
+//         number2 += fib2; // whats wrong with my math here?
+//     }
+//     return equal;
+// }
+// console.log(fibonacci(100))
+
+//Chat gpt math fix 
+
+function fibonacci(max) {
+    let number1 = 1;
+    let number2 = 2;
+    let equal = 0;
+
+    while (number2 <= max) {
+        if (number2 % 2 === 0) {
+            equal += number2;
+        }
+        
+        // Update Fibonacci numbers for the next iteration
+        const nextFib = number1 + number2;
+        number1 = number2;
+        number2 = nextFib;
+    }
+    
+    return equal;
+}
+
+console.log(fibonacci(10000)); // Output: 2 (as 2 is the only even Fibonacci number within 100)
+console.log('Project Euler Problem 2 END---------------------------')
+//project Euler Problem 2 end
+
+
 // A Needle in the Haystack
-// Use the indexOfmethod to find the index of the "needle"in the array.
+// Use the indexOfmethod to find the index of the "needle"in the array. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf
 // Return a string that includes the index of the needle.
 // Commit your work with the message "a needle in the haystack completed".
+console.log('a needle in the haystack START----------------')
+//My attempt 
+// let haystack = ["grass", "hay", "manure", "needle", "tressure", "a goblin", "a SWORD?"]
+// function needle(arr,str) {
+//     const index = arr.indexOf(str)
+//     if (index === 1) {
+//         return "Found ${index}!!!.";
+//     }
+//     else {
+//         return "nope no needle jump in there / You can trust me.";
+//     }
+// }
+// console.log(needle(haystack, "needle"))
+
+//Chat GPT 
+let haystack = ["grass", "hay", "manure", "needle", "tressure", "a goblin", "a SWORD?"];
+
+function needle(arr, str) {
+    const index = arr.indexOf(str);
+
+    if (index !== -1) {
+        return `Found The needle in ${haystack} on Index ${index}!!!`;
+    } else {
+        return "Nope, no needle found. You can trust me.";
+    }
+}
+
+console.log(needle(haystack, "needle"));
+console.log('a needle in the haystack END----------------')
+
+// notes USED THE CONDITIONAL  index !== -1 because ---
+//(index !== -1): This is the expression being evaluated. It uses the inequality operator !== to check if the value of the index variable is not equal to -1. In other words, it checks if the indexOf() method found the specified string (needle) in the array (haystack). If the indexOf() method finds the string, it returns the index of its first occurrence; otherwise, it returns -1.
+//a needle in the haystack COMPLETED
+
+
 // Sum the Positive
 // Use the filtermethod to create a new array containing only positive numbers.
-// Use the reducemethod to sum the values of the filtered array.
+// Use the reducemethod to sum the values of the filtered array. //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
 // Return the sum.
 // Commit your work with the message "sum the positive completed".
+console.log('sumb the positive START --------------------')
+//My attempt
+// function sumPositiveOnly (arr){
+//     const positiveOnly = arr.filter(num => num > -1)
+//     const result = positiveOnly += positiveOnly;
+//     return result
+// }
+// const testNumbers = [-100, -50, -25 , -10 , -5, 50, 40, 20, 10, 5, 0]
+// console.log(sumPositiveOnly(testNumbers))
+//  const result = positiveOnly += positiveOnly; ERROR 
+//Second Attempt 
+function sumPositiveOnly (arr){
+    const positiveOnly = arr.filter(num => num > -1)
+    const result = positiveOnly.reduce((positiveOnlyNumber1, positiveOnlyNumber2) => positiveOnlyNumber1 += positiveOnlyNumber2);
+    return result
+}
+const testNumbers = [-100, -50, -25 , -10 , -5, 50, 40, 20, 10, 5, 0]
+console.log(sumPositiveOnly(testNumbers))
+console.log('sumb the positive END  --------------------')
+console.log('-------------------------------------------------------------------------ASSESMENT 2 COMPLETED -------------------------------------------------------------------------')
